@@ -1,4 +1,9 @@
-import { getBreakPoint, addBreakPointEvent, getHTMLTheme } from 'gomdoreelab-lib-material-web';
+import {
+	getBreakPoint,
+	addBreakPointEvent,
+	getHTMLTheme,
+	setHTMLTheme
+} from 'gomdoreelab-lib-material-web';
 
 export class State {
 	breakpoint = $state('');
@@ -32,10 +37,11 @@ export class State {
 	};
 
 	/**
-	 * @param {string} theme
+	 * @param {"light" | "dark" | "auto"} theme
 	 */
 
-	setTheme(theme) {
+	setTheme = (theme) => {
+		setHTMLTheme(theme);
 		this.theme = theme;
-	}
+	};
 }

@@ -1,217 +1,77 @@
 <script>
 	// @ts-nocheck
-	import { Compact, Medium, Large } from 'gomdoreelab-lib-grid-web';
-	import {
-		AppBarTop,
-		AppBarTopTitle,
-		AppBarBottom,
-		getBreakPoint,
-		addBreakPointEvent,
-		ButtonIcon,
-		Icon,
-		Bar,
-		BarItem,
-		setColorSchemeHTML,
-		Tooltip,
-		Dropdown,
-		Menu,
-		MenuItem,
-		setHTMLTheme,
-		Prose
-	} from 'gomdoreelab-lib-material-web';
-	import { onMount } from 'svelte';
-	import NavigationBar from '$lib/snippet/navigation-bar/NavigationBar.svelte';
+	import { Compact, Medium, Large, Expanded, ExtraLarge } from 'gomdoreelab-lib-grid-web';
+	import TopMediumAppBar from '$lib/snippet/appBar/TopMedium.svelte';
+	import NavigationBar from '$lib/snippet/navigationBar/NavigationBar.svelte';
 	import Rail from '$lib/snippet/rail/Rail.svelte';
 	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
 	import State from '$lib/snippet/state/State.svelte';
+	import Body from '$lib/snippet/body/main/Body.svelte';
 </script>
 
 <State>
 	{#snippet _breakpoint(appState)}
-		asd{appState.breakpoint} {appState.theme}
+		{@const { breakpoint, theme } = appState}
+		{#if ['compact'].includes(breakpoint)}
+			<Compact>
+				{#snippet _header()}
+					<TopMediumAppBar {appState} target="#compact" />
+				{/snippet}
+				{#snippet _body()}
+					<Body {breakpoint} />
+				{/snippet}
+				{#snippet _footer()}
+					<NavigationBar />
+				{/snippet}
+			</Compact>
+		{:else if ['medium'].includes(breakpoint)}
+			<Medium>
+				{#snippet _header()}
+					<TopMediumAppBar {appState} target="#medium" />
+				{/snippet}
+				{#snippet _body()}
+					<Body {breakpoint} />
+				{/snippet}
+				{#snippet _rail()}
+					<Rail />
+				{/snippet}
+			</Medium>
+		{:else if ['expanded'].includes(breakpoint)}
+			<Expanded>
+				{#snippet _header()}
+					<TopMediumAppBar {appState} target="#medium" />
+				{/snippet}
+				{#snippet _body()}
+					<Body {breakpoint} />
+				{/snippet}
+				{#snippet _rail()}
+					<Rail />
+				{/snippet}
+			</Expanded>
+		{:else if ['large'].includes(breakpoint)}
+			<Large>
+				{#snippet _header()}
+					<TopMediumAppBar {appState} target="#medium" />
+				{/snippet}
+				{#snippet _body()}
+					<Body {breakpoint} />
+				{/snippet}
+				{#snippet _drawer()}
+					<Drawer />
+				{/snippet}
+			</Large>
+		{:else if ['extraLarge'].includes(breakpoint)}
+			<ExtraLarge>
+				{#snippet _header()}
+					<TopMediumAppBar {appState} target="#medium" />
+				{/snippet}
+				{#snippet _body()}
+					<Body {breakpoint} />
+				{/snippet}
+				{#snippet _drawer()}
+					<Drawer />
+				{/snippet}
+			</ExtraLarge>
+		{/if}
 	{/snippet}
 </State>
-
-<!-- {#if ['compact'].includes(breakpoint)}
-	<Compact footerType="navigation">
-		{#snippet _header()}
-			<AppBarTop
-				variant="medium"
-				scroll-target=".compact > .body"
-				scroll-behavior="shrink"
-				scroll-threshold="30"
-			>
-				<ButtonIcon>
-					<Icon name="menu"></Icon>
-				</ButtonIcon>
-				<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
-
-				<Dropdown>
-					{#snippet _trigger()}
-						<div slot="trigger">
-							<Tooltip content="테마">
-								<ButtonIcon>
-									<Icon name="wb_sunny--outlined"></Icon>
-								</ButtonIcon>
-							</Tooltip>
-						</div>
-					{/snippet}
-					<Menu
-						selects="single"
-						value={theme}
-						onchange={(event) => {
-							theme = event.target.value;
-							setHTMLTheme(theme);
-						}}
-					>
-						<MenuItem value="light">Light</MenuItem>
-						<MenuItem value="dark">Dark</MenuItem>
-					</Menu>
-				</Dropdown>
-			</AppBarTop>
-		{/snippet}
-		{#snippet _body()}
-			<Prose>
-				<div class="content">
-					<section>
-						<h1>디자인</h1>
-					</section>
-					<section>
-						<h3>지향점</h3>
-						<p>모든 서비스에서 동일한 경험을 주고 싶어요.</p>
-					</section>
-				</div>
-			</Prose>
-		{/snippet}
-		{#snippet _footer()}
-			<NavigationBar />
-		{/snippet}
-	</Compact>
-{:else if ['medium', 'expanded'].includes(breakpoint)}
-	<Medium order="rail">
-		{#snippet _header()}
-			<AppBarTop
-				variant="medium"
-				scroll-target=".medium > .body"
-				scroll-behavior="shrink"
-				scroll-threshold="30"
-			>
-				<ButtonIcon>
-					<Icon name="menu"></Icon>
-				</ButtonIcon>
-				<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
-
-				<Dropdown>
-					{#snippet _trigger()}
-						<div slot="trigger">
-							<Tooltip content="테마">
-								<ButtonIcon>
-									<Icon name="wb_sunny--outlined"></Icon>
-								</ButtonIcon>
-							</Tooltip>
-						</div>
-					{/snippet}
-					<Menu
-						selects="single"
-						value={theme}
-						onchange={(event) => {
-							theme = event.target.value;
-							setHTMLTheme(theme);
-						}}
-					>
-						<MenuItem value="light">Light</MenuItem>
-						<MenuItem value="dark">Dark</MenuItem>
-					</Menu>
-				</Dropdown>
-			</AppBarTop>
-		{/snippet}
-		{#snippet _body()}
-			<Prose>
-				<div class="content">
-					<section>
-						<h1>디자인</h1>
-					</section>
-					<section>
-						<h3>지향점</h3>
-						<p>모든 서비스에서 동일한 경험을 주고 싶어요.</p>
-					</section>
-				</div>
-			</Prose>
-		{/snippet}
-		{#snippet _rail()}
-			<Rail />
-		{/snippet}
-	</Medium>
-{:else}
-	<Large order="drawer">
-		{#snippet _header()}
-			<AppBarTop
-				variant="medium"
-				scroll-target=".large > .body"
-				scroll-behavior="shrink"
-				scroll-threshold="30"
-			>
-				<ButtonIcon>
-					<Icon name="menu"></Icon>
-				</ButtonIcon>
-				<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
-
-				<Dropdown>
-					{#snippet _trigger()}
-						<div slot="trigger">
-							<Tooltip content="테마">
-								<ButtonIcon>
-									<Icon name="wb_sunny--outlined"></Icon>
-								</ButtonIcon>
-							</Tooltip>
-						</div>
-					{/snippet}
-					<Menu
-						selects="single"
-						value={theme}
-						onchange={(event) => {
-							theme = event.target.value;
-							setHTMLTheme(theme);
-						}}
-					>
-						<MenuItem value="light">Light</MenuItem>
-						<MenuItem value="dark">Dark</MenuItem>
-					</Menu>
-				</Dropdown>
-			</AppBarTop>
-		{/snippet}
-		{#snippet _body()}
-			<Prose>
-				<div class="content">
-					<section>
-						<h1>디자인</h1>
-					</section>
-					<section>
-						<h3>지향점</h3>
-						<p>모든 서비스에서 동일한 경험을 주고 싶어요.</p>
-					</section>
-				</div>
-			</Prose>
-		{/snippet}
-		{#snippet _drawer()}
-			<Drawer />
-		{/snippet}
-	</Large>
-{/if} -->
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		row-gap: 1rem;
-		padding: 0 1rem;
-	}
-
-	.content > section:first-of-type {
-		margin-top: 1rem;
-	}
-
-	.content > section:first-of-type > h1 {
-		color: rgb(var(--mdui-color-primary));
-	}
-</style>
