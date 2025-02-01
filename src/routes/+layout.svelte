@@ -3,6 +3,7 @@
 
 	let { children } = $props();
 
+	// 초기 색상 설정
 	const color = '#0099ff';
 	setColorSchemeHTML(color);
 </script>
