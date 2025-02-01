@@ -33,6 +33,6 @@
 	},
 	"dependencies": {
 		"gomdoreelab-lib-grid-web": "^0.2.1",
-		"gomdoreelab-lib-material-web": "^0.2.9"
+		"gomdoreelab-lib-material-web": "^0.2.12"
 	}
 }

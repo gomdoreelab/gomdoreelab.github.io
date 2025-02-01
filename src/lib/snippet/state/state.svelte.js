@@ -2,19 +2,25 @@ import {
 	getBreakPoint,
 	addBreakPointEvent,
 	getHTMLTheme,
-	setHTMLTheme
+	setHTMLTheme,
+	setColorSchemeHTML
 } from 'gomdoreelab-lib-material-web';
 
 export class State {
 	breakpoint = $state('');
 	theme = $state('');
+	color = $state('');
 
 	constructor() {
 		this.breakpoint = getBreakPoint();
 		this.theme = getHTMLTheme();
+		this.color = '#0099ff';
 
 		// 적응형 화면 제어 이벤트
 		addBreakPointEvent(this.breakpointHandler);
+
+		// 색상 적용
+		this.setColor(this.color);
 	}
 
 	// 적응형 화면 제어
@@ -43,5 +49,14 @@ export class State {
 	setTheme = (theme) => {
 		setHTMLTheme(theme);
 		this.theme = theme;
+	};
+
+	/**
+	 * @param {string} color
+	 */
+
+	setColor = (color) => {
+		setColorSchemeHTML(color);
+		this.color = color;
 	};
 }

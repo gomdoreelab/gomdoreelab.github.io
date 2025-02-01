@@ -2,10 +2,11 @@
 	// @ts-nocheck
 	import { Prose, Card } from 'gomdoreelab-lib-material-web';
 
-	let { breakpoint, ...props } = $props();
+	let { appState, ...props } = $props();
 </script>
 
 <Prose {...props}>
+	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
 			<h1>문서</h1>
@@ -44,7 +45,7 @@
 				{:else}
 					<Card
 						href="/layout"
-						style="width: 45%; height: 100%; margin-bottom: 0.5rem; margin-right: 0.5rem;"
+						style="width: calc(50% - 0.5rem); height: 100%; margin-bottom: 0.5rem; margin-right: 0.5rem;"
 					>
 						<div class="card">
 							<h3>레이아웃</h3>
@@ -52,7 +53,10 @@
 						</div>
 					</Card>
 
-					<Card href="/components" style="width: 45%; height: 100%, 100%); margin-bottom: 0.5rem;">
+					<Card
+						href="/components"
+						style="width: calc(50% - 0.5rem); height: 100%, 100%); margin-bottom: 0.5rem;"
+					>
 						<div class="card">
 							<h3>컴포넌트</h3>
 							<p>화면 구성에 필요한 버튼, 카드 등 변경 가능한 요소</p>
@@ -61,7 +65,7 @@
 
 					<Card
 						href="/material"
-						style="width: 45%; height: 100%; margin-bottom: 0.5rem; margin-right: 0.5rem;"
+						style="width: calc(50% - 0.5rem); height: 100%; margin-bottom: 0.5rem; margin-right: 0.5rem;"
 					>
 						<div class="card">
 							<h3>디자인</h3>
@@ -69,7 +73,10 @@
 						</div>
 					</Card>
 
-					<Card href="/code" style="width: 45%; height: 100%; margin-bottom: 0.5rem;">
+					<Card
+						href="/code"
+						style="width: calc(50% - 0.5rem); height: 100%; margin-bottom: 0.5rem;"
+					>
 						<div class="card">
 							<h3>코드</h3>
 							<p>코드 작성 시 지켜야하는 규칙</p>

@@ -1,12 +1,33 @@
 <script>
 	// @ts-nocheck
-	import { Rail, RailItem, Icon } from 'gomdoreelab-lib-material-web';
+	import { ButtonIcon, Rail, RailItem, Icon } from 'gomdoreelab-lib-material-web';
 	import { page } from '$app/state';
+	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
 
 	let { ...props } = $props();
+	let isDrawerOpen = $state(false);
 </script>
 
+<Drawer
+	open={isDrawerOpen}
+	modal
+	close-on-esc
+	close-on-overlay-click
+	onclose={(event) => {
+		// 아이템에서 이벤트 전파되는건 빼고!
+		if (event.target.tagName === 'MDUI-NAVIGATION-DRAWER') {
+			isDrawerOpen = false;
+		}
+	}}
+/>
+
 <Rail value={page.url.pathname} {...props}>
+	{#snippet _top()}
+		<ButtonIcon slot="top" onclick={() => (isDrawerOpen = true)}>
+			<Icon name="menu"></Icon>
+		</ButtonIcon>
+	{/snippet}
+
 	<RailItem value="/" href="/">
 		홈
 		{#snippet _icon()}
