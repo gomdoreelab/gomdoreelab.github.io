@@ -101,11 +101,4 @@
 	.content > section:first-of-type > h1 {
 		color: rgb(var(--mdui-color-primary));
 	}
-
-	.information {
-		font-size: var(--mdui-typescale-body-medium-size);
-		font-weight: var(--mdui-typescale-body-medium-weight);
-		line-height: var(--mdui-typescale-body-medium-line-height);
-		letter-spacing: var(--mdui-typescale-body-medium-tracking);
-	}
 </style>

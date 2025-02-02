@@ -245,11 +245,4 @@
 	.panel {
 		padding: 2rem 1rem;
 	}
-
-	.information {
-		font-size: var(--mdui-typescale-body-medium-size);
-		font-weight: var(--mdui-typescale-body-medium-weight);
-		line-height: var(--mdui-typescale-body-medium-line-height);
-		letter-spacing: var(--mdui-typescale-body-medium-tracking);
-	}
 </style>

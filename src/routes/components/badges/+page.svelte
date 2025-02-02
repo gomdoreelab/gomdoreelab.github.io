@@ -6,7 +6,7 @@
 	import Rail from '$lib/snippet/rail/Rail.svelte';
 	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
 	import State from '$lib/snippet/state/State.svelte';
-	import Body from '$lib/snippet/body/components/Main.svelte';
+	import Body from '$lib/snippet/body/components/Badge.svelte';
 </script>
 
 <State>

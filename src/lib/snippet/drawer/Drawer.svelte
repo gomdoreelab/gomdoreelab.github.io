@@ -15,6 +15,37 @@
 	let { ...props } = $props();
 	let open = $state('');
 
+	const layouts = [
+		{ href: '/layout', title: '개요' },
+		{ href: '/layout/compact', title: 'Compact' },
+		{ href: '/layout/medium', title: 'Medium' },
+		{ href: '/layout/expanded', title: 'Expanded' },
+		{ href: '/layout/large', title: 'Large' },
+		{ href: '/layout/extra-large', title: 'Extra Large' }
+	];
+	const components = [
+		{ href: '/components', title: '개요' },
+		{ href: '/components/app-bar', title: 'App bars' },
+		{ href: '/components/badges', title: 'Badges' },
+		{ href: '/components/buttons', title: 'Buttons' },
+		{ href: '/components/cards', title: 'Cards' },
+		{ href: '/components/checkbox', title: 'Checkbox' },
+		{ href: '/components/chips', title: 'Chips' },
+		{ href: '/components/dialogs', title: 'Dialogs' },
+		{ href: '/components/divider', title: 'Divider' },
+		{ href: '/components/lists', title: 'Lists' },
+		{ href: '/components/menus', title: 'Menus' },
+		{ href: '/components/navigation', title: 'Navigation' },
+		{ href: '/components/progress-indicators', title: 'Progress indicators' },
+		{ href: '/components/radio-button', title: 'Radio button' },
+		{ href: '/components/slider', title: 'Slider' },
+		{ href: '/components/snackbar', title: 'Snackbar' },
+		{ href: '/components/switch', title: 'Switch' },
+		{ href: '/components/tabs', title: 'Tabs' },
+		{ href: '/components/textfield', title: 'Text fields' },
+		{ href: '/components/tooltip', title: 'Tooltips' }
+	];
+
 	onMount(() => {
 		open = page.url.pathname.startsWith('/layout')
 			? '/layout'
@@ -40,8 +71,14 @@
 		<Collapse accordion value={open}>
 			<CollapseItem
 				value="/layout"
-				onopen={(event) => (open = '/layout')}
-				onclose={() => (open = '')}
+				onopen={(event) => {
+					console.log(event);
+					open = '/layout';
+				}}
+				onclose={(event) => {
+					console.log(event);
+					open = '';
+				}}
 			>
 				{#snippet _header()}
 					<ListItem slot="header">
@@ -59,29 +96,18 @@
 					</ListItem>
 				{/snippet}
 				<div style="margin-left: 2.5rem">
-					<ListItem active={page.url.pathname === '/layout'} href="/layout">개요</ListItem>
-					<ListItem active={page.url.pathname === '/layout/compact'} href="/layout/compact">
-						Compact
-					</ListItem>
-					<ListItem active={page.url.pathname === '/layout/medium'} href="/layout/medium">
-						Medium
-					</ListItem>
-					<ListItem active={page.url.pathname === '/layout/expanded'} href="/layout/expanded">
-						Expanded
-					</ListItem>
-					<ListItem active={page.url.pathname === '/layout/large'} href="/layout/large">
-						Large
-					</ListItem>
-					<ListItem active={page.url.pathname === '/layout/extra-large'} href="/layout/extra-large">
-						Extra Large
-					</ListItem>
+					{#each layouts as layout}
+						<ListItem active={page.url.pathname === layout.href} href={layout.href}>
+							{layout.title}
+						</ListItem>
+					{/each}
 				</div>
 			</CollapseItem>
 
 			<CollapseItem
 				value="/components"
-				onopen={() => (open = '/components')}
-				onclose={() => (open = '')}
+				onopen={(event) => (open = '/components')}
+				onclose={(event) => (open = '')}
 			>
 				{#snippet _header()}
 					<ListItem slot="header">
@@ -99,7 +125,11 @@
 					</ListItem>
 				{/snippet}
 				<div style="margin-left: 2.5rem">
-					<ListItem active={page.url.pathname === '/components'} href="/layout">개요</ListItem>
+					{#each components as component}
+						<ListItem active={page.url.pathname === component.href} href={component.href}>
+							{component.title}
+						</ListItem>
+					{/each}
 				</div>
 			</CollapseItem>
 		</Collapse>

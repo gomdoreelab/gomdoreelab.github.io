@@ -11,7 +11,7 @@
 	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
-			<h1>개요</h1>
+			<h1>레이아웃: 개요</h1>
 			<p>사용자의 화면(Window) 크기에 맞는 구성을 제공해요.</p>
 
 			<h2>사용법</h2>
