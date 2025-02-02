@@ -63,6 +63,18 @@
 					<ListItem active={page.url.pathname === '/layout/compact'} href="/layout/compact">
 						Compact
 					</ListItem>
+					<ListItem active={page.url.pathname === '/layout/medium'} href="/layout/medium">
+						Medium
+					</ListItem>
+					<ListItem active={page.url.pathname === '/layout/expanded'} href="/layout/expanded">
+						Expanded
+					</ListItem>
+					<ListItem active={page.url.pathname === '/layout/large'} href="/layout/large">
+						Large
+					</ListItem>
+					<ListItem active={page.url.pathname === '/layout/extra-large'} href="/layout/extra-large">
+						Extra Large
+					</ListItem>
 				</div>
 			</CollapseItem>
 

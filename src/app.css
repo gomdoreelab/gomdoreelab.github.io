@@ -5,3 +5,7 @@ body {
 :not(:defined) {
 	visibility: hidden;
 }
+
+li {
+	list-style: '-';
+}

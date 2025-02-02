@@ -1,8 +1,24 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Card } from 'gomdoreelab-lib-material-web';
+	import { Prose, Table } from 'gomdoreelab-lib-material-web';
+	import Code from '$lib/snippet/code/Code.svelte';
+	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+	const codes = {
+		import: `import { Compact } from 'gomdoreelab-lib-grid-web';`,
+		example: `<Compact>
+  {#snippet _header()}
+		<TopMediumAppBar />
+	{/snippet}
+	{#snippet _body()}
+		<Body />
+	{/snippet}
+	{#snippet _footer()}
+		<NavigationBar />
+	{/snippet}
+</Compact>`
+	};
 </script>
 
 <Prose {...props}>
@@ -10,83 +26,67 @@
 	<div class="content">
 		<section>
 			<h1>Compact</h1>
-			<p>곰도리연구소에서 정한 규칙을 문서로 관리해요.</p>
+			<p>화면 크기가 600px 미만인 디바이스를 사용할 때 적합해요.</p>
 
-			<h2>리소스</h2>
-			<article class="cards">
-				{#if ['compact', 'medium'].includes(breakpoint)}
-					<Card href="/layout" style="width: 100%; height: 100%; margin-bottom: 0.5rem;">
-						<div class="card">
-							<h3>레이아웃</h3>
-							<p>사용자 디바이스에 맞는 화면 구성 템플릿</p>
-						</div>
-					</Card>
+			<h2>사용법</h2>
+			<p>컴포넌트를 가져와주세요:</p>
 
-					<Card href="/components" style="width: 100%; height: 100%; margin-bottom: 0.5rem;">
-						<div class="card">
-							<h3>컴포넌트</h3>
-							<p>화면 구성에 필요한 버튼, 카드 등 변경 가능한 요소</p>
-						</div>
-					</Card>
+			<article>
+				<Code lang="svelte" text={codes.import}></Code>
+			</article>
 
-					<Card href="/material" style="width: 100%; height: 100%; margin-bottom: 0.5rem;">
-						<div class="card">
-							<h3>디자인</h3>
-							<p>머티리얼 디자인에서 배운 중요한 디자인 요소</p>
-						</div>
-					</Card>
+			<p>다음과 같이 사용하세요:</p>
+			<ul>
+				<li>
+					항상 <code>_header</code>, <code>_body</code>, <code>_footer</code> snippet을 전부 사용해주세요.
+				</li>
+			</ul>
+			<article>
+				<Code {theme} lang="svelte" text={codes.example}></Code>
+			</article>
 
-					<Card href="/code" style="width: 100%; height: 100%; margin-bottom: 0.5rem;">
-						<div class="card">
-							<h3>코드</h3>
-							<p>코드 작성 시 지켜야하는 규칙</p>
-						</div>
-					</Card>
-				{:else}
-					<Card
-						href="/layout"
-						style="width: calc(50% - 0.5rem); height: 100%; margin-bottom: 0.5rem; margin-right: 0.5rem;"
-					>
-						<div class="card">
-							<h3>레이아웃</h3>
-							<p>사용자 디바이스에 맞는 화면 구성 템플릿</p>
-						</div>
-					</Card>
+			<p>
+				더 자세한 내용은
+				<a href="https://m3.material.io/foundations/layout/applying-layout/compact">
+					Applying layout - Compact
+				</a>를 참고해주세요.
+			</p>
 
-					<Card
-						href="/components"
-						style="width: calc(50% - 0.5rem); height: 100%, 100%); margin-bottom: 0.5rem;"
-					>
-						<div class="card">
-							<h3>컴포넌트</h3>
-							<p>화면 구성에 필요한 버튼, 카드 등 변경 가능한 요소</p>
-						</div>
-					</Card>
+			<h2>Snippets</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>이름</th>
+								<th>설명</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>_header</code></td>
+								<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
+							</tr>
+							<tr>
+								<td><code>_body</code></td>
+								<td>본문</td>
+							</tr>
+							<tr>
+								<td><code>_footer</code></td>
+								<td>하단 네비게이션 - NavigationBar</td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
 
-					<Card
-						href="/material"
-						style="width: calc(50% - 0.5rem); height: 100%; margin-bottom: 0.5rem; margin-right: 0.5rem;"
-					>
-						<div class="card">
-							<h3>디자인</h3>
-							<p>머티리얼 디자인에서 배운 중요한 디자인 요소</p>
-						</div>
-					</Card>
-
-					<Card
-						href="/code"
-						style="width: calc(50% - 0.5rem); height: 100%; margin-bottom: 0.5rem;"
-					>
-						<div class="card">
-							<h3>코드</h3>
-							<p>코드 작성 시 지켜야하는 규칙</p>
-						</div>
-					</Card>
-				{/if}
+				<p class="information">* TopAppBar는 크기(Small, Medium, Large)의 제한이 없어요.</p>
 			</article>
 		</section>
 
-		<section></section>
+		<NavigationCard
+			previous={{ href: '/layout', title: '레이아웃: 개요' }}
+			next={{ href: '/layout/medium', title: '레이아웃: Medium' }}
+		/>
 	</div>
 </Prose>
 
@@ -102,7 +102,10 @@
 		color: rgb(var(--mdui-color-primary));
 	}
 
-	.card {
-		padding: 2rem;
+	.information {
+		font-size: var(--mdui-typescale-body-medium-size);
+		font-weight: var(--mdui-typescale-body-medium-weight);
+		line-height: var(--mdui-typescale-body-medium-line-height);
+		letter-spacing: var(--mdui-typescale-body-medium-tracking);
 	}
 </style>
