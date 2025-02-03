@@ -5,6 +5,7 @@
 	import javascript from 'svelte-highlight/languages/javascript';
 	import json from 'svelte-highlight/languages/json';
 	import bash from 'svelte-highlight/languages/bash';
+	import css from 'svelte-highlight/languages/css';
 	import plaintext from 'svelte-highlight/languages/plaintext';
 	import github from 'svelte-highlight/styles/github';
 	import githubDark from 'svelte-highlight/styles/github-dark';
@@ -50,6 +51,8 @@
 		<Highlight language={json} code={text.replaceAll('\t', '  ')} />
 	{:else if lang === 'javascript'}
 		<Highlight language={javascript} code={text.replaceAll('\t', '  ')} />
+	{:else if lang === 'css'}
+		<Highlight language={css} code={text.replaceAll('\t', '  ')} />
 	{:else if lang === 'bash'}
 		<Highlight language={bash} code={text.replaceAll('\t', '  ')} />
 	{:else}

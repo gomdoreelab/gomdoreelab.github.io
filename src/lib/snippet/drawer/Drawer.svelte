@@ -28,6 +28,7 @@
 		{ href: '/components/app-bar', title: 'App bars' },
 		{ href: '/components/badges', title: 'Badges' },
 		{ href: '/components/buttons', title: 'Buttons' },
+		// TODO
 		{ href: '/components/cards', title: 'Cards' },
 		{ href: '/components/checkbox', title: 'Checkbox' },
 		{ href: '/components/chips', title: 'Chips' },
