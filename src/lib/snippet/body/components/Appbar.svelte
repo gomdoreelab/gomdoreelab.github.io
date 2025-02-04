@@ -73,10 +73,10 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/components/top-app-bar/overview">
+								<a target="_blank" href="https://m3.material.io/components/top-app-bar/overview">
 									Metrial - Top app bars
 								</a>와
-								<a href="https://www.mdui.org/en/docs/2/components/top-app-bar">
+								<a target="_blank" href="https://www.mdui.org/en/docs/2/components/top-app-bar">
 									MDUI - Top App Bar
 								</a>를 참고해주세요.
 							</p>
@@ -188,10 +188,10 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/components/bottom-app-bar/overview">
+								<a target="_blank" href="https://m3.material.io/components/bottom-app-bar/overview">
 									Metrial - Bottom app bars
 								</a>와
-								<a href="https://www.mdui.org/en/docs/2/components/bottom-app-bar">
+								<a target="_blank" href="https://www.mdui.org/en/docs/2/components/bottom-app-bar">
 									MDUI - Bottom App Bar
 								</a>를 참고해주세요.
 							</p>

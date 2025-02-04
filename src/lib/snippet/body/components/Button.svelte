@@ -67,11 +67,12 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/components/buttons/overview">
+								<a target="_blank" href="https://m3.material.io/components/buttons/overview">
 									Metrial - Buttons
 								</a>와
-								<a href="https://www.mdui.org/en/docs/2/components/button"> MDUI - Button </a>을
-								참고해주세요.
+								<a target="_blank" href="https://www.mdui.org/en/docs/2/components/button">
+									MDUI - Button
+								</a>을 참고해주세요.
 							</p>
 
 							<h2>예시</h2>
@@ -127,11 +128,15 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/components/floating-action-button/overview">
+								<a
+									target="_blank"
+									href="https://m3.material.io/components/floating-action-button/overview"
+								>
 									Metrial - Floating Action buttons
 								</a>와
-								<a href="https://www.mdui.org/en/docs/2/components/fab"> MDUI - Fab </a>를
-								참고해주세요.
+								<a target="_blank" href="https://www.mdui.org/en/docs/2/components/fab">
+									MDUI - Fab
+								</a>를 참고해주세요.
 							</p>
 
 							<h2>Snippets</h2>
@@ -174,10 +179,10 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/components/icon-buttons/overview">
+								<a target="_blank" href="https://m3.material.io/components/icon-buttons/overview">
 									Metrial - Icon buttons
 								</a>와
-								<a href="https://www.mdui.org/en/docs/2/components/button-icon">
+								<a target="_blank" href="https://www.mdui.org/en/docs/2/components/button-icon">
 									MDUI - ButtonIcon
 								</a>을 참고해주세요.
 							</p>
@@ -222,10 +227,16 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/components/segmented-buttons/overview">
+								<a
+									target="_blank"
+									href="https://m3.material.io/components/segmented-buttons/overview"
+								>
 									Metrial - Segmented buttons
 								</a>와
-								<a href="https://www.mdui.org/en/docs/2/components/segmented-button">
+								<a
+									target="_blank"
+									href="https://www.mdui.org/en/docs/2/components/segmented-button"
+								>
 									MDUI - SegmentedButton
 								</a>을 참고해주세요.
 							</p>

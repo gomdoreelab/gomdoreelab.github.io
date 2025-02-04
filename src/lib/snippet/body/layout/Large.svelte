@@ -74,6 +74,7 @@
 							<p>
 								더 자세한 내용은
 								<a
+									target="_blank"
 									href="https://m3.material.io/foundations/layout/applying-layout/large-extra-large"
 								>
 									Applying layout - Large & Extra-large
@@ -134,6 +135,7 @@
 							<p>
 								더 자세한 내용은
 								<a
+									target="_blank"
 									href="https://m3.material.io/foundations/layout/applying-layout/large-extra-large"
 								>
 									Applying layout - Large & Extra-large

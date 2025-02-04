@@ -25,11 +25,11 @@
 			<article>
 				<ul>
 					<li>
-						<a href="https://www.mdui.org/en/">MDUI<sup>*</sup></a>에서 제공하는 컴포넌트를 사용하고
-						있어요.
+						<a target="_blank" href="https://www.mdui.org/en/">MDUI<sup>*</sup></a>에서 제공하는
+						컴포넌트를 사용하고 있어요.
 					</li>
 					<li>
-						<a href="https://m3.material.io/components">컴포넌트(Components)</a>
+						<a target="_blank" href="https://m3.material.io/components">컴포넌트(Components)</a>
 						가이드라인을 따르려고 노력해요.
 					</li>
 				</ul>

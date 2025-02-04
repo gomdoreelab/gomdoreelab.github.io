@@ -29,7 +29,9 @@
 						<code>large</code>, <code>extra-large</code> 5개로 구분해요.
 					</li>
 					<li>
-						<a href="https://m3.material.io/foundations/adaptive-design">적응형(Adaptive)</a>
+						<a target="_blank" href="https://m3.material.io/foundations/adaptive-design"
+							>적응형(Adaptive)</a
+						>
 						디자인을 적용하기 위해 노력하고 있어요.
 					</li>
 				</ul>
@@ -88,7 +90,10 @@
 
 				<p>
 					더 자세한 내용은
-					<a href="https://m3.material.io/foundations/layout/applying-layout/window-size-classes">
+					<a
+						target="_blank"
+						href="https://m3.material.io/foundations/layout/applying-layout/window-size-classes"
+					>
 						Applying layout
 					</a>을 참고해주세요.
 				</p>

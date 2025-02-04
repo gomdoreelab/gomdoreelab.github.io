@@ -34,8 +34,11 @@
 
 			<p>
 				더 자세한 내용은
-				<a href="https://m3.material.io/components/chips/overview"> Metrial - Chips </a>와
-				<a href="https://www.mdui.org/en/docs/2/components/chip"> MDUI - Chip </a>을 참고해주세요.
+				<a target="_blank" href="https://m3.material.io/components/chips/overview">
+					Metrial - Chips
+				</a>와
+				<a target="_blank" href="https://www.mdui.org/en/docs/2/components/chip"> MDUI - Chip </a>을
+				참고해주세요.
 			</p>
 
 			<h2>Snippets</h2>

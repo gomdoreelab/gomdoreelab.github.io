@@ -32,8 +32,12 @@
 
 			<p>
 				더 자세한 내용은
-				<a href="https://m3.material.io/components/badges/overview"> Metrial - Badges </a>와
-				<a href="https://www.mdui.org/en/docs/2/components/badge"> MDUI - Badge </a>를 참고해주세요.
+				<a target="_blank" href="https://m3.material.io/components/badges/overview">
+					Metrial - Badges
+				</a>와
+				<a target="_blank" href="https://www.mdui.org/en/docs/2/components/badge">
+					MDUI - Badge
+				</a>를 참고해주세요.
 			</p>
 		</section>
 

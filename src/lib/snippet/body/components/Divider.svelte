@@ -32,15 +32,18 @@
 
 			<p>
 				더 자세한 내용은
-				<a href="https://m3.material.io/components/divider/overview"> Metrial - Divider </a>와
-				<a href="https://www.mdui.org/en/docs/2/components/divider"> MDUI - Divider </a>를
-				참고해주세요.
+				<a target="_blank" href="https://m3.material.io/components/divider/overview">
+					Metrial - Divider
+				</a>와
+				<a target="_blank" href="https://www.mdui.org/en/docs/2/components/divider">
+					MDUI - Divider
+				</a>를 참고해주세요.
 			</p>
 		</section>
 
 		<NavigationCard
 			previous={{ href: '/components/dialogs', title: '컴포넌트: Dialogs' }}
-			next={{ href: '/components/Lists', title: '컴포넌트: Lists' }}
+			next={{ href: '/components/lists', title: '컴포넌트: Lists' }}
 		/>
 	</div>
 </Prose>

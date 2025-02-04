@@ -72,7 +72,10 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/foundations/layout/applying-layout/expanded">
+								<a
+									target="_blank"
+									href="https://m3.material.io/foundations/layout/applying-layout/expanded"
+								>
 									Applying layout - Expanded
 								</a>를 참고해주세요.
 							</p>
@@ -130,7 +133,10 @@
 
 							<p>
 								더 자세한 내용은
-								<a href="https://m3.material.io/foundations/layout/applying-layout/expanded">
+								<a
+									target="_blank"
+									href="https://m3.material.io/foundations/layout/applying-layout/expanded"
+								>
 									Applying layout - Expanded
 								</a>를 참고해주세요.
 							</p>
