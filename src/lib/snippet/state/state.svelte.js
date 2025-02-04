@@ -10,17 +10,19 @@ export class State {
 	breakpoint = $state('');
 	theme = $state('');
 	color = $state('');
+	contrast = $state(0);
 
 	constructor() {
 		this.breakpoint = getBreakPoint();
 		this.theme = getHTMLTheme();
 		this.color = '#0099ff';
+		this.contrast = 0;
 
 		// 적응형 화면 제어 이벤트
 		addBreakPointEvent(this.breakpointHandler);
 
 		// 색상 적용
-		this.setColor(this.color);
+		this.setColor(this.color, this.contrast);
 	}
 
 	// 적응형 화면 제어
@@ -48,15 +50,20 @@ export class State {
 
 	setTheme = (theme) => {
 		setHTMLTheme(theme);
+
 		this.theme = theme;
+		this.setColor(this.color, this.contrast);
 	};
 
 	/**
 	 * @param {string} color
+	 * @param {number} contrast
 	 */
 
-	setColor = (color) => {
-		setColorSchemeHTML(color);
+	setColor = (color, contrast) => {
+		setColorSchemeHTML(color, contrast);
+
 		this.color = color;
+		this.contrast = contrast;
 	};
 }

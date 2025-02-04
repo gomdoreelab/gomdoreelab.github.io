@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"gomdoreelab-lib-grid-web": "^0.2.1",
-		"gomdoreelab-lib-material-web": "^0.2.13",
+		"gomdoreelab-lib-material-web": "^0.2.14",
 		"svelte-highlight": "^7.8.2"
 	}
 }
