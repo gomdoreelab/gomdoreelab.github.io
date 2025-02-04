@@ -25,7 +25,8 @@
 
 	onMount(() => {
 		const slider = document.querySelector('#contrast-slider');
-		slider.labelFormatter = (value) => Number(value);
+		slider.labelFormatter = (value) =>
+			Number(value) === 0 ? '기본' : Number(value) === 0.5 ? '중간' : '높음';
 	});
 </script>
 
