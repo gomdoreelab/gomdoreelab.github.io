@@ -39,11 +39,11 @@
 		{ href: '/components/navigation', title: 'Navigation' },
 		{ href: '/components/progress-indicators', title: 'Progress indicators' },
 		{ href: '/components/radio-button', title: 'Radio button' },
-		{ href: '/components/slider', title: 'Slider' },
+		{ href: '/components/sliders', title: 'Sliders' },
 		{ href: '/components/snackbar', title: 'Snackbar' },
 		{ href: '/components/switch', title: 'Switch' },
 		{ href: '/components/tabs', title: 'Tabs' },
-		{ href: '/components/textfield', title: 'Text fields' },
+		{ href: '/components/text-fields', title: 'Text fields' },
 		{ href: '/components/tooltip', title: 'Tooltips' }
 	];
 

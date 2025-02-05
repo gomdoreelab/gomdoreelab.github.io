@@ -23,7 +23,7 @@
 	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
-			<h1>Dialog</h1>
+			<h1>Dialogs</h1>
 			<p>사용자 흐름에서 중요한 프롬프트를 제공해요.</p>
 
 			<h2>사용법</h2>

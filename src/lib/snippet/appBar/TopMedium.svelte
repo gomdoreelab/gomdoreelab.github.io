@@ -102,16 +102,6 @@
 				</SegmentedButtonGroup> -->
 			</div>
 		</Card>
-		<!-- <Menu
-			selects="single"
-			value={appState.contrast === 0 ? 'None' : appState.contrast}
-			onclick={(event) =>
-				appState.setColor(color, event.target.value === 'None' ? 0 : event.target.value)}
-		>
-			<MenuItem value={'None'}>기본</MenuItem>
-			<MenuItem value={0.5}>중간</MenuItem>
-			<MenuItem value={1.0}>높음</MenuItem>
-		</Menu> -->
 	</Dropdown>
 	<Tooltip content="테마">
 		<ButtonIcon

@@ -20,38 +20,39 @@
 	</ListItem>
 </List>`,
 		collapse: `<List>
-<Collapse accordion value={open}>
-	<CollapseItem>
-		// 상위 항목
-		{#snippet _header()}
-			<ListItem slot="header">
-				레이아웃
-				{#snippet _icon()}
-					<Icon slot="icon" name="view_sidebar"></Icon>
-				{/snippet}
+	<Collapse accordion value={open}>
+		<CollapseItem>
+			// 상위 항목
+			{#snippet _header()}
+				<ListItem slot="header">
+					레이아웃
+					{#snippet _icon()}
+						<Icon slot="icon" name="view_sidebar"></Icon>
+					{/snippet}
 
-				{#snippet _endIcon()}
-					<Icon
-						slot="end-icon"
-						name={open === '/layout' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-					></Icon>
-				{/snippet}
-			</ListItem>
-		{/snippet}
-		
-		// 하위 항목
-		<div style="margin-left: 2.5rem">
-			{#each layouts as layout}
-				<ListItem active={page.url.pathname === layout.href} href={layout.href}>
-					{layout.title}
+					{#snippet _endIcon()}
+						<Icon
+							slot="end-icon"
+							name={open === '/layout' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+						></Icon>
+					{/snippet}
 				</ListItem>
-			{/each}
-		</div>
-	</CollapseItem>
-	
-	<CollapseItem>
-		...
-	</CollapseItem>
+			{/snippet}
+			
+			// 하위 항목
+			<div style="margin-left: 2.5rem">
+				{#each layouts as layout}
+					<ListItem active={page.url.pathname === layout.href} href={layout.href}>
+						{layout.title}
+					</ListItem>
+				{/each}
+			</div>
+		</CollapseItem>
+		
+		<CollapseItem>
+			...
+		</CollapseItem>
+	</Collapse>
 </List>`
 	};
 </script>
@@ -60,7 +61,7 @@
 	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
-			<h1>List</h1>
+			<h1>Lists</h1>
 			<p>연속적이고 수직적인 텍스트와 이미지의 목록을 나타내는데 쓰여요.</p>
 
 			<h2>사용법</h2>
