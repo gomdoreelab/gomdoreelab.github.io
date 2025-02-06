@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { ButtonIcon, Icon, Snackbar } from 'gomdoreelab-lib-material-web';
+	import { ButtonIcon, Icon, Snackbar, Tooltip } from 'gomdoreelab-lib-material-web';
 	import { Highlight, HighlightSvelte } from 'svelte-highlight';
 	import javascript from 'svelte-highlight/languages/javascript';
 	import json from 'svelte-highlight/languages/json';
@@ -39,9 +39,11 @@
 			<span class="title">{lang}</span>
 		</section>
 		<section>
-			<ButtonIcon onclick={async () => await copyTextToClipboard(text.replaceAll('\t', '  '))}>
-				<Icon name="content_copy"></Icon>
-			</ButtonIcon>
+			<Tooltip content="복사">
+				<ButtonIcon onclick={async () => await copyTextToClipboard(text.replaceAll('\t', '  '))}>
+					<Icon name="content_copy"></Icon>
+				</ButtonIcon>
+			</Tooltip>
 		</section>
 	</div>
 

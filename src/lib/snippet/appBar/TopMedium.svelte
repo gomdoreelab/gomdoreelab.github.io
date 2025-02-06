@@ -14,6 +14,7 @@
 		MenuItem,
 		Slider
 	} from 'gomdoreelab-lib-material-web';
+	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
 	import Gomdoreelab from '$lib/snippet/svg/Gomdoreelab.svelte';
 	import { onMount } from 'svelte';
 
@@ -22,6 +23,7 @@
 	let isThemeChecked = $state(appState.theme === 'light' ? false : true);
 	let theme = $state(appState.theme);
 	let isSnackbarOpen = $state(false);
+	let isDrawerOpen = $state(false);
 
 	onMount(() => {
 		const slider = document.querySelector('#contrast-slider');
@@ -30,22 +32,41 @@
 	});
 </script>
 
+<Drawer
+	open={isDrawerOpen}
+	modal
+	close-on-esc
+	close-on-overlay-click
+	onclose={(event) => {
+		// 아이템에서 이벤트 전파되는건 빼고!
+		if (event.target.tagName === 'MDUI-NAVIGATION-DRAWER') {
+			isDrawerOpen = false;
+		}
+	}}
+/>
+
 <AppBarTop variant="medium" scroll-behavior="shrink elevate" scroll-target={target} {...props}>
-	<ButtonIcon href="/">
-		{@const root = document.querySelector(':root')}
+	{#if appState.breakpoint === 'compact'}
+		<ButtonIcon onclick={() => (isDrawerOpen = true)}>
+			<Icon name="menu"></Icon>
+		</ButtonIcon>
+	{:else}
+		<ButtonIcon href="/">
+			{@const root = document.querySelector(':root')}
 
-		{#if appState.theme === 'light'}
-			{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-light')})`}
-			{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-light')})`}
+			{#if appState.theme === 'light'}
+				{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-light')})`}
+				{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-light')})`}
 
-			<Gomdoreelab {background} {color} width="24px" />
-		{:else}
-			{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-dark')})`}
-			{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-dark')})`}
+				<Gomdoreelab {background} {color} width="24px" />
+			{:else}
+				{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-dark')})`}
+				{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-dark')})`}
 
-			<Gomdoreelab {background} {color} width="24px" />
-		{/if}
-	</ButtonIcon>
+				<Gomdoreelab {background} {color} width="24px" />
+			{/if}
+		</ButtonIcon>
+	{/if}
 	<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
 
 	<Dropdown>
