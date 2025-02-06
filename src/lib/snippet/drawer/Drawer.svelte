@@ -44,7 +44,7 @@
 		{ href: '/components/switch', title: 'Switch' },
 		{ href: '/components/tabs', title: 'Tabs' },
 		{ href: '/components/text-fields', title: 'Text fields' },
-		{ href: '/components/tooltip', title: 'Tooltips' }
+		{ href: '/components/tooltips', title: 'Tooltips' }
 	];
 
 	onMount(() => {
