@@ -1,10 +1,12 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Switch, Icon, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
 	const code = {
 		import: `import { Switch } from 'gomdoreelab-lib-material-web';`,
 		example: `<Switch></Switch>`,
@@ -31,11 +33,28 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={code.import}></Code>
+				<Code {theme} lang="svelte" text={code.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Switch></Switch>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={code.example}></Code>
 			</article>
 
@@ -53,7 +72,58 @@
 			<h3>Checked</h3>
 			<p>기본 값을 줄 수 있어요!</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Switch checked={true} onchange={() => {}}>
+								{#snippet _checkedIcon()}
+									<Icon slot="checked-icon" name="nightlight"></Icon>
+								{/snippet}
+
+								{#snippet _uncheckedIcon()}
+									<Icon slot="unchecked-icon" name="highlight"></Icon>
+								{/snippet}
+							</Switch>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={code.checked}></Code>
+			</article>
+
+			<h2>Properties</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>이름</th>
+								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Switch</td>
+								<td>checked</td>
+								<td><code>Switch</code>를 선택한 상태로 변경해요.</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
 			</article>
 
 			<h2>Snippets</h2>

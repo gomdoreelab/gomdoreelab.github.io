@@ -1,13 +1,15 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Badge, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
 	const badge = {
 		import: `import { Badge } from 'gomdoreelab-lib-material-web';`,
-		example: `<Badge>12</Badge>`
+		example: `<Badge>2025</Badge>`,
+		small: `<Badge variant="small" style="background-color: blue;></Badge>`
 	};
 </script>
 
@@ -22,11 +24,19 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={badge.import}></Code>
+				<Code {theme} lang="svelte" text={badge.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div style="padding: 1rem;">
+							<Badge>2025</Badge>
+						</div>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={badge.example}></Code>
 			</article>
 
@@ -39,6 +49,47 @@
 					MDUI - Badge
 				</a>를 참고해주세요.
 			</p>
+
+			<h2>예시</h2>
+			<h3>Variants</h3>
+			<p>텍스트 없이 상태 정보만 표시하려면 <code>variant=small</code>을 사용해보세요.</p>
+			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div style="padding: 1rem;">
+							<Badge variant="small" style="background-color: blue;"></Badge>
+						</div>
+					{/snippet}
+				</Demo>
+
+				<Code {theme} lang="svelte" text={badge.small}></Code>
+			</article>
+
+			<h2>Properties</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>이름</th>
+								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Badge</td>
+								<td>variant</td>
+								<td>모양을 결정해요.</td>
+								<td><code>'small' | 'large'</code></td>
+								<td><code>'large'</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
+			</article>
 		</section>
 
 		<NavigationCard

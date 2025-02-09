@@ -1,7 +1,8 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Checkbox, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -22,11 +23,28 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={checkbox.import}></Code>
+				<Code {theme} lang="svelte" text={checkbox.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Checkbox>Checkbox</Checkbox>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={checkbox.example}></Code>
 			</article>
 
@@ -47,7 +65,8 @@
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>이름</th>
+								<th>Snippet 이름</th>
+								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
 						</thead>
@@ -55,14 +74,17 @@
 							<tr>
 								<td rowspan="3">Checkbox</td>
 								<td><code>_uncheckedIcon</code></td>
+								<td><code>unchecked-icon</code></td>
 								<td>선택하지 않은 상태의 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_checkedIcon</code></td>
+								<td><code>checked-icon</code></td>
 								<td>선택한 상태의 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_indeterminateIcon</code></td>
+								<td><code>indeterminate-icon</code></td>
 								<td>중간 상태의 아이콘</td>
 							</tr>
 						</tbody>

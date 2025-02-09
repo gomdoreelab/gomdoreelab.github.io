@@ -1,10 +1,29 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		Bar,
+		BarItem,
+		ButtonIcon,
+		Drawer,
+		Rail,
+		RailItem,
+		List,
+		ListItem,
+		Button,
+		Icon,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
+	let isOpenDrawer = $state(false);
 	const bar = {
 		import: `import { Bar, BarItem } from 'gomdoreelab-lib-material-web';`,
 		example: `<Bar>
@@ -26,7 +45,7 @@
 
 	const drawer = {
 		import: `import { Drawer } from 'gomdoreelab-lib-material-web';`,
-		example: `<Drawer>
+		example: `<Drawer open="true" contained>
 	<List>
 		<ListItem>
 			홈
@@ -36,23 +55,48 @@
 		</ListItem>
 		...
 	</List>
-</Drawer>`
+</Drawer>`,
+		open: `let isOpenDrawer = $state(false);
+
+<Drawer open={isOpenDrawer} contained>
+	<List>
+		<ListItem>
+			홈
+			{#snippet _icon()}
+				<Icon slot="icon" name="home"></Icon>
+			{/snippet}
+		</ListItem>
+		<ListItem>
+			레이아웃
+			{#snippet _icon()}
+				<Icon slot="icon" name="view_sidebar"></Icon>
+			{/snippet}
+		</ListItem>
+	</List>
+</Drawer>
+
+<Button onclick={() => (isOpenDrawer = true)>Open Drawer</Button>`
 	};
 
 	const rail = {
 		import: `import { Rail, RailItem } from 'gomdoreelab-lib-material-web';`,
-		example: `<Rail>
+		example: `<Rail contained>
 	<RailItem>
 		홈
 		{#snippet _icon()}
 			<Icon slot="icon" name="home"></Icon>
 		{/snippet}
 	</RailItem>
-	...
+	<RailItem>
+		레이아웃
+		{#snippet _icon()}
+			<Icon slot="icon" name="view_sidebar"></Icon>
+		{/snippet}
+	</RailItem>
 </Rail>`,
-		top: `<Rail>
+		top: `<Rail contained>
 	{#snippet _top()}
-		<ButtonIcon slot="top" onclick={() => (isDrawerOpen = true)}>
+		<ButtonIcon slot="top" onclick={() => {}}>
 			<Icon name="menu"></Icon>
 		</ButtonIcon>
 	{/snippet}
@@ -83,15 +127,49 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={bar.import}></Code>
+								<Code {theme} lang="svelte" text={bar.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<Bar class="demo-bar">
+												<BarItem>
+													레이아웃
+													{#snippet _icon()}
+														<Icon slot="icon" name="view_sidebar"></Icon>
+													{/snippet}
+												</BarItem>
+
+												<BarItem>
+													코드
+													{#snippet _icon()}
+														<Icon slot="icon" name="code"></Icon>
+													{/snippet}
+												</BarItem>
+											</Bar>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												position: relative;
+												width: calc(100% - 1rem * 2);
+											}
+
+											.demo-bar {
+												position: relative;
+												width: 100% !important;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={bar.example}></Code>
 							</article>
-
-							<p class="information">* 모바일 화면으로 전환하면 사용한 모습을 볼 수 있어요!</p>
 
 							<p>
 								더 자세한 내용은
@@ -110,7 +188,8 @@
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>이름</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
 										</thead>
@@ -118,14 +197,17 @@
 											<tr>
 												<td rowspan="3">BarItem</td>
 												<td><code>_icon</code></td>
+												<td><code>icon</code></td>
 												<td>아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_activeIcon</code></td>
+												<td><code>active-icon</code></td>
 												<td>선택했을 때 나타낼 아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_badge</code></td>
+												<td><code>badge</code></td>
 												<td>배지(아이콘에 알림, 개수 또는 상태 정보를 표시)</td>
 											</tr>
 										</tbody>
@@ -141,7 +223,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={drawer.import}></Code>
+								<Code {theme} lang="svelte" text={drawer.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -152,10 +234,41 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="130px">
+									{#snippet _html()}
+										<div class="demo-block-drawer" style="padding: 1rem;">
+											<Drawer open="true" contained>
+												<List>
+													<ListItem>
+														홈
+														{#snippet _icon()}
+															<Icon slot="icon" name="home"></Icon>
+														{/snippet}
+													</ListItem>
+													<ListItem>
+														레이아웃
+														{#snippet _icon()}
+															<Icon slot="icon" name="view_sidebar"></Icon>
+														{/snippet}
+													</ListItem>
+												</List>
+											</Drawer>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block-drawer {
+												height: 100%;
+												min-width: 700px;
+												position: relative;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={drawer.example}></Code>
 							</article>
-
-							<p class="information">* 데스크톱 화면으로 전환하면 사용한 모습을 볼 수 있어요!</p>
 
 							<p>
 								더 자세한 내용은
@@ -172,6 +285,96 @@
 									MDUI - Navigation drawer
 								</a>를 참고해주세요.
 							</p>
+
+							<h2>예시</h2>
+							<h3>Open</h3>
+							<p>일반적으로 버튼을 통해 <code>Drawer</code>를 열고 닫아요.</p>
+
+							<article>
+								<Demo height="130px">
+									{#snippet _html()}
+										<div class="demo-block-drawer" style="padding: 1rem;">
+											<Drawer open={isOpenDrawer} contained>
+												<List>
+													<ListItem>
+														홈
+														{#snippet _icon()}
+															<Icon slot="icon" name="home"></Icon>
+														{/snippet}
+													</ListItem>
+													<ListItem>
+														레이아웃
+														{#snippet _icon()}
+															<Icon slot="icon" name="view_sidebar"></Icon>
+														{/snippet}
+													</ListItem>
+												</List>
+											</Drawer>
+
+											<Button onclick={() => (isOpenDrawer = true)}>Open Drawer</Button>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block-drawer {
+												height: 100%;
+												min-width: 700px;
+												position: relative;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
+								<Code {theme} lang="svelte" text={drawer.open}></Code>
+							</article>
+
+							<h2>Properties</h2>
+							<article>
+								<Table>
+									<table>
+										<thead>
+											<tr>
+												<th>컴포넌트</th>
+												<th>이름</th>
+												<th>설명</th>
+												<th>타입</th>
+												<th>기본값</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan="3">Drawer</td>
+												<td>open</td>
+												<td><code>Drawer</code>를 열어요.</td>
+												<td><code>boolean</code></td>
+												<td><code>false</code></td>
+											</tr>
+											<tr>
+												<td>modal</td>
+												<td><code>Drawer</code>를 열 때 오버레이를 나타내요.</td>
+												<td><code>boolean</code></td>
+												<td><code>false</code></td>
+											</tr>
+											<tr>
+												<td>contained</td>
+												<td>
+													<p>
+														<code>Drawer</code>를 <code>body</code>가 아닌 다른 요소에 포함할 때
+														사용해요.
+													</p>
+													<p>
+														이 특성을 사용하는 경우 부모 요소에
+														<code>position: relative; overflow: hidden;</code>를 추가해야해요.
+													</p>
+												</td>
+												<td><code>boolean</code></td>
+												<td><code>false</code></td>
+											</tr>
+										</tbody>
+									</table>
+								</Table>
+							</article>
 						</div>
 					</TabPanel>
 
@@ -181,15 +384,44 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={rail.import}></Code>
+								<Code {theme} lang="svelte" text={rail.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="140px">
+									{#snippet _html()}
+										<div class="demo-block-rail" style="padding: 1rem;">
+											<Rail contained>
+												<RailItem>
+													홈
+													{#snippet _icon()}
+														<Icon slot="icon" name="home"></Icon>
+													{/snippet}
+												</RailItem>
+												<RailItem>
+													레이아웃
+													{#snippet _icon()}
+														<Icon slot="icon" name="view_sidebar"></Icon>
+													{/snippet}
+												</RailItem>
+											</Rail>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block-rail {
+												height: 100%;
+												min-width: 700px;
+												position: relative;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={rail.example}></Code>
 							</article>
-
-							<p class="information">* 태블릿 화면으로 전환하면 사용한 모습을 볼 수 있어요!</p>
 
 							<p>
 								더 자세한 내용은
@@ -208,7 +440,79 @@
 							<h3>Top</h3>
 							<p>상단에 항목을 고정할 수도 있어요.</p>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div class="demo-block-rail" style="padding: 1rem;">
+											<Rail contained>
+												{#snippet _top()}
+													<ButtonIcon slot="top" onclick={() => {}}>
+														<Icon name="menu"></Icon>
+													</ButtonIcon>
+												{/snippet}
+
+												<RailItem>
+													홈
+													{#snippet _icon()}
+														<Icon slot="icon" name="home"></Icon>
+													{/snippet}
+												</RailItem>
+												<RailItem>
+													레이아웃
+													{#snippet _icon()}
+														<Icon slot="icon" name="view_sidebar"></Icon>
+													{/snippet}
+												</RailItem>
+											</Rail>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block-rail {
+												height: 100%;
+												min-width: 700px;
+												position: relative;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={rail.top}></Code>
+							</article>
+
+							<h2>Properties</h2>
+							<article>
+								<Table>
+									<table>
+										<thead>
+											<tr>
+												<th>컴포넌트</th>
+												<th>이름</th>
+												<th>설명</th>
+												<th>타입</th>
+												<th>기본값</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Rail</td>
+												<td>contained</td>
+												<td>
+													<p>
+														<code>Rail</code>을 <code>body</code>가 아닌 다른 요소에 포함할 때
+														사용해요.
+													</p>
+													<p>
+														이 특성을 사용하는 경우 부모 요소에
+														<code>position: relative; overflow: hidden;</code>를 추가해야해요.
+													</p>
+												</td>
+												<td><code>boolean</code></td>
+												<td><code>false</code></td>
+											</tr>
+										</tbody>
+									</table>
+								</Table>
 							</article>
 
 							<h2>Snippets</h2>
@@ -218,7 +522,8 @@
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>이름</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
 										</thead>
@@ -226,23 +531,28 @@
 											<tr>
 												<td rowspan="2">Rail</td>
 												<td><code>_top</code></td>
+												<td><code>top</code></td>
 												<td>상단에 고정할 아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_bottom</code></td>
+												<td><code>bottom</code></td>
 												<td>하단에 고정할 아이콘</td>
 											</tr>
 											<tr>
 												<td rowspan="3">RailItem</td>
 												<td><code>_icon</code></td>
+												<td><code>icon</code></td>
 												<td>아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_activeIcon</code></td>
+												<td><code>active-icon</code></td>
 												<td>선택했을 때 나타낼 아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_badge</code></td>
+												<td><code>badge</code></td>
 												<td>배지(아이콘에 알림, 개수 또는 상태 정보를 표시)</td>
 											</tr>
 										</tbody>

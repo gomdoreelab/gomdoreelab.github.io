@@ -1,10 +1,20 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		Slider,
+		SliderRange,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
 	const slider = {
 		import: `import { Slider } from 'gomdoreelab-lib-material-web';`,
 		example: `<Slider></Slider>`
@@ -34,11 +44,32 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={slider.import}></Code>
+								<Code {theme} lang="svelte" text={slider.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<Slider class="demo-slider"></Slider>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+											}
+
+											.demo-slider {
+												margin-top: 1rem !important;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={slider.example}></Code>
 							</article>
 
@@ -60,11 +91,32 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={range.import}></Code>
+								<Code {theme} lang="svelte" text={range.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<SliderRange class="demo-range-slider"></SliderRange>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+											}
+
+											.demo-range-slider {
+												margin-top: 1rem !important;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={range.example}></Code>
 							</article>
 

@@ -60,6 +60,13 @@
 	{:else}
 		<Highlight language={plaintext} code={text.replaceAll('\t', '  ')} />
 	{/if}
+
+	<style>
+		.mdui-prose pre {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	</style>
 </div>
 
 <style>
@@ -73,8 +80,8 @@
 		grid-template-columns: repeat(2, 1fr);
 		align-items: center;
 		gap: 1rem;
-		padding: 1rem 1rem 0;
-		margin-bottom: -1rem;
+		padding: 0.5rem 1rem;
+		height: 100%;
 
 		& section {
 			width: 100%;

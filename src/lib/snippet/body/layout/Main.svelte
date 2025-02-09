@@ -5,6 +5,17 @@
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+	let codes = {
+		good: `<Compact>
+...
+</Compact>`,
+		bad: `<div class="some-cards..">
+	<Compact>
+	...
+	</Compact>
+</div>
+`
+	};
 </script>
 
 <Prose {...props}>
@@ -18,7 +29,7 @@
 			<p>라이브러리를 설치해주세요:</p>
 
 			<article>
-				<Code lang="bash" text={'npm install gomdoreelab-lib-grid-web'}></Code>
+				<Code {theme} lang="bash" text={'npm install gomdoreelab-lib-grid-web'}></Code>
 			</article>
 
 			<h2>특징</h2>
@@ -97,6 +108,20 @@
 						Applying layout
 					</a>을 참고해주세요.
 				</p>
+			</article>
+
+			<h2>주의사항</h2>
+			<p>
+				페이지를 구성하는 시작점으로만 사용하세요. 페이지 내 요소로 사용하는 것은 고려하지 않았어요.
+			</p>
+			<h3>좋은 사용법:</h3>
+			<article>
+				<Code {theme} lang="svelte" text={codes.good}></Code>
+			</article>
+
+			<h3>나쁜 사용법:</h3>
+			<article>
+				<Code {theme} lang="svelte" text={codes.bad}></Code>
 			</article>
 		</section>
 

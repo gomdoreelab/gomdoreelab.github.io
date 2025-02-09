@@ -1,7 +1,8 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Card, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -13,11 +14,11 @@
 	</div>
 </Card>`,
 		grid: `<section class="nav">
-	<Card style="height: 100%;">
-		...
+	<Card style="height: 100px;">
+		<div class="card">Card 1</div>
 	</Card>
-	<Card style="height: 100%;">
-		...
+	<Card style="height: 100px;">
+		<div class="card">Card 2</div>
 	</Card>
 </section>`,
 		gridCss: `.nav {
@@ -39,11 +40,34 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={card.import}></Code>
+				<Code {theme} lang="svelte" text={card.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Card style="width: 200px; height: 200px;">
+								<div class="card">Card</div>
+							</Card>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+
+							.card {
+								padding: 1rem;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={card.example}></Code>
 			</article>
 
@@ -63,6 +87,37 @@
 				형태에요.
 			</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<section class="nav">
+								<Card style="height: 100px;"><div class="card">Card 1</div></Card>
+								<Card style="height: 100px;"><div class="card">Card 2</div></Card>
+							</section>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+
+							.nav {
+								display: grid;
+								grid-template-columns: repeat(2, 1fr);
+								column-gap: 1rem;
+								width: 100%;
+							}
+
+							.card {
+								padding: 1rem;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={card.grid}></Code>
 			</article>
 			<p>

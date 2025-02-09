@@ -1,7 +1,19 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		AppBarTop,
+		AppBarTopTitle,
+		Drawer,
+		Rail,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
+	import { ExtraLarge, ExtraLargeTP, ExtraLargeAP } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -9,28 +21,41 @@
 		import: `import { ExtraLarge } from 'gomdoreelab-lib-grid-web';`,
 		example: `<ExtraLarge>
 	{#snippet _header()}
-		<TopMediumAppBar />
+		<AppBarTop class="demo-top-app-bar">
+			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+		</AppBarTop>
 	{/snippet}
+
 	{#snippet _body()}
-		<Body />
+		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
+
 	{#snippet _drawer()}
-		<Drawer />
+		<Drawer class="demo-navigation-drawer" open="true" contained>
+			<div class="some-list">Drawer</div>
+		</Drawer>
 	{/snippet}
 </ExtraLarge>`,
 		importTP: `import { ExtraLargeTP } from 'gomdoreelab-lib-grid-web';`,
 		exampleTP: `<ExtraLargeTP placement="left">
 	{#snippet _header()}
-		<TopSmallAppBar />
+		<AppBarTop class="demo-top-app-bar">
+			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+		</AppBarTop>
 	{/snippet}
+
 	{#snippet _body()}
-		<Body />
+		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
+
 	{#snippet _complement()}
-		<Complement />
-	{/snippet}	
+		<div class="demo-complement">Complement</div>
+	{/snippet}
+
 	{#snippet _drawer()}
-		<Drawer />
+		<Drawer class="demo-navigation-drawer" open="true" contained>
+			<div class="some-list">Drawer</div>
+		</Drawer>
 	{/snippet}
 </ExtraLargeTP>`,
 		importAP: `import { ExtraLargeAP } from 'gomdoreelab-lib-grid-web';`,
@@ -75,7 +100,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.import}></Code>
+								<Code {theme} lang="svelte" text={codes.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -86,6 +111,54 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem; min-width: 1600px;">
+											<ExtraLarge style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: 100%;  width: calc(100% - 0.5rem * 2); padding: 0.5rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _drawer()}
+													<Drawer class="demo-navigation-drawer" open="true" contained>
+														<div class="some-list">Drawer</div>
+													</Drawer>
+												{/snippet}
+											</ExtraLarge>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												z-index: 1900;
+											}
+
+											.demo-navigation-drawer {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												z-index: 1900;
+											}
+
+											.some-list {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												height: calc(100% - 0.5rem * 2);
+												padding: 0.5rem;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.example}></Code>
 							</article>
 
@@ -137,7 +210,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.importTP}></Code>
+								<Code {theme} lang="svelte" text={codes.importTP}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -148,6 +221,70 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem; min-width: 1600px;">
+											<ExtraLargeTP placement="left" style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: 100%; width: calc(100% - 0.5rem * 2); padding: 0.5rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _complement()}
+													<div class="demo-complement">Complement</div>
+												{/snippet}
+
+												{#snippet _drawer()}
+													<Drawer class="demo-navigation-drawer" open="true" contained>
+														<div class="some-list">Drawer</div>
+													</Drawer>
+												{/snippet}
+											</ExtraLargeTP>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												z-index: 1900;
+											}
+
+											complement {
+												width: 100%;
+											}
+
+											.demo-complement {
+												background-color: rgb(var(--mdui-color-surface-container-high));
+												padding: 0.5rem;
+												height: calc(100% - 0.5rem * 2);
+												width: calc(100% - 0.5rem * 2);
+												z-index: 1900;
+											}
+
+											.demo-navigation-drawer {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												z-index: 1900;
+											}
+
+											.some-list {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												height: calc(100% - 0.5rem * 2);
+												padding: 0.5rem;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.exampleTP}></Code>
 							</article>
 
@@ -247,7 +384,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.importAP}></Code>
+								<Code {theme} lang="svelte" text={codes.importAP}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -258,6 +395,86 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem; min-width: 1600px;">
+											<ExtraLargeAP placement="left" additional="left" style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: 100%; width: calc(100% - 0.5rem * 2); padding: 0.5rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _complement()}
+													<div class="demo-complement">Complement</div>
+												{/snippet}
+
+												{#snippet _additional()}
+													<div class="demo-additional">Additional</div>
+												{/snippet}
+
+												{#snippet _drawer()}
+													<Drawer class="demo-navigation-drawer" open="true" contained>
+														<div class="some-list">Drawer</div>
+													</Drawer>
+												{/snippet}
+											</ExtraLargeAP>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												z-index: 1900;
+											}
+
+											complement {
+												width: 100%;
+											}
+
+											additional {
+												width: 100%;
+											}
+
+											.demo-complement {
+												background-color: rgb(var(--mdui-color-surface-container-high));
+												padding: 0.5rem;
+												height: calc(100% - 0.5rem * 2);
+												width: calc(100% - 0.5rem * 2);
+												z-index: 1900;
+											}
+
+											.demo-additional {
+												background-color: rgb(var(--mdui-color-surface-container-highest));
+												padding: 0.5rem;
+												height: calc(100% - 0.5rem * 2);
+												width: calc(100% - 0.5rem * 2);
+												z-index: 1900;
+											}
+
+											.demo-navigation-drawer {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												z-index: 1900;
+											}
+
+											.some-list {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												height: calc(100% - 0.5rem * 2);
+												padding: 0.5rem;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.exampleAP}></Code>
 							</article>
 

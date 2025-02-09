@@ -1,14 +1,45 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		Button,
+		ButtonIcon,
+		Fab,
+		Icon,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab,
+		SegmentedButton,
+		SegmentedButtonGroup
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
 	const common = {
 		import: `import { Button } from 'gomdoreelab-lib-material-web';`,
-		example: `<Button>Button</Button>`,
-		event: `<Button onclick={()=>{}}>Button</Button>`
+		example: `<Button>
+	Button
+</Button>`,
+		event: `<Button onclick={() => alert('클릭했어요!')}>
+	Button
+</Button>`,
+		variant: `<Button variant="filled">
+	Filled
+</Button>
+<Button variant="tonal">
+	Tonal
+</Button>
+<Button variant="outlined">
+	Outlined
+</Button>
+<Button variant="text">
+	Text
+</Button>
+`
 	};
 
 	const fab = {
@@ -57,11 +88,28 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={common.import}></Code>
+								<Code {theme} lang="svelte" text={common.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<Button>Button</Button>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={common.example}></Code>
 							</article>
 
@@ -81,7 +129,92 @@
 								<code>onclick</code>이벤트를 사용할 수 있어요.
 							</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<Button onclick={() => alert('클릭했어요!')}>Button</Button>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={common.event}></Code>
+							</article>
+
+							<h3>Variant</h3>
+							<p>여러가지 형태의 버튼 모양을 제공하고 있어요.</p>
+							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<Button variant="filled">Filled</Button>
+											<Button variant="tonal">Tonal</Button>
+											<Button variant="outlined">Outlined</Button>
+											<Button variant="text">Text</Button>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+												gap: 0.5rem;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
+								<Code {theme} lang="svelte" text={common.variant}></Code>
+							</article>
+
+							<h2>Properties</h2>
+							<article>
+								<Table>
+									<table>
+										<thead>
+											<tr>
+												<th>컴포넌트</th>
+												<th>이름</th>
+												<th>설명</th>
+												<th>타입</th>
+												<th>기본값</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Button</td>
+												<td>variant</td>
+												<td>
+													<p>버튼 스타일</p>
+													<ul class="ul-table">
+														<li>elevated: 그림자 효과로 눈에 띄게 만든 버튼이에요.</li>
+														<li>filled: '저장'이나 '확인' 같은 최종 동작에 쓰는 버튼이에요.</li>
+														<li>
+															tonal: filled와 outlined의 중간 느낌이에요. 중요도가 중간에서 높은
+															동작에 적합해요.
+														</li>
+														<li>
+															outlined: 테두리만 있는 버튼이에요. 중요도가 중간이거나 부차적인
+															동작에 쓰기 좋아요.
+														</li>
+														<li>text: 글자로만 된 버튼이에요. 중요도가 낮은 동작에 사용해요.</li>
+													</ul>
+												</td>
+												<td><code>'elevated' | 'filled' | 'tonal' | 'outlined' | 'text'</code></td>
+												<td><code>'filled'</code></td>
+											</tr>
+										</tbody>
+									</table>
+								</Table>
 							</article>
 
 							<h2>Snippets</h2>
@@ -91,7 +224,8 @@
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>이름</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
 										</thead>
@@ -99,10 +233,12 @@
 											<tr>
 												<td rowspan="2">Button</td>
 												<td><code>_icon</code></td>
+												<td><code>icon</code></td>
 												<td>왼쪽에 들어가는 아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_endIcon</code></td>
+												<td><code>end-icon</code></td>
 												<td>오른쪽에 들어가는 아이콘</td>
 											</tr>
 										</tbody>
@@ -118,11 +254,33 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={fab.import}></Code>
+								<Code {theme} lang="svelte" text={fab.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<Fab>
+												{#snippet _icon()}
+													<Icon slot="icon" name="edit"></Icon>
+												{/snippet}
+											</Fab>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+												gap: 0.5rem;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={fab.example}></Code>
 							</article>
 
@@ -146,7 +304,8 @@
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>이름</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
 										</thead>
@@ -154,6 +313,7 @@
 											<tr>
 												<td>Fab</td>
 												<td><code>_icon</code></td>
+												<td><code>icon</code></td>
 												<td>아이콘</td>
 											</tr>
 										</tbody>
@@ -169,11 +329,31 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={icon.import}></Code>
+								<Code {theme} lang="svelte" text={icon.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<ButtonIcon>
+												<Icon name="edit"></Icon>
+											</ButtonIcon>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: center;
+												gap: 0.5rem;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={icon.example}></Code>
 							</article>
 
@@ -194,7 +374,8 @@
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>이름</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
 										</thead>
@@ -202,6 +383,7 @@
 											<tr>
 												<td>Icon</td>
 												<td><code>_selectedIcon</code></td>
+												<td><code>selected-icon</code></td>
 												<td>선택받은 상태에서 사용할 아이콘</td>
 											</tr>
 										</tbody>
@@ -217,11 +399,32 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={segmented.import}></Code>
+								<Code {theme} lang="svelte" text={segmented.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div class="demo-block" style="padding: 1rem;">
+											<SegmentedButtonGroup>
+												<SegmentedButton>1</SegmentedButton>
+												<SegmentedButton>2</SegmentedButton>
+												<SegmentedButton>3</SegmentedButton>
+											</SegmentedButtonGroup>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-block {
+												display: flex;
+												align-items: clearInterval;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={segmented.example}></Code>
 							</article>
 
@@ -248,7 +451,8 @@
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>이름</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
 										</thead>
@@ -256,14 +460,17 @@
 											<tr>
 												<td rowspan="3">SegmentedButton</td>
 												<td><code>_icon</code></td>
+												<td><code>icon</code></td>
 												<td>왼쪽에 배치할 아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_selectedIcon</code></td>
+												<td><code>selected-icon</code></td>
 												<td>선택받은 상태에서 사용할 아이콘</td>
 											</tr>
 											<tr>
 												<td><code>_endIcon</code></td>
+												<td><code>end-icon</code></td>
 												<td>오른쪽에 배치할 아이콘</td>
 											</tr>
 										</tbody>
@@ -297,5 +504,9 @@
 
 	.panel {
 		padding: 2rem 1rem;
+	}
+
+	.ul-table {
+		padding-left: 0.5rem;
 	}
 </style>

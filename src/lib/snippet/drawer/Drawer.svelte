@@ -28,7 +28,6 @@
 		{ href: '/components/app-bar', title: 'App bars' },
 		{ href: '/components/badges', title: 'Badges' },
 		{ href: '/components/buttons', title: 'Buttons' },
-		// TODO
 		{ href: '/components/cards', title: 'Cards' },
 		{ href: '/components/checkbox', title: 'Checkbox' },
 		{ href: '/components/chips', title: 'Chips' },
@@ -72,14 +71,8 @@
 		<Collapse accordion value={open}>
 			<CollapseItem
 				value="/layout"
-				onopen={(event) => {
-					console.log(event);
-					open = '/layout';
-				}}
-				onclose={(event) => {
-					console.log(event);
-					open = '';
-				}}
+				onopen={(event) => (open = '/layout')}
+				onclose={(event) => (open = '')}
 			>
 				{#snippet _header()}
 					<ListItem slot="header">

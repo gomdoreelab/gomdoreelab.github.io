@@ -1,7 +1,19 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		AppBarTop,
+		AppBarTopTitle,
+		Bar,
+		Rail,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
+	import { Medium, MediumTP } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -9,30 +21,40 @@
 		import: `import { Medium } from 'gomdoreelab-lib-grid-web';`,
 		example: `<Medium>
 	{#snippet _header()}
-		<TopMediumAppBar />
+		<AppBarTop class="demo-top-app-bar">
+			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+		</AppBarTop>
 	{/snippet}
+	
 	{#snippet _body()}
-		<Body />
+		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
+	
 	{#snippet _rail()}
-		<Rail />
+		<Rail class="demo-navigation-rail">Rail</Rail>
 	{/snippet}
 </Medium>`,
 		importTP: `import { MediumTP } from 'gomdoreelab-lib-grid-web';`,
 		exampleTP: `<MediumTP>
-	{#snippet _header()}
-		<TopSmallAppBar />
-	{/snippet}
-	{#snippet _body()}
-		<Body />
-	{/snippet}
-	{#snippet _complement()}
-		<Complement />
-	{/snippet}	
-	{#snippet _footer()}
-		<NavigationBar />
-	{/snippet}
-</MediumTP>`
+		{#snippet _header()}
+			<AppBarTop class="demo-top-app-bar">
+				<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+			</AppBarTop>
+		{/snippet}
+
+		{#snippet _body()}
+			<div style="height: 100%;">Main</div>
+		{/snippet}
+
+		{#snippet _complement()}
+			<div class="demo-complement">Complement</div>
+		{/snippet}
+
+		{#snippet _footer()}
+			<Bar class="demo-navigation-bar">NavigationBar</Bar>
+		{/snippet}
+	</MediumTP>
+</div>`
 	};
 </script>
 
@@ -57,7 +79,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.import}></Code>
+								<Code {theme} lang="svelte" text={codes.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -67,6 +89,47 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem;">
+											<Medium style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: 100%; width: calc(100% - 0.375rem * 2); padding: 0.375rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _rail()}
+													<Rail class="demo-navigation-rail">Rail</Rail>
+												{/snippet}
+											</Medium>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												padding-left: 1.5rem;
+												z-index: 1900;
+											}
+
+											.demo-navigation-rail {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.example}></Code>
 							</article>
 
@@ -111,13 +174,14 @@
 							</article>
 						</div>
 					</TabPanel>
+
 					<TabPanel slot="panel" value="Medium-Two-Pane">
 						<div class="panel">
 							<h2>사용법</h2>
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.importTP}></Code>
+								<Code {theme} lang="svelte" text={codes.importTP}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -128,6 +192,64 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem; min-width: 700px;">
+											<MediumTP style="height: 270px; width: 100%;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div style="height: 100%; padding: 1.5rem;">Main</div>
+												{/snippet}
+
+												{#snippet _complement()}
+													<div class="demo-complement">Complement</div>
+												{/snippet}
+
+												{#snippet _footer()}
+													<Bar class="demo-navigation-bar">NavigationBar</Bar>
+												{/snippet}
+											</MediumTP>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												z-index: 1900;
+											}
+
+											.demo-navigation-bar {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												width: 100% !important;
+												padding: 1.5rem;
+												z-index: 1900;
+											}
+
+											mdui-layout-item {
+												width: calc(100% / 2) !important;
+											}
+
+											complement {
+												width: 100%;
+											}
+
+											.demo-complement {
+												background-color: rgb(var(--mdui-color-surface-container-high));
+												padding: 1.5rem;
+												height: calc(100% - 1.5rem * 2);
+												width: calc(100% - 1.5rem * 2);
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.exampleTP}></Code>
 							</article>
 

@@ -1,10 +1,12 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Menu, MenuItem, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
 	const menu = {
 		import: `import { Menu, MenuItem } from 'gomdoreelab-lib-material-web';`,
 		example: `<Menu>
@@ -13,8 +15,8 @@
 </Menu>`,
 		value: `<Menu
 	selects="single"
-	{value}
-	onclick={(event) => {}}
+	value="1"
+	onclick={(event) => console.log(event)}
 >
 	<MenuItem value={1}>1</MenuItem>
 	<MenuItem value={2}>2</MenuItem>
@@ -34,11 +36,22 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={menu.import}></Code>
+				<Code {theme} lang="svelte" text={menu.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Menu>
+								<MenuItem>아이템1</MenuItem>
+								<MenuItem>아이템2</MenuItem>
+							</Menu>
+						</div>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={menu.example}></Code>
 			</article>
 
@@ -58,7 +71,54 @@
 				나타낼 수도 있어요.
 			</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Menu selects="single" value="1" onclick={(event) => console.log(event)}>
+								<MenuItem value={1}>1</MenuItem>
+								<MenuItem value={2}>2</MenuItem>
+								<MenuItem value={3}>3</MenuItem>
+							</Menu>
+						</div>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={menu.value}></Code>
+			</article>
+
+			<h2>Properties</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>이름</th>
+								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="2">Menu</td>
+								<td>selects</td>
+								<td>
+									아이템을 선택가능한 상태로 바꿀 수 있어요. 기본 값은 아이템을 선택할 수 없는
+									상태에요.
+								</td>
+								<td><code>'single' | 'multiple'</code></td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>value</td>
+								<td>선택한 아이템의 값을 나타내요.</td>
+								<td><code>string | string[]</code></td>
+								<td>-</td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
 			</article>
 
 			<h2>Snippets</h2>
@@ -68,7 +128,8 @@
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>이름</th>
+								<th>Snippet 이름</th>
+								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
 						</thead>
@@ -76,26 +137,32 @@
 							<tr>
 								<td rowspan="6">MenuItem</td>
 								<td><code>_icon</code></td>
+								<td><code>icon</code></td>
 								<td>왼쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_endIcon</code></td>
+								<td><code>end-icon</code></td>
 								<td>오른쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_endText</code></td>
+								<td><code>end-text</code></td>
 								<td>오른쪽에 들어가는 텍스트</td>
 							</tr>
 							<tr>
 								<td><code>_selectedIcon</code></td>
+								<td><code>selected-icon</code></td>
 								<td>선택했을 때 나타낼 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_submenu</code></td>
+								<td><code>submenu</code></td>
 								<td>하위 메뉴</td>
 							</tr>
 							<tr>
 								<td><code>_custom</code></td>
+								<td><code>custom</code></td>
 								<td>사용자 정의 컨텐츠</td>
 							</tr>
 						</tbody>

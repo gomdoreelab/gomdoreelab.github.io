@@ -18,7 +18,7 @@
 			<p>라이브러리를 설치해주세요:</p>
 
 			<article>
-				<Code lang="bash" text={'npm install gomdoreelab-lib-material-web'}></Code>
+				<Code {theme} lang="bash" text={'npm install gomdoreelab-lib-material-web'}></Code>
 			</article>
 
 			<h2>특징</h2>

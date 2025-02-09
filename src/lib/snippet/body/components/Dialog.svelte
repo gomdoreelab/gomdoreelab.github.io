@@ -1,21 +1,43 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Button, Dialog, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+	let isDialogOpen = $state({
+		example: false,
+		overlayClick: false
+	});
+
 	const dialog = {
 		import: `import { Dialog } from 'gomdoreelab-lib-material-web';`,
-		example: `let isDialogOpen = false;
+		example: `let isDialogOpen = $state(false);
 
 <Dialog open={isDialogOpen}>
-	...
+	<Button onclick={() => (isDialogOpen = false)}>
+		Close Dialog
+	</Button>
 </Dialog>
 
 <Button onclick={() => (isDialogOpen = true)}>
 	Open Dialog
-</Button>`
+</Button>`,
+		overlayClick: `let isDialogOpen = $state(false);
+
+<Dialog
+	open={isDialogOpen}
+	onclose={() => (isDialogOpen = false)}
+	close-on-overlay-click
+>
+	어두워진 곳(Overlay)을 선택해보세요.
+</Dialog>
+
+<Button onclick={() => (isDialogOpen = true)}>
+	Open Dialog
+</Button>
+`
 	};
 </script>
 
@@ -30,11 +52,31 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={dialog.import}></Code>
+				<Code {theme} lang="svelte" text={dialog.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Dialog open={isDialogOpen.example}>
+								<Button onclick={() => (isDialogOpen.example = false)}>Close Dialog</Button>
+							</Dialog>
+							<Button onclick={() => (isDialogOpen.example = true)}>Open Dialog</Button>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={dialog.example}></Code>
 			</article>
 
@@ -48,7 +90,39 @@
 				</a>를 참고해주세요.
 			</p>
 
-			<h2>Snippets</h2>
+			<h2>예시</h2>
+			<h3>Overlay Click</h3>
+			<p><code>Overlay</code>를 선택하여 창을 닫을 수 있어요.</p>
+			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Dialog
+								open={isDialogOpen.overlayClick}
+								onclose={() => (isDialogOpen.overlayClick = false)}
+								close-on-overlay-click
+							>
+								어두워진 곳(Overlay)을 선택해보세요.
+							</Dialog>
+
+							<Button onclick={() => (isDialogOpen.overlayClick = true)}>Open Dialog</Button>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
+				<Code {theme} lang="svelte" text={dialog.overlayClick}></Code>
+			</article>
+
+			<h2>Properties</h2>
 			<article>
 				<Table>
 					<table>
@@ -57,30 +131,68 @@
 								<th>컴포넌트</th>
 								<th>이름</th>
 								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="2">Dialog</td>
+								<td>open</td>
+								<td><code>Dialog</code>를 열어요.</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+							<tr>
+								<td>close-on-overlay-click</td>
+								<td>오버레이를 클릭했을 때<code>Dialog</code>를 닫아요.</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
+			</article>
+
+			<h2>Snippets</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>Snippet 이름</th>
+								<th>Slot 이름</th>
+								<th>설명</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td rowspan="5">Dialog</td>
 								<td><code>_header</code></td>
-								<td
-									>상단에 위치하며, <code>_icon</code>과 <code>_headline</code>슬롯을 기본으로 함
+								<td><code>header</code></td>
+								<td>
+									상단에 위치하며, <code>_icon</code>과 <code>_headline</code>슬롯을 기본으로 해요.
 								</td>
 							</tr>
 							<tr>
 								<td><code>_icon</code></td>
+								<td><code>icon</code></td>
 								<td>상단에 들어가는 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_headline</code></td>
+								<td><code>headline</code></td>
 								<td>상단에 들어가는 제목</td>
 							</tr>
 							<tr>
 								<td><code>_description</code></td>
+								<td><code>description</code></td>
 								<td>제목 아래 설명</td>
 							</tr>
 							<tr>
 								<td><code>_action</code></td>
+								<td><code>action</code></td>
 								<td>하단 액션 바에 위치하는 항목(Elements)</td>
 							</tr>
 						</tbody>

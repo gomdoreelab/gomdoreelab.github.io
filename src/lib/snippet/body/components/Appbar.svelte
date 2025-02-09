@@ -1,7 +1,17 @@
 <script>
 	// @ts-nocheck
+	import {
+		AppBarTop,
+		AppBarTopTitle,
+		AppBarBottom,
+		Rail,
+		ButtonIcon,
+		Icon
+	} from 'gomdoreelab-lib-material-web';
 	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
+	import { Medium } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -16,17 +26,28 @@
 		<Icon name="more_vert"></Icon>
 	</ButtonIcon>
 </AppBarTop>`,
-		shrink: `<AppBarTop variant="medium" scroll-behavior="shrink elevate" scroll-target={target}>
-...
+		shrink: `<AppBarTop 
+	variant="medium" 
+	scroll-behavior="shrink elevate" 
+	scroll-target="#scroll-body"
+>
+	<div id="scroll-body">
+		<section>Body</section>
+	</div>
 </AppBarTop>`,
-		order: `<AppBarTop order={1}>
+		orderRailTop: `<AppBarTop order={1}>
 ...
-</AppBarTop>`
+</AppBarTop>
+<Rail>Rail</Rail>`,
+		orderHeadTop: `<AppBarTop>
+...
+</AppBarTop>
+<Rail order={1}>Rail</Rail>`
 	};
 
 	const bottom = {
 		import: `import { AppBarBottom } from 'gomdoreelab-lib-material-web';`,
-		example: `<AppBarBottom>
+		example: `<AppBarBottom style="position: relative;">
 	<ButtonIcon>
 		<Icon name="check_box"></Icon>
 	</ButtonIcon>
@@ -58,7 +79,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={top.import}></Code>
+								<Code {theme} lang="svelte" text={top.import}></Code>
 							</article>
 
 							<p>다음 사항을 유의하여 사용하세요:</p>
@@ -68,6 +89,37 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div style="position: relative">
+											<AppBarTop
+												class="demo-top-app-bar"
+												variant="small"
+												style="position: relative;"
+											>
+												<ButtonIcon>
+													<Icon name="menu"></Icon>
+												</ButtonIcon>
+												<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
+												<ButtonIcon>
+													<Icon name="more_vert"></Icon>
+												</ButtonIcon>
+											</AppBarTop>
+										</div>
+									{/snippet}
+									{#snippet _style()}
+										<style>
+											mdui-top-app-bar {
+												position: relative;
+											}
+
+											.demo-top-app-bar {
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={top.example}></Code>
 							</article>
 
@@ -90,6 +142,52 @@
 								설정해야해요.
 							</p>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="position: relative">
+											<AppBarTop
+												class="demo-top-app-bar"
+												variant="medium"
+												scroll-behavior="shrink elevate"
+												scroll-target="#scroll-body"
+												style="position: relative;"
+											>
+												<ButtonIcon>
+													<Icon name="menu"></Icon>
+												</ButtonIcon>
+												<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
+												<ButtonIcon>
+													<Icon name="more_vert"></Icon>
+												</ButtonIcon>
+											</AppBarTop>
+										</div>
+										<div id="scroll-body">
+											<section>Body</section>
+										</div>
+									{/snippet}
+									{#snippet _style()}
+										<style>
+											mdui-top-app-bar {
+												position: relative;
+											}
+
+											.demo-top-app-bar {
+												z-index: 1900;
+											}
+
+											#scroll-body {
+												height: 200px;
+												padding: 1rem;
+												overflow-y: scroll;
+											}
+
+											#scroll-body > section {
+												height: 600px;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={top.shrink}></Code>
 							</article>
 
@@ -104,7 +202,96 @@
 								사이드 네비게이션을 더 우선한다는 뜻이에요.
 							</p>
 							<article>
-								<Code {theme} lang="svelte" text={top.order}></Code>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem;">
+											<Medium style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-order-top-app-bar" order={1}>
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: 100%; width: calc(100% - 1.5rem * 2); padding: 1.5rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _rail()}
+													<Rail class="demo-navigation-rail">Rail</Rail>
+												{/snippet}
+											</Medium>
+										</div>
+									{/snippet}
+									{#snippet _style()}
+										<style>
+											.demo-order-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												padding-left: 1.5rem;
+												z-index: 1900;
+											}
+
+											.demo-navigation-rail {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												padding-top: 1.25rem;
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
+								<Code {theme} lang="svelte" text={top.orderRailTop}></Code>
+							</article>
+
+							<p>
+								반대로 <code>Rail</code>에 <code>order={1}</code>을 부여할 수도 있어요.
+							</p>
+							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem;">
+											<Medium style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-order-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: 100%; width: calc(100% - 1.25rem * 2); padding: 1.25rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _rail()}
+													<Rail class="demo-navigation-rail" order={1}>Rail</Rail>
+												{/snippet}
+											</Medium>
+										</div>
+									{/snippet}
+									{#snippet _style()}
+										<style>
+											.demo-order-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												padding-left: 1.5rem;
+												z-index: 1900;
+											}
+
+											.demo-navigation-rail {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												padding-top: 1.25rem;
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
+								<Code {theme} lang="svelte" text={top.orderHeadTop}></Code>
 							</article>
 
 							<h2>레이아웃 아이디</h2>
@@ -144,7 +331,7 @@
 								</Table>
 							</article>
 
-							<h2>Snippets</h2>
+							<h2>Properties</h2>
 							<article>
 								<Table>
 									<table>
@@ -153,12 +340,66 @@
 												<th>컴포넌트</th>
 												<th>이름</th>
 												<th>설명</th>
+												<th>타입</th>
+												<th>기본값</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan="4">AppBarTop</td>
+												<td>variant</td>
+												<td>모양을 결정해요.</td>
+												<td><code>'center-aligned' | 'small' | 'medium' | 'large'</code></td>
+												<td><code>'small'</code></td>
+											</tr>
+											<tr>
+												<td>scroll-behavior</td>
+												<td
+													>스크롤 할 때 행동을 정할 수 있어요. <code>'shrink' 'elevate'</code>처럼
+													여러 개의 값을 가질 수 있어요.</td
+												>
+												<td><code>'hide' | 'shrink' | 'elevate'</code></td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>scroll-target</td>
+												<td
+													>스크롤 이벤트을 확인할 요소를 정해요. 기본 값은 <code>window</code>에요.
+												</td>
+												<td><code>string | HTMLElement</code></td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>order</td>
+												<td
+													>레이아웃 우선 순위를 나타내요. 오름차순(0, 1, 2, ...)으로 정렬해요. 기본
+													값은 <code>0</code>이에요.
+												</td>
+												<td><code>number</code></td>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</Table>
+							</article>
+
+							<h2>Snippets</h2>
+							<article>
+								<Table>
+									<table>
+										<thead>
+											<tr>
+												<th>컴포넌트</th>
+												<th>Snippet 이름</th>
+												<th>Slot 이름</th>
+												<th>설명</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>AppBarTopTitle</td>
 												<td><code>_labelLarge</code></td>
+												<td><code>label-large</code></td>
 												<td>펼쳐진 상태일 때 제목</td>
 											</tr>
 										</tbody>
@@ -174,7 +415,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={bottom.import}></Code>
+								<Code {theme} lang="svelte" text={bottom.import}></Code>
 							</article>
 
 							<p>다음 사항을 유의하여 사용하세요:</p>
@@ -183,6 +424,39 @@
 								<li>네비게이션 바와 같이 사용하지 마세요.</li>
 							</ul>
 							<article>
+								<Demo height="100%">
+									{#snippet _html()}
+										<div style="padding: 1rem;">
+											<AppBarBottom style="position: relative;">
+												<ButtonIcon>
+													<Icon name="check_box"></Icon>
+												</ButtonIcon>
+												<ButtonIcon>
+													<Icon name="edit"></Icon>
+												</ButtonIcon>
+												<ButtonIcon>
+													<Icon name="mic_none"></Icon>
+												</ButtonIcon>
+											</AppBarBottom>
+										</div>
+									{/snippet}
+									{#snippet _style()}
+										<style>
+											.demo-order-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												padding-left: 1.5rem;
+												z-index: 1900;
+											}
+
+											.demo-navigation-rail {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												padding-top: 1.25rem;
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={bottom.example}></Code>
 							</article>
 

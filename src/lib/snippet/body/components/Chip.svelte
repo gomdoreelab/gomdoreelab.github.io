@@ -1,10 +1,12 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Chip, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
 	const chip = {
 		import: `import { Chip } from 'gomdoreelab-lib-material-web';`,
 		example: `<Chip>Chip</Chip>`
@@ -24,11 +26,28 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={chip.import}></Code>
+				<Code {theme} lang="svelte" text={chip.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Chip>Chip</Chip>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={chip.example}></Code>
 			</article>
 
@@ -48,7 +67,8 @@
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>이름</th>
+								<th>Snippet 이름</th>
+								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
 						</thead>
@@ -56,18 +76,22 @@
 							<tr>
 								<td rowspan="4">Chip</td>
 								<td><code>_icon</code></td>
+								<td><code>icon</code></td>
 								<td>왼쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_endIcon</code></td>
+								<td><code>end-icon</code></td>
 								<td>오른쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_selectedIcon</code></td>
+								<td><code>selected-icon</code></td>
 								<td>선택했을 때 왼쪽 아이콘</td>
 							</tr>
 							<tr>
 								<td><code>_deleteIcon</code></td>
+								<td><code>delete-icon</code></td>
 								<td>삭제가 가능할 때 아이콘</td>
 							</tr>
 						</tbody>

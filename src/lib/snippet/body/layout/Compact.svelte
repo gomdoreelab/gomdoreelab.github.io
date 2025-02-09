@@ -1,21 +1,27 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table } from 'gomdoreelab-lib-material-web';
+	import { AppBarTop, AppBarTopTitle, Bar, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
+	import { Compact } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
 	const codes = {
 		import: `import { Compact } from 'gomdoreelab-lib-grid-web';`,
 		example: `<Compact>
-  {#snippet _header()}
-		<TopMediumAppBar />
+	{#snippet _header()}
+		<AppBarTop>
+			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+		</AppBarTop>
 	{/snippet}
+	
 	{#snippet _body()}
-		<Body />
+		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
+	
 	{#snippet _footer()}
-		<NavigationBar />
+		<Bar>NavigationBar</Bar>
 	{/snippet}
 </Compact>`
 	};
@@ -32,7 +38,7 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={codes.import}></Code>
+				<Code {theme} lang="svelte" text={codes.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
@@ -42,6 +48,43 @@
 				</li>
 			</ul>
 			<article>
+				<Demo height="300px">
+					{#snippet _html()}
+						<div style="padding: 1rem;">
+							<Compact style="height: 270px;">
+								{#snippet _header()}
+									<AppBarTop class="demo-top-app-bar">
+										<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+									</AppBarTop>
+								{/snippet}
+
+								{#snippet _body()}
+									<div style="height: 100%; width: 100%; padding: 0.5rem;">Main</div>
+								{/snippet}
+
+								{#snippet _footer()}
+									<Bar class="demo-navigation-bar">NavigationBar</Bar>
+								{/snippet}
+							</Compact>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-top-app-bar {
+								background-color: rgb(var(--mdui-color-surface-container));
+								z-index: 1900;
+							}
+
+							.demo-navigation-bar {
+								background-color: rgb(var(--mdui-color-surface-container-low));
+								padding: 0.5rem;
+								z-index: 1900;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={codes.example}></Code>
 			</article>
 

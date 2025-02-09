@@ -2,9 +2,11 @@
 	// @ts-nocheck
 	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+
 	const code = {
 		import: `import { Tab, Tabs, TabPanel } from 'gomdoreelab-lib-material-web';`,
 		example: `<Tabs value="A">
@@ -30,11 +32,40 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={code.import}></Code>
+				<Code {theme} lang="svelte" text={code.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Tabs value="A">
+								<Tab value="A">A</Tab>
+								<Tab value="B">B</Tab>
+
+								{#snippet _panel()}
+									<TabPanel slot="panel" value="A">A</TabPanel>
+									<TabPanel slot="panel" value="B">B</TabPanel>
+								{/snippet}
+							</Tabs>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+
+							mdui-tab-panel {
+								padding: 1rem;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={code.example}></Code>
 			</article>
 
@@ -46,6 +77,46 @@
 				<a target="_blank" href="https://www.mdui.org/en/docs/2/components/tabs"> MDUI - Tabs </a>를
 				참고해주세요.
 			</p>
+
+			<h2>Properties</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>이름</th>
+								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Tabs</td>
+								<td>value</td>
+								<td><code>Tab</code>을 선택할 수 있어요.</td>
+								<td><code>string</code></td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>Tab</td>
+								<td>value</td>
+								<td><code>Tab</code>의 값이에요.</td>
+								<td><code>string</code></td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>TabPanel</td>
+								<td>value</td>
+								<td><code>TabPanel</code>의 값이에요.</td>
+								<td><code>string</code></td>
+								<td>-</td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
+			</article>
 
 			<h2>Snippets</h2>
 			<article>

@@ -1,17 +1,31 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		Snackbar,
+		ButtonIcon,
+		Icon,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
+	let isSnackbarOpen = $state(false);
+
 	const snackbar = {
 		import: `import { Snackbar } from 'gomdoreelab-lib-material-web';`,
-		example: `<Snackbar open={isSnackbarOpen} onclose={() => (isSnackbarOpen = false)}>
+		example: `let isSnackbarOpen = $state(false);
+
+<Snackbar open={isSnackbarOpen} onclose={() => (isSnackbarOpen = false)}>
 	코드를 복사했어요
 </Snackbar>
 
-<ButtonIcon onclick={async () => (isSnackbarOpen = true)}>
+<ButtonIcon onclick={() => (isSnackbarOpen = true)}>
 	<Icon name="content_copy"></Icon>
 </ButtonIcon>`
 	};
@@ -28,11 +42,34 @@
 			<p>컴포넌트를 가져와주세요:</p>
 
 			<article>
-				<Code lang="svelte" text={snackbar.import}></Code>
+				<Code {theme} lang="svelte" text={snackbar.import}></Code>
 			</article>
 
 			<p>다음과 같이 사용하세요:</p>
 			<article>
+				<Demo height="100%">
+					{#snippet _html()}
+						<div class="demo-block" style="padding: 1rem;">
+							<Snackbar open={isSnackbarOpen} onclose={() => (isSnackbarOpen = false)}>
+								코드를 복사했어요
+							</Snackbar>
+
+							<ButtonIcon onclick={() => (isSnackbarOpen = true)}>
+								<Icon name="content_copy"></Icon>
+							</ButtonIcon>
+						</div>
+					{/snippet}
+
+					{#snippet _style()}
+						<style>
+							.demo-block {
+								display: flex;
+								align-items: center;
+							}
+						</style>
+					{/snippet}
+				</Demo>
+
 				<Code {theme} lang="svelte" text={snackbar.example}></Code>
 			</article>
 
@@ -45,6 +82,32 @@
 					MDUI - Snackbar
 				</a>를 참고해주세요.
 			</p>
+
+			<h2>Properties</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>이름</th>
+								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Snackbar</td>
+								<td>open</td>
+								<td><code>Snackbar</code>를 열어요.</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
+			</article>
 
 			<h2>Snippets</h2>
 			<article>

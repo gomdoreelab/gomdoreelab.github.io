@@ -1,7 +1,18 @@
 <script>
 	// @ts-nocheck
-	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import {
+		AppBarTop,
+		AppBarTopTitle,
+		Rail,
+		Prose,
+		Table,
+		TabPanel,
+		Tabs,
+		Tab
+	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
+	import Demo from '$lib/snippet/code/Demo.svelte';
+	import { Expanded, ExpandedTP } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -9,28 +20,37 @@
 		import: `import { Expanded } from 'gomdoreelab-lib-grid-web';`,
 		example: `<Expanded>
 	{#snippet _header()}
-		<TopMediumAppBar />
+		<AppBarTop class="demo-top-app-bar">
+			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+		</AppBarTop>
 	{/snippet}
+
 	{#snippet _body()}
-		<Body />
+		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
+
 	{#snippet _rail()}
-		<Rail />
+		<Rail class="demo-navigation-rail">Rail</Rail>
 	{/snippet}
 </Expanded>`,
 		importTP: `import { ExpandedTP } from 'gomdoreelab-lib-grid-web';`,
 		exampleTP: `<ExpandedTP placement="left">
 	{#snippet _header()}
-		<TopSmallAppBar />
+		<AppBarTop class="demo-top-app-bar">
+			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+		</AppBarTop>
 	{/snippet}
+
 	{#snippet _body()}
-		<Body />
+		<div style="height: 100%;">Main</div>
 	{/snippet}
+
 	{#snippet _complement()}
-		<Complement />
-	{/snippet}	
+		<div class="demo-complement">Complement</div>
+	{/snippet}
+
 	{#snippet _rail()}
-		<Rail />
+		<Rail class="demo-navigation-rail">Rail</Rail>
 	{/snippet}
 </ExpandedTP>`
 	};
@@ -57,7 +77,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.import}></Code>
+								<Code {theme} lang="svelte" text={codes.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -67,6 +87,47 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem;">
+											<Expanded style="height: 270px;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div
+														style="height: calc(100% - 0.375rem * 2); width: calc(100% - 0.375rem * 2); padding: 0.375rem;"
+													>
+														Main
+													</div>
+												{/snippet}
+
+												{#snippet _rail()}
+													<Rail class="demo-navigation-rail">Rail</Rail>
+												{/snippet}
+											</Expanded>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												padding-left: 1.5rem;
+												z-index: 1900;
+											}
+
+											.demo-navigation-rail {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.example}></Code>
 							</article>
 
@@ -117,7 +178,7 @@
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={codes.importTP}></Code>
+								<Code {theme} lang="svelte" text={codes.importTP}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
@@ -128,6 +189,58 @@
 								</li>
 							</ul>
 							<article>
+								<Demo height="300px">
+									{#snippet _html()}
+										<div style="padding: 1rem; min-width: 900px;">
+											<ExpandedTP placement="left" style="height: 270px; width: 100%;">
+												{#snippet _header()}
+													<AppBarTop class="demo-top-app-bar">
+														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
+													</AppBarTop>
+												{/snippet}
+
+												{#snippet _body()}
+													<div style="height: 100%; padding: 0.375rem;">Main</div>
+												{/snippet}
+
+												{#snippet _complement()}
+													<div class="demo-complement">Complement</div>
+												{/snippet}
+
+												{#snippet _rail()}
+													<Rail class="demo-navigation-rail">Rail</Rail>
+												{/snippet}
+											</ExpandedTP>
+										</div>
+									{/snippet}
+
+									{#snippet _style()}
+										<style>
+											.demo-top-app-bar {
+												background-color: rgb(var(--mdui-color-surface-container));
+												z-index: 1900;
+											}
+
+											.demo-navigation-bar {
+												background-color: rgb(var(--mdui-color-surface-container-low));
+												z-index: 1900;
+											}
+
+											complement {
+												width: 100%;
+											}
+
+											.demo-complement {
+												background-color: rgb(var(--mdui-color-surface-container-high));
+												padding: 0.375rem;
+												height: calc(100% - 0.375rem * 2);
+												width: calc(100% - 0.375rem * 2);
+												z-index: 1900;
+											}
+										</style>
+									{/snippet}
+								</Demo>
+
 								<Code {theme} lang="svelte" text={codes.exampleTP}></Code>
 							</article>
 
