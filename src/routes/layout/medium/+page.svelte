@@ -2,7 +2,6 @@
 	// @ts-nocheck
 	import { CompactLong, Medium, Large, Expanded, ExtraLarge } from 'gomdoreelab-lib-grid-web';
 	import TopMediumAppBar from '$lib/snippet/appBar/TopMedium.svelte';
-	import NavigationBar from '$lib/snippet/navigationBar/NavigationBar.svelte';
 	import Rail from '$lib/snippet/rail/Rail.svelte';
 	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
 	import State from '$lib/snippet/state/State.svelte';
