@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { Compact, Medium, Large, Expanded, ExtraLarge } from 'gomdoreelab-lib-grid-web';
+	import { CompactLong, Medium, Large, Expanded, ExtraLarge } from 'gomdoreelab-lib-grid-web';
 	import TopMediumAppBar from '$lib/snippet/appBar/TopMedium.svelte';
 	import NavigationBar from '$lib/snippet/navigationBar/NavigationBar.svelte';
 	import Rail from '$lib/snippet/rail/Rail.svelte';
@@ -13,17 +13,14 @@
 	{#snippet _breakpoint(appState)}
 		{@const { breakpoint, theme } = appState}
 		{#if ['compact'].includes(breakpoint)}
-			<Compact>
+			<CompactLong>
 				{#snippet _header()}
 					<TopMediumAppBar {appState} target="#compact" />
 				{/snippet}
 				{#snippet _body()}
 					<Body {appState} />
 				{/snippet}
-				{#snippet _footer()}
-					<NavigationBar />
-				{/snippet}
-			</Compact>
+			</CompactLong>
 		{:else if ['medium'].includes(breakpoint)}
 			<Medium>
 				{#snippet _header()}
