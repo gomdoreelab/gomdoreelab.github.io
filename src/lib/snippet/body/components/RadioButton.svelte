@@ -162,7 +162,7 @@
 
 		<NavigationCard
 			previous={{ href: '/components/progress-indicators', title: '컴포넌트: Progress indicators' }}
-			next={{ href: '/components/sliders', title: '컴포넌트: Sliders' }}
+			next={{ href: '/components/select', title: '컴포넌트: Select' }}
 		/>
 	</div>
 </Prose>

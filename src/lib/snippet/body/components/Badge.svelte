@@ -93,7 +93,7 @@
 		</section>
 
 		<NavigationCard
-			previous={{ href: '/components/app-bar', title: '컴포넌트: App bars' }}
+			previous={{ href: '/components/avatar', title: '컴포넌트: Avatar' }}
 			next={{ href: '/components/buttons', title: '컴포넌트: Buttons' }}
 		/>
 	</div>

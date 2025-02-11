@@ -320,7 +320,7 @@
 		</section>
 
 		<NavigationCard
-			previous={{ href: '/components/divider', title: '컴포넌트: Divider' }}
+			previous={{ href: '/components/dropdown', title: '컴포넌트: Dropdown' }}
 			next={{ href: '/components/menus', title: '컴포넌트: Menus' }}
 		/>
 	</div>

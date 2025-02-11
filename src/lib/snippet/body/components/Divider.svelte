@@ -53,7 +53,7 @@
 
 		<NavigationCard
 			previous={{ href: '/components/dialogs', title: '컴포넌트: Dialogs' }}
-			next={{ href: '/components/lists', title: '컴포넌트: Lists' }}
+			next={{ href: '/components/dropdown', title: '컴포넌트: Dropdown' }}
 		/>
 	</div>
 </Prose>

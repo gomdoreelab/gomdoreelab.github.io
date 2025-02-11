@@ -1,7 +1,7 @@
 {
 	"name": "gomdoreelab.github.io",
 	"private": true,
-	"version": "0.1.1",
+	"version": "0.1.3",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
@@ -33,7 +33,7 @@
 	},
 	"dependencies": {
 		"gomdoreelab-lib-grid-web": "^0.2.2",
-		"gomdoreelab-lib-material-web": "^0.2.14",
+		"gomdoreelab-lib-material-web": "^0.2.15",
 		"svelte-highlight": "^7.8.2"
 	}
 }

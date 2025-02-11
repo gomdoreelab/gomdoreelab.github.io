@@ -136,7 +136,7 @@
 		</section>
 
 		<NavigationCard
-			previous={{ href: '/components/radio-button', title: '컴포넌트: Radio button' }}
+			previous={{ href: '/components/select', title: '컴포넌트: Select' }}
 			next={{ href: '/components/snackbar', title: '컴포넌트: Snackbar' }}
 		/>
 	</div>

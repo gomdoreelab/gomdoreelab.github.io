@@ -102,7 +102,7 @@
 
 		<NavigationCard
 			previous={{ href: '/components/checkbox', title: '컴포넌트: Checkbox' }}
-			next={{ href: '/components/dialogs', title: '컴포넌트: Dialogs' }}
+			next={{ href: '/components/collapse', title: '컴포넌트: Collapse' }}
 		/>
 	</div>
 </Prose>

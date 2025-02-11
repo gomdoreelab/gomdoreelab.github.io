@@ -477,7 +477,7 @@
 
 		<NavigationCard
 			previous={{ href: '/components', title: '컴포넌트: 개요' }}
-			next={{ href: '/components/badges', title: '컴포넌트: Badges' }}
+			next={{ href: '/components/avatar', title: '컴포넌트: Avatar' }}
 		/>
 	</div>
 </Prose>

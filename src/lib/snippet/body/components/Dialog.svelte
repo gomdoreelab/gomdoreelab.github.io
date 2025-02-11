@@ -202,7 +202,7 @@
 		</section>
 
 		<NavigationCard
-			previous={{ href: '/components/chips', title: '컴포넌트: Chips' }}
+			previous={{ href: '/components/collapse', title: '컴포넌트: Collapse' }}
 			next={{ href: '/components/divider', title: '컴포넌트: Divider' }}
 		/>
 	</div>
