@@ -76,7 +76,7 @@
 			<div slot="trigger">
 				<Tooltip content="대비">
 					<ButtonIcon>
-						<Icon name="contrast"></Icon>
+						<Icon name="contrast" />
 					</ButtonIcon>
 				</Tooltip>
 			</div>
@@ -93,34 +93,7 @@
 					onchange={(event) => {
 						appState.setColor(color, event.target.value);
 					}}
-				></Slider>
-				<!-- <SegmentedButtonGroup
-					full-width
-					selects="single"
-					value={appState.contrast.toString()}
-					onclick={(event) => {
-						console.log(appState.contrast, event.target.value);
-
-						if (appState.contrast.toString() === event.target.value) {
-							if (event.target.value === '0') {
-								return;
-							}
-
-							isSnackbarOpen = true;
-
-							// 초기화
-							appState.setColor(color, 0);
-
-							console.log(appState.contrast);
-						} else {
-							appState.setColor(color, Number(event.target.value));
-						}
-					}}
-				>
-					<SegmentedButton value={'0'}>기본</SegmentedButton>
-					<SegmentedButton value={'0.5'}>중간</SegmentedButton>
-					<SegmentedButton value={'1'}>높음</SegmentedButton>
-				</SegmentedButtonGroup> -->
+				/>
 			</div>
 		</Card>
 	</Dropdown>
@@ -130,7 +103,7 @@
 				appState.setTheme(appState.theme === 'light' ? 'dark' : 'light');
 			}}
 		>
-			<Icon name={appState.theme === 'light' ? 'highlight' : 'nightlight'}></Icon>
+			<Icon name={appState.theme === 'light' ? 'highlight' : 'nightlight'} />
 		</ButtonIcon>
 	</Tooltip>
 
