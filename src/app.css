@@ -16,3 +16,7 @@ li {
 	line-height: var(--mdui-typescale-body-medium-line-height);
 	letter-spacing: var(--mdui-typescale-body-medium-tracking);
 }
+
+.mdui-table > table {
+	min-width: 600px;
+}

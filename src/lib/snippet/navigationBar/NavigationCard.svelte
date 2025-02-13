@@ -27,10 +27,23 @@
 </section>
 
 <style>
+	@media (width < 600px) {
+		.nav {
+			display: grid;
+			grid-template-rows: repeat(2, 1fr);
+			row-gap: 1rem;
+		}
+	}
+
+	@media (width >= 600px) {
+		.nav {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			column-gap: 1rem;
+		}
+	}
+
 	.nav {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		column-gap: 1rem;
 		margin-top: 2rem;
 		margin-bottom: 2rem;
 	}

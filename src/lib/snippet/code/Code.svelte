@@ -66,6 +66,10 @@
 			margin-top: 0;
 			margin-bottom: 0;
 		}
+
+		code.hljs {
+			font-family: var(--gl-font-family-code);
+		}
 	</style>
 </div>
 
