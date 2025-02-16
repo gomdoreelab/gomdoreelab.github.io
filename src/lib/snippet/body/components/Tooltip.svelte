@@ -139,7 +139,7 @@
 
 		<NavigationCard
 			previous={{ href: '/components/text-fields', title: '컴포넌트: Text fields' }}
-			next={{ href: '/material', title: '디자인: 개요' }}
+			next={{ href: '/functions', title: '함수: 개요' }}
 		/>
 	</div>
 </Prose>

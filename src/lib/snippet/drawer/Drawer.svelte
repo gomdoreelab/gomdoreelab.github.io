@@ -49,17 +49,26 @@
 		{ href: '/components/text-fields', title: 'Text fields' },
 		{ href: '/components/tooltips', title: 'Tooltips' }
 	];
+	const functions = [
+		{ href: '/functions', title: '개요' },
+		{ href: '/functions/theme', title: '테마' },
+		{ href: '/functions/color', title: '색상' }
+	];
 
 	onMount(() => {
-		open = page.url.pathname.startsWith('/layout')
-			? '/layout'
-			: page.url.pathname.startsWith('/components')
-				? '/components'
-				: page.url.pathname.startsWith('/material')
-					? '/material'
-					: page.url.pathname.startsWith('/code')
-						? '/code'
-						: '/';
+		if (page.url.pathname.startsWith('/layout')) {
+			open = '/layout';
+		} else if (page.url.pathname.startsWith('/components')) {
+			open = '/components';
+		} else if (page.url.pathname.startsWith('/functions')) {
+			open = '/functions';
+		} else if (page.url.pathname.startsWith('/material')) {
+			open = '/material';
+		} else if (page.url.pathname.startsWith('/code')) {
+			open = '/code';
+		} else {
+			open = '/';
+		}
 	});
 </script>
 
@@ -126,6 +135,35 @@
 					{#each components as component}
 						<ListItem active={page.url.pathname === component.href} href={component.href}>
 							{component.title}
+						</ListItem>
+					{/each}
+				</div>
+			</CollapseItem>
+
+			<CollapseItem
+				value="/functions"
+				onopen={(event) => (open = '/functions')}
+				onclose={(event) => (open = '')}
+			>
+				{#snippet _header()}
+					<ListItem slot="header">
+						함수
+						{#snippet _icon()}
+							<Icon slot="icon" name="functions"></Icon>
+						{/snippet}
+
+						{#snippet _endIcon()}
+							<Icon
+								slot="end-icon"
+								name={open === '/functions' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+							></Icon>
+						{/snippet}
+					</ListItem>
+				{/snippet}
+				<div style="margin-left: 2.5rem">
+					{#each functions as func}
+						<ListItem active={page.url.pathname === func.href} href={func.href}>
+							{func.title}
 						</ListItem>
 					{/each}
 				</div>

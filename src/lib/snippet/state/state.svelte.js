@@ -38,7 +38,7 @@ export class State {
 		this.app = getLocalStorage('appState', false);
 		this.breakpoint = getBreakPoint();
 		this.theme = this.app.hasOwnProperty('theme') ? this.app.theme : getHTMLTheme();
-		this.color = this.app.hasOwnProperty('color') ? this.app.color : '#0099ff';
+		this.color = '#0099ff';
 		this.contrast = this.app.hasOwnProperty('contrast') ? this.app.contrast : 0;
 
 		// 적응형 화면 제어 이벤트

@@ -49,6 +49,13 @@
 		{/snippet}
 	</RailItem>
 
+	<RailItem value="/functions" href="/functions">
+		함수
+		{#snippet _icon()}
+			<Icon slot="icon" name="functions"></Icon>
+		{/snippet}
+	</RailItem>
+
 	<RailItem value="/material" href="/material">
 		디자인
 		{#snippet _icon()}

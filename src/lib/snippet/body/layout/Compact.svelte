@@ -62,7 +62,7 @@
 				구분하고 있어요.
 			</p>
 
-			<Tabs full-width value="CompactLong" style="margin-top: 3rem;">
+			<Tabs full-width value="Compact" style="margin-top: 3rem;">
 				<Tab value="Compact">사용</Tab>
 				<Tab value="CompactLong">미사용</Tab>
 
