@@ -55,6 +55,12 @@
 		{ href: '/functions/color', title: '색상' },
 		{ href: '/functions/size', title: '크기' }
 	];
+	const materials = [{ href: '/materials', title: '개요' }];
+	const codes = [
+		{ href: '/codes', title: '개요' },
+		{ href: '/codes/on-mount', title: 'onMount' },
+		{ href: '/codes/self-closing', title: 'Self-Closing' }
+	];
 
 	onMount(() => {
 		if (page.url.pathname.startsWith('/layout')) {
@@ -65,8 +71,8 @@
 			open = '/functions';
 		} else if (page.url.pathname.startsWith('/material')) {
 			open = '/material';
-		} else if (page.url.pathname.startsWith('/code')) {
-			open = '/code';
+		} else if (page.url.pathname.startsWith('/codes')) {
+			open = '/codes';
 		} else {
 			open = '/';
 		}
@@ -169,20 +175,64 @@
 					{/each}
 				</div>
 			</CollapseItem>
+
+			<CollapseItem
+				value="/material"
+				onopen={(event) => (open = '/material')}
+				onclose={(event) => (open = '')}
+			>
+				{#snippet _header()}
+					<ListItem slot="header">
+						디자인
+						{#snippet _icon()}
+							<Icon slot="icon" name="draw"></Icon>
+						{/snippet}
+
+						{#snippet _endIcon()}
+							<Icon
+								slot="end-icon"
+								name={open === '/material' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+							></Icon>
+						{/snippet}
+					</ListItem>
+				{/snippet}
+				<div style="margin-left: 2.5rem">
+					{#each materials as material}
+						<ListItem active={page.url.pathname === material.href} href={material.href}>
+							{material.title}
+						</ListItem>
+					{/each}
+				</div>
+			</CollapseItem>
+
+			<CollapseItem
+				value="/codes"
+				onopen={(event) => (open = '/codes')}
+				onclose={(event) => (open = '')}
+			>
+				{#snippet _header()}
+					<ListItem slot="header">
+						코드
+						{#snippet _icon()}
+							<Icon slot="icon" name="code"></Icon>
+						{/snippet}
+
+						{#snippet _endIcon()}
+							<Icon
+								slot="end-icon"
+								name={open === '/codes' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
+							></Icon>
+						{/snippet}
+					</ListItem>
+				{/snippet}
+				<div style="margin-left: 2.5rem">
+					{#each codes as code}
+						<ListItem active={page.url.pathname === code.href} href={code.href}>
+							{code.title}
+						</ListItem>
+					{/each}
+				</div>
+			</CollapseItem>
 		</Collapse>
-
-		<ListItem active={page.url.pathname === '/material'} href="/material">
-			디자인
-			{#snippet _icon()}
-				<Icon slot="icon" name="draw"></Icon>
-			{/snippet}
-		</ListItem>
-
-		<ListItem active={page.url.pathname === '/code'} href="/code">
-			코드
-			{#snippet _icon()}
-				<Icon slot="icon" name="code"></Icon>
-			{/snippet}
-		</ListItem>
 	</List>
 </Drawer>
