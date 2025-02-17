@@ -528,7 +528,7 @@ removeColorSchemeElements('.demo')
 
 		<NavigationCard
 			previous={{ href: '/functions/theme', title: '함수: 테마' }}
-			next={{ href: '/components/avatar', title: '컴포넌트: Avatar' }}
+			next={{ href: '/functions/size', title: '함수: 크기' }}
 		/>
 	</div>
 </Prose>

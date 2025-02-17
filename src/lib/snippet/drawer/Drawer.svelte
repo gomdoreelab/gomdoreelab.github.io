@@ -52,7 +52,8 @@
 	const functions = [
 		{ href: '/functions', title: '개요' },
 		{ href: '/functions/theme', title: '테마' },
-		{ href: '/functions/color', title: '색상' }
+		{ href: '/functions/color', title: '색상' },
+		{ href: '/functions/size', title: '크기' }
 	];
 
 	onMount(() => {
