@@ -37,14 +37,14 @@
 					<tbody>
 						<tr>
 							<td rowspan="2">Svelte</td>
+							<td><a href="/codes/on-mount">onMount</a></td>
+							<td>onMount를 사용하는 특별한 상황이 있어요.</td>
+						</tr>
+						<tr>
 							<td><a href="/codes/self-closing">Self-Closing</a></td>
 							<td>
 								태그 또는 컴포넌트를 사용할 때 자식 요소를 갖지 않는 경우 스스로 닫을 수 있어요.
 							</td>
-						</tr>
-						<tr>
-							<td><a href="/codes/on-mount">onMount</a></td>
-							<td>onMount를 사용하는 특별한 상황이 있어요.</td>
 						</tr>
 					</tbody>
 				</table>

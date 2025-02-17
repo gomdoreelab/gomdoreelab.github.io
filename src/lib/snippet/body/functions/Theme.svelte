@@ -46,7 +46,7 @@ setElementTheme('dark', '.demo')`,
 	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
-			<h1>테마</h1>
+			<h1>함수: 테마</h1>
 			<p>페이지를 밝거나 어둡게 만들 수 있어요.</p>
 
 			<Tabs full-width value="조회" style="margin-top: 3rem;">

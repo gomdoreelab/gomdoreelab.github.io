@@ -104,7 +104,7 @@ let breakpoint = getBreakpoint();`,
 	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
-			<h1>크기</h1>
+			<h1>함수: 크기</h1>
 			<p>어떤 요소의 크기 변화를 감지하거나, 화면의 가로 길이를 감지하는데 쓰여요.</p>
 
 			<Tabs full-width value="Resize" style="margin-top: 3rem;">

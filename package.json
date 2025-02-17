@@ -32,7 +32,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"gomdoreelab-lib-grid-web": "^0.2.2",
+		"gomdoreelab-lib-grid-web": "^0.2.3",
 		"gomdoreelab-lib-material-web": "^0.2.15",
 		"svelte-highlight": "^7.8.2"
 	}

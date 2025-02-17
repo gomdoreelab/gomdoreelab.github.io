@@ -60,7 +60,7 @@ removeColorSchemeElements('.demo')
 	{@const { breakpoint, theme } = appState}
 	<div class="content">
 		<section>
-			<h1>색상</h1>
+			<h1>함수: 색상</h1>
 			<p>이미지에서 색상을 추출하거나, 페이지의 색상을 변경할 수 있어요.</p>
 
 			<Tabs full-width value="조회" style="margin-top: 3rem;">
