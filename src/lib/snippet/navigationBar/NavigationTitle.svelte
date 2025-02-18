@@ -64,14 +64,27 @@
 	<List>
 		{#each activeNodes as node}
 			{#if node.tagName === 'H1'}
-				<ListItem href="#{node.id}"><span class="h1">{node.textContent}</span></ListItem>
+				<ListItem href="#{node.id}">
+					<span class="h1">{node.textContent}</span>
+				</ListItem>
 			{:else if node.tagName === 'H2'}
-				<ListItem href="#{node.id}"><span class="h2">{node.textContent}</span></ListItem>
+				<ListItem href="#{node.id}" class="lh2">
+					<span class="h2">{node.textContent}</span>
+				</ListItem>
 			{:else}
-				<ListItem href="#{node.id}"><span class="h3">{node.textContent}</span></ListItem>
+				<ListItem href="#{node.id}" class="lh3">
+					<span class="h3">{node.textContent}</span>
+				</ListItem>
 			{/if}
 		{/each}
 	</List>
+
+	<style>
+		.lh3 {
+			border-left: 0.0625rem solid rgb(var(--mdui-color-surface-variant));
+			margin-left: 1.25rem;
+		}
+	</style>
 </div>
 
 <style>
