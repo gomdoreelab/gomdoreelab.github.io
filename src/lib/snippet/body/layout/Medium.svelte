@@ -231,11 +231,13 @@
 												z-index: 1900;
 											}
 
-											mdui-layout-item {
-												width: calc(100% / 2) !important;
+											.demo {
+												mdui-layout-item {
+													width: calc(100% / 2) !important;
+												}
 											}
 
-											complement {
+											.demo > complement {
 												width: 100%;
 											}
 

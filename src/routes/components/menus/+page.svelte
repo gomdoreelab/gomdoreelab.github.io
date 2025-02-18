@@ -1,11 +1,12 @@
 <script>
 	// @ts-nocheck
-	import { CompactLong, Medium, Large, Expanded, ExtraLarge } from 'gomdoreelab-lib-grid-web';
+	import { CompactLong, Medium, Large, Expanded, ExtraLargeTP } from 'gomdoreelab-lib-grid-web';
 	import TopMediumAppBar from '$lib/snippet/appBar/TopMedium.svelte';
 	import Rail from '$lib/snippet/rail/Rail.svelte';
 	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
 	import State from '$lib/snippet/state/State.svelte';
 	import Body from '$lib/snippet/body/components/Menu.svelte';
+	import NavigationTitle from '$lib/snippet/navigationBar/NavigationTitle.svelte';
 </script>
 
 <State>
@@ -57,17 +58,20 @@
 				{/snippet}
 			</Large>
 		{:else if ['extraLarge'].includes(breakpoint)}
-			<ExtraLarge>
+			<ExtraLargeTP placement="right">
 				{#snippet _header()}
 					<TopMediumAppBar {appState} target="#extra-large" order={1} />
 				{/snippet}
 				{#snippet _body()}
 					<Body {appState} />
 				{/snippet}
+				{#snippet _complement()}
+					<NavigationTitle />
+				{/snippet}
 				{#snippet _drawer()}
 					<Drawer />
 				{/snippet}
-			</ExtraLarge>
+			</ExtraLargeTP>
 		{/if}
 	{/snippet}
 </State>
