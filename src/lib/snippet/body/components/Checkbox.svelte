@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Checkbox, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Checkbox, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -29,13 +28,13 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Checkbox>Checkbox</Checkbox>
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -58,14 +57,13 @@
 				</a>를 참고해주세요.
 			</p>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -73,17 +71,14 @@
 						<tbody>
 							<tr>
 								<td rowspan="3">Checkbox</td>
-								<td><code>_uncheckedIcon</code></td>
 								<td><code>unchecked-icon</code></td>
 								<td>선택하지 않은 상태의 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_checkedIcon</code></td>
 								<td><code>checked-icon</code></td>
 								<td>선택한 상태의 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_indeterminateIcon</code></td>
 								<td><code>indeterminate-icon</code></td>
 								<td>중간 상태의 아이콘</td>
 							</tr>

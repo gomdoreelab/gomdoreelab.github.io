@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Badge, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Badge, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -30,7 +29,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div style="padding: 1rem;">
 							<Badge>2025</Badge>
 						</div>
@@ -55,9 +54,9 @@
 			<p>텍스트 없이 상태 정보만 표시하려면 <code>variant=small</code>을 사용해보세요.</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div style="padding: 1rem;">
-							<Badge variant="small" style="background-color: blue;"></Badge>
+							<Badge variant="small" style="background-color: blue;" />
 						</div>
 					{/snippet}
 				</Demo>

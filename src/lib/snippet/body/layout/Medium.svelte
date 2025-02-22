@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		AppBarTop,
 		AppBarTopTitle,
@@ -20,37 +19,37 @@
 	const codes = {
 		import: `import { Medium } from 'gomdoreelab-lib-grid-web';`,
 		example: `<Medium>
-	{#snippet _header()}
+	{#snippet header()}
 		<AppBarTop class="demo-top-app-bar">
 			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 		</AppBarTop>
 	{/snippet}
 	
-	{#snippet _body()}
+	{#snippet body()}
 		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
 	
-	{#snippet _rail()}
+	{#snippet rail()}
 		<Rail class="demo-navigation-rail">Rail</Rail>
 	{/snippet}
 </Medium>`,
 		importTP: `import { MediumTP } from 'gomdoreelab-lib-grid-web';`,
 		exampleTP: `<MediumTP>
-		{#snippet _header()}
+		{#snippet header()}
 			<AppBarTop class="demo-top-app-bar">
 				<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 			</AppBarTop>
 		{/snippet}
 
-		{#snippet _body()}
+		{#snippet body()}
 			<div style="height: 100%;">Main</div>
 		{/snippet}
 
-		{#snippet _complement()}
+		{#snippet complement()}
 			<div class="demo-complement">Complement</div>
 		{/snippet}
 
-		{#snippet _footer()}
+		{#snippet footer()}
 			<Bar class="demo-navigation-bar">NavigationBar</Bar>
 		{/snippet}
 	</MediumTP>
@@ -72,7 +71,7 @@
 				<Tab value="Medium">1개</Tab>
 				<Tab value="Medium-Two-Pane">2개</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelMedium()}
 					<TabPanel slot="panel" value="Medium">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -85,21 +84,21 @@
 							<p>다음과 같이 사용하세요:</p>
 							<ul>
 								<li>
-									항상 <code>_header</code>, <code>_body</code>, <code>_rail</code> snippet을 전부 사용해주세요.
+									항상 <code>header</code>, <code>body</code>, <code>rail</code> snippet을 전부 사용해주세요.
 								</li>
 							</ul>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<Medium style="height: 270px;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div
 														style="height: 100%; width: calc(100% - 0.375rem * 2); padding: 0.375rem;"
 													>
@@ -107,14 +106,14 @@
 													</div>
 												{/snippet}
 
-												{#snippet _rail()}
+												{#snippet rail()}
 													<Rail class="demo-navigation-rail">Rail</Rail>
 												{/snippet}
 											</Medium>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -155,15 +154,15 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_header</code></td>
+												<td><code>header</code></td>
 												<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
 											</tr>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td>본문</td>
 											</tr>
 											<tr>
-												<td><code>_rail</code></td>
+												<td><code>rail</code></td>
 												<td>사이드 네비게이션 - Rail</td>
 											</tr>
 										</tbody>
@@ -174,7 +173,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelMediumTwoPane()}
 					<TabPanel slot="panel" value="Medium-Two-Pane">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -187,37 +188,37 @@
 							<p>다음과 같이 사용하세요:</p>
 							<ul>
 								<li>
-									항상 <code>_header</code>, <code>_body</code>, <code>_complement</code>,
-									<code>_footer</code> snippet을 전부 사용해주세요.
+									항상 <code>header</code>, <code>body</code>, <code>complement</code>,
+									<code>footer</code> snippet을 전부 사용해주세요.
 								</li>
 							</ul>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem; min-width: 700px;">
 											<MediumTP style="height: 270px; width: 100%;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div style="height: 100%; padding: 1.5rem;">Main</div>
 												{/snippet}
 
-												{#snippet _complement()}
+												{#snippet complement()}
 													<div class="demo-complement">Complement</div>
 												{/snippet}
 
-												{#snippet _footer()}
+												{#snippet footer()}
 													<Bar class="demo-navigation-bar">NavigationBar</Bar>
 												{/snippet}
 											</MediumTP>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -277,19 +278,19 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_header</code></td>
+												<td><code>header</code></td>
 												<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
 											</tr>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td>본문</td>
 											</tr>
 											<tr>
-												<td><code>_complement</code></td>
+												<td><code>complement</code></td>
 												<td>본문 보조</td>
 											</tr>
 											<tr>
-												<td><code>_footer</code></td>
+												<td><code>footer</code></td>
 												<td>하단 네비게이션 - NavigationBar</td>
 											</tr>
 										</tbody>
@@ -311,11 +312,11 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td><code>window.innerWidth / 2</code></td>
 											</tr>
 											<tr>
-												<td><code>_complement</code></td>
+												<td><code>complement</code></td>
 												<td><code>window.innerWidth / 2</code></td>
 											</tr>
 										</tbody>
@@ -325,6 +326,9 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelMedium()}
+				{@render panelMediumTwoPane()}
 			</Tabs>
 		</section>
 

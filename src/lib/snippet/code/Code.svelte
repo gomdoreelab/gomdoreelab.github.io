@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { ButtonIcon, Icon, Snackbar, Tooltip } from 'gomdoreelab-lib-material-web';
 	import { Highlight, HighlightSvelte } from 'svelte-highlight';
 	import javascript from 'svelte-highlight/languages/javascript';
@@ -14,7 +13,7 @@
 
 	let isSnackbarOpen = $state(false);
 
-	const copyTextToClipboard = async (content) => {
+	const copyTextToClipboard = async (/** @type {string} */ content) => {
 		await navigator.clipboard.writeText(content);
 
 		isSnackbarOpen = true;

@@ -1,15 +1,5 @@
 <script>
-	// @ts-nocheck
-	import {
-		Tooltip,
-		ButtonIcon,
-		Icon,
-		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
-	} from 'gomdoreelab-lib-material-web';
+	import { Tooltip, ButtonIcon, Icon, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -20,7 +10,7 @@
 		import: `import { Tooltip } from 'gomdoreelab-lib-material-web';`,
 		example: `<Tooltip content="대비">
 	<ButtonIcon>
-		<Icon name="contrast"></Icon>
+		<Icon name="contrast" />
 	</ButtonIcon>
 </Tooltip>`
 	};
@@ -43,17 +33,17 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Tooltip content="대비">
 								<ButtonIcon>
-									<Icon name="contrast"></Icon>
+									<Icon name="contrast" />
 								</ButtonIcon>
 							</Tooltip>
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -91,25 +81,36 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>Tooltip</td>
+								<td rowspan="2">Tooltip</td>
 								<td>content</td>
 								<td><code>Tooltip</code>의 내용이에요.</td>
 								<td><code>string</code></td>
 								<td>-</td>
+							</tr>
+							<tr>
+								<td>variant</td>
+								<td>
+									<p>제공할 디자인 형태에요.</p>
+									<ul>
+										<li><code>plain</code>: 한 줄로 간단하게 표현할 때 사용해요.</li>
+										<li><code>rich</code>: 제목, 본문, 버튼을 포함해요.</li>
+									</ul>
+								</td>
+								<td><code>'plain' | 'rich'</code></td>
+								<td><code>'plain'</code></td>
 							</tr>
 						</tbody>
 					</table>
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -117,17 +118,14 @@
 						<tbody>
 							<tr>
 								<td rowspan="3">Tooltip</td>
-								<td><code>_headline</code></td>
 								<td><code>headline</code></td>
 								<td><code>variant="rich"</code>일 때만 사용가능하고, 제목을 나타내요.</td>
 							</tr>
 							<tr>
-								<td><code>_content</code></td>
 								<td><code>content</code></td>
 								<td>내용을 나타내요.</td>
 							</tr>
 							<tr>
-								<td><code>_action</code></td>
 								<td><code>action</code></td>
 								<td><code>variant="rich"</code>일 때만 사용가능하고, 하단 버튼으로 활용해요.</td>
 							</tr>

@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Avatar, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Avatar, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import Gomdoreelab from '$lib/assets/images/gomdoreelab.png';
@@ -32,7 +31,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div style="padding: 1rem;">
 							<Avatar src={Gomdoreelab} />
 						</div>

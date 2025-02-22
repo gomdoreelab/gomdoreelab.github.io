@@ -3,7 +3,7 @@
 	import { State } from '$lib/snippet/state/state.svelte.js';
 	import { onMount } from 'svelte';
 
-	let { _breakpoint } = $props();
+	let { layout } = $props();
 
 	let appState = $state();
 
@@ -13,5 +13,5 @@
 </script>
 
 {#if appState}
-	{@render _breakpoint?.(appState)}
+	{@render layout?.(appState)}
 {/if}

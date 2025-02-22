@@ -1,14 +1,5 @@
 <script>
-	// @ts-nocheck
-	import {
-		Collapse,
-		CollapseItem,
-		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
-	} from 'gomdoreelab-lib-material-web';
+	import { Collapse, CollapseItem, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -19,15 +10,11 @@
 		import: `import { Collapse, CollapseItem } from 'gomdoreelab-lib-material-web';`,
 		example: `<Collapse>
 	<CollapseItem header="첫번째 제목">
-		{#snippet _header()}
-			첫번째 항목
-		{/snippet}
+		첫번째 항목
 	</CollapseItem>
 
 	<CollapseItem header="두번째 제목">
-		{#snippet _header()}
-			두번쨰 항목
-		{/snippet}
+		두번쨰 항목
 	</CollapseItem>
 </Collapse>`
 	};
@@ -50,25 +37,16 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Collapse>
-								<CollapseItem header="첫번째 제목">
-									{#snippet _header()}
-										첫번째 항목
-									{/snippet}
-								</CollapseItem>
-
-								<CollapseItem header="두번째 제목">
-									{#snippet _header()}
-										두번쨰 항목
-									{/snippet}
-								</CollapseItem>
+								<CollapseItem header="첫번째 제목">첫번째 항목</CollapseItem>
+								<CollapseItem header="두번째 제목">두번쨰 항목</CollapseItem>
 							</Collapse>
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -114,14 +92,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -129,7 +106,6 @@
 						<tbody>
 							<tr>
 								<td>CollapseItem</td>
-								<td><code>_header</code></td>
 								<td><code>header</code></td>
 								<td>해당 제목에 들어갈 내용</td>
 							</tr>

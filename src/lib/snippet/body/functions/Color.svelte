@@ -1,9 +1,7 @@
 <script>
-	// @ts-nocheck
 	import {
 		Button,
 		getColorFromImageSource,
-		setColorSchemeHTML,
 		setColorSchemeElements,
 		removeColorSchemeHTML,
 		removeColorSchemeElements,
@@ -16,7 +14,6 @@
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import Gomdoreelab from '$lib/assets/images/gomdoreelab.png';
-	import { Medium } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -68,7 +65,7 @@ removeColorSchemeElements('.demo')
 				<Tab value="설정">설정</Tab>
 				<Tab value="삭제">삭제</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelGet()}
 					<TabPanel slot="panel" value="조회">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -81,7 +78,7 @@ removeColorSchemeElements('.demo')
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											<img class="demo-get-image" src={Gomdoreelab} alt="로고" />
 											<Button
@@ -95,7 +92,8 @@ removeColorSchemeElements('.demo')
 											</Button>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -182,7 +180,9 @@ removeColorSchemeElements('.demo')
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelSet()}
 					<TabPanel slot="panel" value="설정">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -195,7 +195,7 @@ removeColorSchemeElements('.demo')
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											<span>HTML: {color}</span>
 											<input
@@ -203,8 +203,9 @@ removeColorSchemeElements('.demo')
 												type="color"
 												value={color}
 												onchange={(event) => {
+													// @ts-ignore
 													// 이벤트를 통한 색 추출
-													color = event.target.value;
+													color = event?.target?.value;
 
 													// 색 변경
 													appState.setColor(color);
@@ -218,8 +219,9 @@ removeColorSchemeElements('.demo')
 												type="color"
 												value={demoColor}
 												onchange={(event) => {
+													// @ts-ignore
 													// 이벤트를 통한 색 추출
-													demoColor = event.target.value;
+													demoColor = event?.target?.value;
 
 													// 색 변경
 													setColorSchemeElements(demoColor, { target: '.demo' });
@@ -227,7 +229,8 @@ removeColorSchemeElements('.demo')
 											/>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -339,73 +342,79 @@ removeColorSchemeElements('.demo')
 								<p class="information">* 색상을 표현하는 HEX 값(ex: #D9D250)을 사용해야해요.</p>
 							</article>
 
-							<h4>Options</h4>
-							<article>
-								<Table>
-									<table>
-										<thead>
-											<tr>
-												<th>이름</th>
-												<th>설명</th>
-												<th>타입</th>
-												<th>기본값</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>target</td>
-												<td>적용할 대상</td>
-												<td><code>string | HTMLElement</code></td>
-												<td><code>document.documentElement</code></td>
-											</tr>
-											<tr>
-												<td>customColors</td>
-												<td>디자인 토큰 등에 대한 설정</td>
-												<td><code>CustomColor[]</code></td>
-												<td>-</td>
-											</tr>
-										</tbody>
-									</table>
-								</Table>
-							</article>
+							<div class="deep">
+								<h4>Options</h4>
+								<article>
+									<Table>
+										<table>
+											<thead>
+												<tr>
+													<th>이름</th>
+													<th>설명</th>
+													<th>타입</th>
+													<th>기본값</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>target</td>
+													<td>적용할 대상</td>
+													<td><code>string | HTMLElement</code></td>
+													<td><code>document.documentElement</code></td>
+												</tr>
+												<tr>
+													<td>customColors</td>
+													<td>디자인 토큰 등에 대한 설정</td>
+													<td><code>CustomColor[]</code></td>
+													<td>-</td>
+												</tr>
+											</tbody>
+										</table>
+									</Table>
+								</article>
 
-							<h4>CustomColor</h4>
-							<article>
-								<Table>
-									<table>
-										<thead>
-											<tr>
-												<th>이름</th>
-												<th>설명</th>
-												<th>타입</th>
-												<th>기본값</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>name</td>
-												<td>디자인 토큰에 적용할 이름</td>
-												<td><code>string</code></td>
-												<td>-</td>
-											</tr>
-											<tr>
-												<td>value<sup>*</sup></td>
-												<td>디자인 토큰에 적용할 값</td>
-												<td><code>string</code></td>
-												<td>-</td>
-											</tr>
-										</tbody>
-									</table>
-								</Table>
+								<div class="deep">
+									<h4>CustomColor</h4>
+									<article>
+										<Table>
+											<table>
+												<thead>
+													<tr>
+														<th>이름</th>
+														<th>설명</th>
+														<th>타입</th>
+														<th>기본값</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>name</td>
+														<td>디자인 토큰에 적용할 이름</td>
+														<td><code>string</code></td>
+														<td>-</td>
+													</tr>
+													<tr>
+														<td>value<sup>*</sup></td>
+														<td>디자인 토큰에 적용할 값</td>
+														<td><code>string</code></td>
+														<td>-</td>
+													</tr>
+												</tbody>
+											</table>
+										</Table>
 
-								<p class="information">* 색상을 표현하는 HEX 값(ex: #D9D250)을 사용해야해요.</p>
-							</article>
+										<p class="information">* 색상을 표현하는 HEX 값(ex: #D9D250)을 사용해야해요.</p>
+									</article>
+								</div>
+							</div>
 
 							<h4>Response</h4>
 							<p>없음</p>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelRemove()}
 					<TabPanel slot="panel" value="삭제">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -418,7 +427,7 @@ removeColorSchemeElements('.demo')
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											<span>HTML: {color}</span>
 											<Button
@@ -448,7 +457,8 @@ removeColorSchemeElements('.demo')
 											</Button>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -523,6 +533,10 @@ removeColorSchemeElements('.demo')
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelGet()}
+				{@render panelSet()}
+				{@render panelRemove()}
 			</Tabs>
 		</section>
 

@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		AppBarTop,
 		AppBarTopTitle,
@@ -20,17 +19,17 @@
 	const compact = {
 		import: `import { Compact } from 'gomdoreelab-lib-grid-web';`,
 		example: `<Compact>
-	{#snippet _header()}
+	{#snippet header()}
 		<AppBarTop>
 			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 		</AppBarTop>
 	{/snippet}
 	
-	{#snippet _body()}
+	{#snippet body()}
 		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
 	
-	{#snippet _footer()}
+	{#snippet footer()}
 		<Bar>NavigationBar</Bar>
 	{/snippet}
 </Compact>`
@@ -39,13 +38,13 @@
 	const long = {
 		import: `import { CompactLong } from 'gomdoreelab-lib-grid-web';`,
 		example: `<CompactLong>
-	{#snippet _header()}
+	{#snippet header()}
 		<AppBarTop>
 			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 		</AppBarTop>
 	{/snippet}
 	
-	{#snippet _body()}
+	{#snippet body()}
 		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
 </CompactLong>`
@@ -66,7 +65,7 @@
 				<Tab value="Compact">사용</Tab>
 				<Tab value="CompactLong">미사용</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelCompact()}
 					<TabPanel slot="panel" value="Compact">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -79,33 +78,32 @@
 							<p>다음과 같이 사용하세요:</p>
 							<ul>
 								<li>
-									항상 <code>_header</code>, <code>_body</code>, <code>_footer</code> snippet을 전부
-									사용해주세요.
+									항상 <code>header</code>, <code>body</code>, <code>footer</code> snippet을 전부 사용해주세요.
 								</li>
 							</ul>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<Compact style="height: 270px;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div style="height: 100%; width: 100%; padding: 0.5rem;">Main</div>
 												{/snippet}
 
-												{#snippet _footer()}
+												{#snippet footer()}
 													<Bar class="demo-navigation-bar">NavigationBar</Bar>
 												{/snippet}
 											</Compact>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -146,15 +144,15 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_header</code></td>
+												<td><code>header</code></td>
 												<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
 											</tr>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td>본문</td>
 											</tr>
 											<tr>
-												<td><code>_footer</code></td>
+												<td><code>footer</code></td>
 												<td>하단 네비게이션 - NavigationBar</td>
 											</tr>
 										</tbody>
@@ -165,7 +163,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelCompactLong()}
 					<TabPanel slot="panel" value="CompactLong">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -178,21 +178,21 @@
 							<p>다음과 같이 사용하세요:</p>
 							<ul>
 								<li>
-									항상 <code>_header</code>, <code>_body</code> snippet을 전부 사용해주세요.
+									항상 <code>header</code>, <code>body</code> snippet을 전부 사용해주세요.
 								</li>
 							</ul>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<CompactLong style="height: 270px;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div style="height: 100%; width: calc(100% - 1rem); padding: 0.5rem;">
 														Main
 													</div>
@@ -201,7 +201,7 @@
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -236,11 +236,11 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_header</code></td>
+												<td><code>header</code></td>
 												<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
 											</tr>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td>본문</td>
 											</tr>
 										</tbody>
@@ -252,6 +252,9 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelCompact()}
+				{@render panelCompactLong()}
 			</Tabs>
 		</section>
 

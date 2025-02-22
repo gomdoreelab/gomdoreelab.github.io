@@ -1,16 +1,5 @@
 <script>
-	// @ts-nocheck
-	import {
-		Button,
-		Dropdown,
-		Menu,
-		MenuItem,
-		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
-	} from 'gomdoreelab-lib-material-web';
+	import { Button, Dropdown, Menu, MenuItem, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -20,9 +9,10 @@
 	const dropdown = {
 		import: `import { Button, Dropdown, Menu, MenuItem } from 'gomdoreelab-lib-material-web';`,
 		example: `<Dropdown>
-	{#snippet _trigger()}
+	{#snippet trigger()}
 		<Button slot="trigger">열기</Button>
 	{/snippet}
+	{@render trigger()}
 
 	<Menu>
 		<MenuItem>사과</MenuItem>
@@ -49,12 +39,13 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Dropdown>
-								{#snippet _trigger()}
+								{#snippet button()}
 									<Button slot="trigger">열기</Button>
 								{/snippet}
+								{@render button()}
 
 								<Menu>
 									<MenuItem>사과</MenuItem>
@@ -75,14 +66,13 @@
 				</a>을 참고해주세요.
 			</p>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -90,7 +80,6 @@
 						<tbody>
 							<tr>
 								<td>Dropdown</td>
-								<td><code>_trigger</code></td>
 								<td><code>trigger</code></td>
 								<td><code>Dropdown</code>을 활성화할 수 있는 요소</td>
 							</tr>

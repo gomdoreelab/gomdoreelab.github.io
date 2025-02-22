@@ -1,10 +1,10 @@
 <script>
-	let { height = '300px', _html, _style } = $props();
+	let { height = '300px', html, style = undefined } = $props();
 </script>
 
 <div class="demo" style:height>
-	{@render _html?.()}
-	{@render _style?.()}
+	{@render html?.()}
+	{@render style?.()}
 </div>
 
 <style>

@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		AppBarTop,
 		AppBarTopTitle,
@@ -19,11 +18,13 @@
 		import: `import { AppBarTop, AppBarTopTitle } from 'gomdoreelab-lib-material-web';`,
 		example: `<AppBarTop variant="small">
 	<ButtonIcon>
-		<Icon name="menu"></Icon>
+		<Icon name="menu" />
 	</ButtonIcon>
+	
 	<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
+	
 	<ButtonIcon>
-		<Icon name="more_vert"></Icon>
+		<Icon name="more_vert" />
 	</ButtonIcon>
 </AppBarTop>`,
 		shrink: `<AppBarTop 
@@ -38,24 +39,32 @@
 		orderRailTop: `<AppBarTop order={1}>
 ...
 </AppBarTop>
-<Rail>Rail</Rail>`,
+
+<Rail>
+	Rail
+</Rail>`,
 		orderHeadTop: `<AppBarTop>
 ...
 </AppBarTop>
-<Rail order={1}>Rail</Rail>`
+
+<Rail order={1}>
+	Rail
+</Rail>`
 	};
 
 	const bottom = {
 		import: `import { AppBarBottom } from 'gomdoreelab-lib-material-web';`,
 		example: `<AppBarBottom style="position: relative;">
 	<ButtonIcon>
-		<Icon name="check_box"></Icon>
+		<Icon name="check_box" />
 	</ButtonIcon>
-		<ButtonIcon>
-		<Icon name="edit"></Icon>
-	</ButtonIcon>
+	
 	<ButtonIcon>
-		<Icon name="mic_none"></Icon>
+		<Icon name="edit" />
+	</ButtonIcon>
+	
+	<ButtonIcon>
+		<Icon name="mic_none" />
 	</ButtonIcon>
 </AppBarBottom>`
 	};
@@ -72,7 +81,7 @@
 				<Tab value="Top">Top</Tab>
 				<Tab value="Bottom">Bottom</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelTop()}
 					<TabPanel slot="panel" value="Top">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -90,7 +99,7 @@
 							</ul>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="position: relative">
 											<AppBarTop
 												class="demo-top-app-bar"
@@ -98,16 +107,19 @@
 												style="position: relative;"
 											>
 												<ButtonIcon>
-													<Icon name="menu"></Icon>
+													<Icon name="menu" />
 												</ButtonIcon>
+
 												<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
+
 												<ButtonIcon>
-													<Icon name="more_vert"></Icon>
+													<Icon name="more_vert" />
 												</ButtonIcon>
 											</AppBarTop>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											mdui-top-app-bar {
 												position: relative;
@@ -143,7 +155,7 @@
 							</p>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="position: relative">
 											<AppBarTop
 												class="demo-top-app-bar"
@@ -153,11 +165,13 @@
 												style="position: relative;"
 											>
 												<ButtonIcon>
-													<Icon name="menu"></Icon>
+													<Icon name="menu" />
 												</ButtonIcon>
+
 												<AppBarTopTitle>곰도리연구소</AppBarTopTitle>
+
 												<ButtonIcon>
-													<Icon name="more_vert"></Icon>
+													<Icon name="more_vert" />
 												</ButtonIcon>
 											</AppBarTop>
 										</div>
@@ -165,7 +179,8 @@
 											<section>Body</section>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											mdui-top-app-bar {
 												position: relative;
@@ -203,16 +218,16 @@
 							</p>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<Medium style="height: 270px;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-order-top-app-bar" order={1}>
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div
 														style="height: 100%; width: calc(100% - 1.5rem * 2); padding: 1.5rem;"
 													>
@@ -220,13 +235,14 @@
 													</div>
 												{/snippet}
 
-												{#snippet _rail()}
+												{#snippet rail()}
 													<Rail class="demo-navigation-rail">Rail</Rail>
 												{/snippet}
 											</Medium>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo-order-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -251,16 +267,16 @@
 							</p>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<Medium style="height: 270px;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-order-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div
 														style="height: 100%; width: calc(100% - 1.25rem * 2); padding: 1.25rem;"
 													>
@@ -268,13 +284,14 @@
 													</div>
 												{/snippet}
 
-												{#snippet _rail()}
+												{#snippet rail()}
 													<Rail class="demo-navigation-rail" order={1}>Rail</Rail>
 												{/snippet}
 											</Medium>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo-order-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -294,7 +311,7 @@
 								<Code {theme} lang="svelte" text={top.orderHeadTop}></Code>
 							</article>
 
-							<h2>레이아웃 아이디</h2>
+							<h2>Layout</h2>
 							<p>아이디는 레이아웃을 구성할 때 미리 지정했어요.</p>
 							<article>
 								<Table>
@@ -383,14 +400,13 @@
 								</Table>
 							</article>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -398,7 +414,6 @@
 										<tbody>
 											<tr>
 												<td>AppBarTopTitle</td>
-												<td><code>_labelLarge</code></td>
 												<td><code>label-large</code></td>
 												<td>펼쳐진 상태일 때 제목</td>
 											</tr>
@@ -408,7 +423,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelBottom()}
 					<TabPanel slot="panel" value="Bottom">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -425,22 +442,25 @@
 							</ul>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<AppBarBottom style="position: relative;">
 												<ButtonIcon>
-													<Icon name="check_box"></Icon>
+													<Icon name="check_box" />
 												</ButtonIcon>
+
 												<ButtonIcon>
-													<Icon name="edit"></Icon>
+													<Icon name="edit" />
 												</ButtonIcon>
+
 												<ButtonIcon>
-													<Icon name="mic_none"></Icon>
+													<Icon name="mic_none" />
 												</ButtonIcon>
 											</AppBarBottom>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo-order-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -472,6 +492,9 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelTop()}
+				{@render panelBottom()}
 			</Tabs>
 		</section>
 

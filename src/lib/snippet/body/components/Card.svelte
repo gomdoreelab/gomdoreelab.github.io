@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Card, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Card, Prose } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -46,7 +45,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Card style="width: 200px; height: 200px;">
 								<div class="card">Card</div>
@@ -54,7 +53,7 @@
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -88,7 +87,7 @@
 			</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<section class="nav">
 								<Card style="height: 100px;"><div class="card">Card 1</div></Card>
@@ -97,7 +96,7 @@
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;

@@ -1,14 +1,5 @@
 <script>
-	// @ts-nocheck
-	import {
-		Slider,
-		SliderRange,
-		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
-	} from 'gomdoreelab-lib-material-web';
+	import { Slider, SliderRange, Prose, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -17,12 +8,12 @@
 
 	const slider = {
 		import: `import { Slider } from 'gomdoreelab-lib-material-web';`,
-		example: `<Slider></Slider>`
+		example: `<Slider />`
 	};
 
 	const range = {
 		import: `import { SliderRange } from 'gomdoreelab-lib-material-web';`,
-		example: `<SliderRange></SliderRange>`
+		example: `<SliderRange />`
 	};
 </script>
 
@@ -37,7 +28,7 @@
 				<Tab value="Slider">Slider</Tab>
 				<Tab value="Range">Range</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelSlider()}
 					<TabPanel slot="panel" value="Slider">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -50,13 +41,13 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
-											<Slider class="demo-slider"></Slider>
+											<Slider class="demo-slider" />
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -84,7 +75,9 @@
 							</p>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelRange()}
 					<TabPanel slot="panel" value="Range">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -97,13 +90,13 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
-											<SliderRange class="demo-range-slider"></SliderRange>
+											<SliderRange class="demo-range-slider" />
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -132,6 +125,9 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelSlider()}
+				{@render panelRange()}
 			</Tabs>
 		</section>
 

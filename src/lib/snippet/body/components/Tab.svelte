@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
@@ -13,10 +12,16 @@
 	<Tab value="A">A</Tab>
 	<Tab value="B">B</Tab>
 
-	{#snippet _panel()}
+	{#snippet A()}
 		<TabPanel slot="panel" value="A">A</TabPanel>
+	{/snippet}
+
+	{#snippet B()}
 		<TabPanel slot="panel" value="B">B</TabPanel>
 	{/snippet}
+
+	{@render A()}
+	{@render B()}
 </Tabs>`
 	};
 </script>
@@ -38,21 +43,27 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Tabs value="A">
 								<Tab value="A">A</Tab>
 								<Tab value="B">B</Tab>
 
-								{#snippet _panel()}
+								{#snippet A()}
 									<TabPanel slot="panel" value="A">A</TabPanel>
+								{/snippet}
+
+								{#snippet B()}
 									<TabPanel slot="panel" value="B">B</TabPanel>
 								{/snippet}
+
+								{@render A()}
+								{@render B()}
 							</Tabs>
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -118,14 +129,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -133,25 +143,21 @@
 						<tbody>
 							<tr>
 								<td rowspan="1">Tabs</td>
-								<td><code>_panel</code></td>
 								<td><code>panel</code></td>
-								<td
-									><code>TabPanel</code>공간이에요. 여러 개의<code>TabPanel</code>이 올 수 있어요!</td
-								>
+								<td>
+									<code>TabPanel</code>공간이에요. 여러 개의<code>TabPanel</code>이 올 수 있어요!
+								</td>
 							</tr>
 							<tr>
 								<td rowspan="3">Tab</td>
-								<td><code>_icon</code></td>
 								<td><code>icon</code></td>
 								<td>아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_badge</code></td>
 								<td><code>badge</code></td>
 								<td>배지(아이콘에 알림, 개수 또는 상태 정보를 표시)</td>
 							</tr>
 							<tr>
-								<td><code>_custom</code></td>
 								<td><code>custom</code></td>
 								<td>사용자 정의 컨텐츠</td>
 							</tr>

@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Button, Dialog, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Button, Dialog, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -58,7 +57,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Dialog open={isDialogOpen.example}>
 								<Button onclick={() => (isDialogOpen.example = false)}>Close Dialog</Button>
@@ -67,7 +66,7 @@
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -95,7 +94,7 @@
 			<p><code>Overlay</code>를 선택하여 창을 닫을 수 있어요.</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Dialog
 								open={isDialogOpen.overlayClick}
@@ -109,7 +108,7 @@
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -154,14 +153,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -169,29 +167,24 @@
 						<tbody>
 							<tr>
 								<td rowspan="5">Dialog</td>
-								<td><code>_header</code></td>
 								<td><code>header</code></td>
 								<td>
-									상단에 위치하며, <code>_icon</code>과 <code>_headline</code>슬롯을 기본으로 해요.
+									상단에 위치하며, <code>icon</code>과 <code>headline</code>슬롯을 기본으로 해요.
 								</td>
 							</tr>
 							<tr>
-								<td><code>_icon</code></td>
 								<td><code>icon</code></td>
 								<td>상단에 들어가는 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_headline</code></td>
 								<td><code>headline</code></td>
 								<td>상단에 들어가는 제목</td>
 							</tr>
 							<tr>
-								<td><code>_description</code></td>
 								<td><code>description</code></td>
 								<td>제목 아래 설명</td>
 							</tr>
 							<tr>
-								<td><code>_action</code></td>
 								<td><code>action</code></td>
 								<td>하단 액션 바에 위치하는 항목(Elements)</td>
 							</tr>

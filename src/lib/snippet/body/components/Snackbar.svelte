@@ -1,15 +1,5 @@
 <script>
-	// @ts-nocheck
-	import {
-		Snackbar,
-		ButtonIcon,
-		Icon,
-		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
-	} from 'gomdoreelab-lib-material-web';
+	import { Snackbar, ButtonIcon, Icon, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -26,7 +16,7 @@
 </Snackbar>
 
 <ButtonIcon onclick={() => (isSnackbarOpen = true)}>
-	<Icon name="content_copy"></Icon>
+	<Icon name="content_copy" />
 </ButtonIcon>`
 	};
 </script>
@@ -48,19 +38,19 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Snackbar open={isSnackbarOpen} onclose={() => (isSnackbarOpen = false)}>
 								코드를 복사했어요
 							</Snackbar>
 
 							<ButtonIcon onclick={() => (isSnackbarOpen = true)}>
-								<Icon name="content_copy"></Icon>
+								<Icon name="content_copy" />
 							</ButtonIcon>
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -109,14 +99,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -124,17 +113,14 @@
 						<tbody>
 							<tr>
 								<td rowspan="3">Snackbar</td>
-								<td><code>_action</code></td>
 								<td><code>action</code></td>
 								<td>오른쪽 작업 버튼</td>
 							</tr>
 							<tr>
-								<td><code>_closeButton</code></td>
 								<td><code>close-button</code></td>
 								<td>오른쪽 닫기 버튼. 단 <code>closeable</code>을 설정한 경우에만 보여요.</td>
 							</tr>
 							<tr>
-								<td><code>_closeIcon</code></td>
 								<td><code>close-icon</code></td>
 								<td>오른쪽 닫기 버튼 아이콘</td>
 							</tr>

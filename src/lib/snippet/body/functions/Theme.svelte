@@ -1,10 +1,8 @@
 <script>
-	// @ts-nocheck
 	import {
 		Button,
 		getHTMLTheme,
 		getElementTheme,
-		setHTMLTheme,
 		setElementTheme,
 		Prose,
 		Table,
@@ -14,7 +12,6 @@
 	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
-	import { Medium } from 'gomdoreelab-lib-grid-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();
@@ -53,7 +50,7 @@ setElementTheme('dark', '.demo')`,
 				<Tab value="조회">조회</Tab>
 				<Tab value="설정">설정</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelGet()}
 					<TabPanel slot="panel" value="조회">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -66,7 +63,7 @@ setElementTheme('dark', '.demo')`,
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											<div
 												class="demo-div"
@@ -80,7 +77,8 @@ setElementTheme('dark', '.demo')`,
 											<Button onclick={() => alert(getHTMLTheme())}>HTML 테마</Button>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -197,7 +195,9 @@ setElementTheme('dark', '.demo')`,
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelSet()}
 					<TabPanel slot="panel" value="설정">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -210,13 +210,13 @@ setElementTheme('dark', '.demo')`,
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											<div class="demo-set-div">
 												<Button
 													onclick={() => {
 														let currentTheme = getElementTheme('.demo-set-div');
-														console.log(currentTheme);
+
 														setElementTheme(
 															currentTheme === 'light' ? 'dark' : 'light',
 															'.demo-set-div'
@@ -233,7 +233,8 @@ setElementTheme('dark', '.demo')`,
 											</Button>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -340,6 +341,9 @@ setElementTheme('dark', '.demo')`,
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelGet()}
+				{@render panelSet()}
 			</Tabs>
 		</section>
 

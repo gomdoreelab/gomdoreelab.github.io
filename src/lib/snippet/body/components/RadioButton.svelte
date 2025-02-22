@@ -1,14 +1,5 @@
 <script>
-	// @ts-nocheck
-	import {
-		Radio,
-		RadioGroup,
-		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
-	} from 'gomdoreelab-lib-material-web';
+	import { Radio, RadioGroup, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -51,7 +42,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<RadioGroup class="demo-radio" value="A">
 								<Radio value="A">A</Radio>
@@ -60,7 +51,7 @@
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -130,14 +121,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -145,12 +135,10 @@
 						<tbody>
 							<tr>
 								<td rowspan="2">Radio</td>
-								<td><code>_uncheckedIcon</code></td>
 								<td><code>unchecked-icon</code></td>
 								<td>선택하지 않은 상태에서 보여줄 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_checkedIcon</code></td>
 								<td><code>checked-icon</code></td>
 								<td>선택한 상태에서 보여줄 아이콘</td>
 							</tr>

@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		Bar,
 		BarItem,
@@ -29,16 +28,18 @@
 		example: `<Bar>
 	<BarItem>
 		레이아웃
-		{#snippet _icon()}
-			<Icon slot="icon" name="view_sidebar"></Icon>
+		{#snippet layout()}
+			<Icon slot="icon" name="view_sidebar" />
 		{/snippet}
+		{@render layout()}
 	</BarItem>
-	
+
 	<BarItem>
 		코드
-		{#snippet _icon()}
+		{#snippet code()}
 			<Icon slot="icon" name="code"></Icon>
 		{/snippet}
+		{@render code()}
 	</BarItem>
 </Bar>`
 	};
@@ -49,9 +50,10 @@
 	<List>
 		<ListItem>
 			홈
-			{#snippet _icon()}
-				<Icon slot="icon" name="home"></Icon>
+			{#snippet home()}
+				<Icon slot="icon" name="home" />
 			{/snippet}
+			{@render home()}
 		</ListItem>
 		...
 	</List>
@@ -62,15 +64,17 @@
 	<List>
 		<ListItem>
 			홈
-			{#snippet _icon()}
-				<Icon slot="icon" name="home"></Icon>
+			{#snippet home()}
+				<Icon slot="icon" name="home" />
 			{/snippet}
+			{@render home()}
 		</ListItem>
 		<ListItem>
 			레이아웃
-			{#snippet _icon()}
-				<Icon slot="icon" name="view_sidebar"></Icon>
+			{#snippet layout()}
+				<Icon slot="icon" name="view_sidebar" />
 			{/snippet}
+			{@render layout()}
 		</ListItem>
 	</List>
 </Drawer>
@@ -83,23 +87,26 @@
 		example: `<Rail contained>
 	<RailItem>
 		홈
-		{#snippet _icon()}
+		{#snippet home()}
 			<Icon slot="icon" name="home"></Icon>
 		{/snippet}
+		{@render home()}
 	</RailItem>
 	<RailItem>
 		레이아웃
-		{#snippet _icon()}
+		{#snippet layout()}
 			<Icon slot="icon" name="view_sidebar"></Icon>
 		{/snippet}
+		{@render layout()}
 	</RailItem>
 </Rail>`,
 		top: `<Rail contained>
-	{#snippet _top()}
+	{#snippet menu()}
 		<ButtonIcon slot="top" onclick={() => {}}>
 			<Icon name="menu"></Icon>
 		</ButtonIcon>
 	{/snippet}
+	{@render menu()}
 	...
 </Rail>`
 	};
@@ -120,7 +127,7 @@
 				<Tab value="Drawer">Drawer</Tab>
 				<Tab value="Rail">Rail</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelBar()}
 					<TabPanel slot="panel" value="Bar">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -133,27 +140,30 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<Bar class="demo-bar">
 												<BarItem>
 													레이아웃
-													{#snippet _icon()}
-														<Icon slot="icon" name="view_sidebar"></Icon>
+
+													{#snippet layout()}
+														<Icon slot="icon" name="view_sidebar" />
 													{/snippet}
+													{@render layout()}
 												</BarItem>
 
 												<BarItem>
 													코드
-													{#snippet _icon()}
+													{#snippet code()}
 														<Icon slot="icon" name="code"></Icon>
 													{/snippet}
+													{@render code()}
 												</BarItem>
 											</Bar>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												position: relative;
@@ -181,14 +191,13 @@
 								</a>를 참고해주세요.
 							</p>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -196,17 +205,14 @@
 										<tbody>
 											<tr>
 												<td rowspan="3">BarItem</td>
-												<td><code>_icon</code></td>
 												<td><code>icon</code></td>
 												<td>아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_activeIcon</code></td>
 												<td><code>active-icon</code></td>
 												<td>선택했을 때 나타낼 아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_badge</code></td>
 												<td><code>badge</code></td>
 												<td>배지(아이콘에 알림, 개수 또는 상태 정보를 표시)</td>
 											</tr>
@@ -216,7 +222,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelDrawer()}
 					<TabPanel slot="panel" value="Drawer">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -235,28 +243,30 @@
 							</ul>
 							<article>
 								<Demo height="130px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block-drawer" style="padding: 1rem;">
 											<Drawer open="true" contained>
 												<List>
 													<ListItem>
 														홈
-														{#snippet _icon()}
-															<Icon slot="icon" name="home"></Icon>
+														{#snippet home()}
+															<Icon slot="icon" name="home" />
 														{/snippet}
+														{@render home()}
 													</ListItem>
 													<ListItem>
 														레이아웃
-														{#snippet _icon()}
-															<Icon slot="icon" name="view_sidebar"></Icon>
+														{#snippet layout()}
+															<Icon slot="icon" name="view_sidebar" />
 														{/snippet}
+														{@render layout()}
 													</ListItem>
 												</List>
 											</Drawer>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block-drawer {
 												height: 100%;
@@ -292,21 +302,23 @@
 
 							<article>
 								<Demo height="130px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block-drawer" style="padding: 1rem;">
 											<Drawer open={isOpenDrawer} contained>
 												<List>
 													<ListItem>
 														홈
-														{#snippet _icon()}
-															<Icon slot="icon" name="home"></Icon>
+														{#snippet home()}
+															<Icon slot="icon" name="home" />
 														{/snippet}
+														{@render home()}
 													</ListItem>
 													<ListItem>
 														레이아웃
-														{#snippet _icon()}
-															<Icon slot="icon" name="view_sidebar"></Icon>
+														{#snippet layout()}
+															<Icon slot="icon" name="view_sidebar" />
 														{/snippet}
+														{@render layout()}
 													</ListItem>
 												</List>
 											</Drawer>
@@ -315,7 +327,7 @@
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block-drawer {
 												height: 100%;
@@ -377,7 +389,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelRail()}
 					<TabPanel slot="panel" value="Rail">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -390,26 +404,28 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="140px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block-rail" style="padding: 1rem;">
 											<Rail contained>
 												<RailItem>
 													홈
-													{#snippet _icon()}
+													{#snippet home()}
 														<Icon slot="icon" name="home"></Icon>
 													{/snippet}
+													{@render home()}
 												</RailItem>
 												<RailItem>
 													레이아웃
-													{#snippet _icon()}
+													{#snippet layout()}
 														<Icon slot="icon" name="view_sidebar"></Icon>
 													{/snippet}
+													{@render layout()}
 												</RailItem>
 											</Rail>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block-rail {
 												height: 100%;
@@ -441,32 +457,35 @@
 							<p>상단에 항목을 고정할 수도 있어요.</p>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block-rail" style="padding: 1rem;">
 											<Rail contained>
-												{#snippet _top()}
+												{#snippet menu()}
 													<ButtonIcon slot="top" onclick={() => {}}>
 														<Icon name="menu"></Icon>
 													</ButtonIcon>
 												{/snippet}
+												{@render menu()}
 
 												<RailItem>
 													홈
-													{#snippet _icon()}
+													{#snippet home()}
 														<Icon slot="icon" name="home"></Icon>
 													{/snippet}
+													{@render home()}
 												</RailItem>
 												<RailItem>
 													레이아웃
-													{#snippet _icon()}
+													{#snippet layout()}
 														<Icon slot="icon" name="view_sidebar"></Icon>
 													{/snippet}
+													{@render layout()}
 												</RailItem>
 											</Rail>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block-rail {
 												height: 100%;
@@ -515,14 +534,13 @@
 								</Table>
 							</article>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -530,28 +548,23 @@
 										<tbody>
 											<tr>
 												<td rowspan="2">Rail</td>
-												<td><code>_top</code></td>
 												<td><code>top</code></td>
 												<td>상단에 고정할 아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_bottom</code></td>
 												<td><code>bottom</code></td>
 												<td>하단에 고정할 아이콘</td>
 											</tr>
 											<tr>
 												<td rowspan="3">RailItem</td>
-												<td><code>_icon</code></td>
 												<td><code>icon</code></td>
 												<td>아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_activeIcon</code></td>
 												<td><code>active-icon</code></td>
 												<td>선택했을 때 나타낼 아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_badge</code></td>
 												<td><code>badge</code></td>
 												<td>배지(아이콘에 알림, 개수 또는 상태 정보를 표시)</td>
 											</tr>
@@ -562,6 +575,10 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelBar()}
+				{@render panelDrawer()}
+				{@render panelRail()}
 			</Tabs>
 		</section>
 

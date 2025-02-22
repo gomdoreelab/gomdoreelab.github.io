@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Menu, MenuItem, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Menu, MenuItem, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -42,7 +41,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Menu>
 								<MenuItem>아이템1</MenuItem>
@@ -72,9 +71,13 @@
 			</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
-							<Menu selects="single" value="1" onclick={(event) => console.log(event)}>
+							<Menu
+								selects="single"
+								value="1"
+								onclick={(/** @type {any} */ event) => console.log(event)}
+							>
 								<MenuItem value={1}>1</MenuItem>
 								<MenuItem value={2}>2</MenuItem>
 								<MenuItem value={3}>3</MenuItem>
@@ -121,14 +124,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -136,32 +138,26 @@
 						<tbody>
 							<tr>
 								<td rowspan="6">MenuItem</td>
-								<td><code>_icon</code></td>
 								<td><code>icon</code></td>
 								<td>왼쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_endIcon</code></td>
 								<td><code>end-icon</code></td>
 								<td>오른쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_endText</code></td>
 								<td><code>end-text</code></td>
 								<td>오른쪽에 들어가는 텍스트</td>
 							</tr>
 							<tr>
-								<td><code>_selectedIcon</code></td>
 								<td><code>selected-icon</code></td>
 								<td>선택했을 때 나타낼 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_submenu</code></td>
 								<td><code>submenu</code></td>
 								<td>하위 메뉴</td>
 							</tr>
 							<tr>
-								<td><code>_custom</code></td>
 								<td><code>custom</code></td>
 								<td>사용자 정의 컨텐츠</td>
 							</tr>

@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import { Card, Icon } from 'gomdoreelab-lib-material-web';
 
 	let { previous, next } = $props();
@@ -15,6 +14,7 @@
 			<div class="title">{previous.title}</div>
 		</div>
 	</Card>
+
 	<Card style="height: 100%;" href={next.href}>
 		<div class="card">
 			<div class="outline">

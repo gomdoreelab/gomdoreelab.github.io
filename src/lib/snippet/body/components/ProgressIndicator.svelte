@@ -1,10 +1,8 @@
 <script>
-	// @ts-nocheck
 	import {
 		CircularProgress,
 		LinearProgress,
 		Prose,
-		Table,
 		TabPanel,
 		Tabs,
 		Tab
@@ -16,12 +14,12 @@
 	let { appState, ...props } = $props();
 	const circular = {
 		import: `import { CircularProgress } from 'gomdoreelab-lib-material-web';`,
-		example: `<CircularProgress></CircularProgress>`
+		example: `<CircularProgress />`
 	};
 
 	const linear = {
 		import: `import { LinearProgress } from 'gomdoreelab-lib-material-web';`,
-		example: `<LinearProgress></LinearProgress>`
+		example: `<LinearProgress />`
 	};
 </script>
 
@@ -36,7 +34,7 @@
 				<Tab value="Circular">Circular</Tab>
 				<Tab value="Linear">Linear</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelCircular()}
 					<TabPanel slot="panel" value="Circular">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -49,13 +47,13 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
-											<CircularProgress></CircularProgress>
+											<CircularProgress />
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -85,26 +83,28 @@
 							</p>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelLinear()}
 					<TabPanel slot="panel" value="Linear">
 						<div class="panel">
 							<h2>사용법</h2>
 							<p>컴포넌트를 가져와주세요:</p>
 
 							<article>
-								<Code lang="svelte" text={linear.import}></Code>
+								<Code {theme} lang="svelte" text={linear.import}></Code>
 							</article>
 
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
-											<LinearProgress></LinearProgress>
+											<LinearProgress />
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -132,6 +132,9 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelCircular()}
+				{@render panelLinear()}
 			</Tabs>
 		</section>
 

@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Switch, Icon, Prose, Table, TabPanel, Tabs, Tab } from 'gomdoreelab-lib-material-web';
+	import { Switch, Icon, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -9,15 +8,17 @@
 
 	const code = {
 		import: `import { Switch } from 'gomdoreelab-lib-material-web';`,
-		example: `<Switch></Switch>`,
+		example: `<Switch />`,
 		checked: `<Switch {checked} onchange={() => {}}>
-	{#snippet _checkedIcon()}
-		<Icon slot="checked-icon" name="nightlight"></Icon>
+	{#snippet checkedIcon()}
+		<Icon slot="checked-icon" name="nightlight" />
 	{/snippet}
-	
-	{#snippet _uncheckedIcon()}
-		<Icon slot="unchecked-icon" name="highlight"></Icon>
+	{@render checkedIcon()}
+
+	{#snippet uncheckedIcon()}
+		<Icon slot="unchecked-icon" name="highlight" />
 	{/snippet}
+	{@render uncheckedIcon()}
 </Switch>`
 	};
 </script>
@@ -39,13 +40,13 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
-							<Switch></Switch>
+							<Switch />
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -73,21 +74,23 @@
 			<p>기본 값을 줄 수 있어요!</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<Switch checked={true} onchange={() => {}}>
-								{#snippet _checkedIcon()}
-									<Icon slot="checked-icon" name="nightlight"></Icon>
+								{#snippet checkedIcon()}
+									<Icon slot="checked-icon" name="nightlight" />
 								{/snippet}
+								{@render checkedIcon()}
 
-								{#snippet _uncheckedIcon()}
-									<Icon slot="unchecked-icon" name="highlight"></Icon>
+								{#snippet uncheckedIcon()}
+									<Icon slot="unchecked-icon" name="highlight" />
 								{/snippet}
+								{@render uncheckedIcon()}
 							</Switch>
 						</div>
 					{/snippet}
 
-					{#snippet _style()}
+					{#snippet style()}
 						<style>
 							.demo-block {
 								display: flex;
@@ -126,14 +129,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -141,12 +143,10 @@
 						<tbody>
 							<tr>
 								<td rowspan="2">Switch</td>
-								<td><code>_uncheckedIcon</code></td>
 								<td><code>unchecked-icon</code></td>
 								<td>선택하지 않았을 때 나타낼 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_checkedIcon</code></td>
 								<td><code>checked-icon</code></td>
 								<td>선택했을 때 나타낼 아이콘</td>
 							</tr>

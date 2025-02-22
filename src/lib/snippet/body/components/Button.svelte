@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		Button,
 		ButtonIcon,
@@ -45,16 +44,18 @@
 	const fab = {
 		import: `import { Fab } from 'gomdoreelab-lib-material-web';`,
 		example: `<Fab>
-	{#snippet _icon()}
-		<Icon slot="icon" name="edit"></Icon>
+	{#snippet icon()}
+		<Icon slot="icon" name="edit" />
 	{/snippet}
+
+	{@render icon()}
 </Fab>`
 	};
 
 	const icon = {
 		import: `import { ButtonIcon } from 'gomdoreelab-lib-material-web';`,
 		example: `<ButtonIcon>
-	<Icon name="edit"></Icon>
+	<Icon name="edit" />
 </ButtonIcon>`
 	};
 
@@ -81,7 +82,7 @@
 				<Tab value="Icon">Icon</Tab>
 				<Tab value="Segmented">Segmented</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelCommon()}
 					<TabPanel slot="panel" value="Common">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -94,13 +95,13 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<Button>Button</Button>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -130,13 +131,13 @@
 							</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<Button onclick={() => alert('클릭했어요!')}>Button</Button>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -153,7 +154,7 @@
 							<p>여러가지 형태의 버튼 모양을 제공하고 있어요.</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<Button variant="filled">Filled</Button>
 											<Button variant="tonal">Tonal</Button>
@@ -162,7 +163,7 @@
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -217,14 +218,13 @@
 								</Table>
 							</article>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -232,12 +232,10 @@
 										<tbody>
 											<tr>
 												<td rowspan="2">Button</td>
-												<td><code>_icon</code></td>
 												<td><code>icon</code></td>
 												<td>왼쪽에 들어가는 아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_endIcon</code></td>
 												<td><code>end-icon</code></td>
 												<td>오른쪽에 들어가는 아이콘</td>
 											</tr>
@@ -247,7 +245,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelFab()}
 					<TabPanel slot="panel" value="Fab">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -260,17 +260,19 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<Fab>
-												{#snippet _icon()}
-													<Icon slot="icon" name="edit"></Icon>
+												{#snippet icon()}
+													<Icon slot="icon" name="edit" />
 												{/snippet}
+
+												{@render icon()}
 											</Fab>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -297,14 +299,13 @@
 								</a>를 참고해주세요.
 							</p>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -312,7 +313,6 @@
 										<tbody>
 											<tr>
 												<td>Fab</td>
-												<td><code>_icon</code></td>
 												<td><code>icon</code></td>
 												<td>아이콘</td>
 											</tr>
@@ -322,7 +322,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelIcon()}
 					<TabPanel slot="panel" value="Icon">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -335,15 +337,15 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<ButtonIcon>
-												<Icon name="edit"></Icon>
+												<Icon name="edit" />
 											</ButtonIcon>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -367,14 +369,13 @@
 								</a>을 참고해주세요.
 							</p>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -382,7 +383,6 @@
 										<tbody>
 											<tr>
 												<td>Icon</td>
-												<td><code>_selectedIcon</code></td>
 												<td><code>selected-icon</code></td>
 												<td>선택받은 상태에서 사용할 아이콘</td>
 											</tr>
@@ -392,7 +392,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelSegmented()}
 					<TabPanel slot="panel" value="Segmented">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -405,7 +407,7 @@
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100%">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo-block" style="padding: 1rem;">
 											<SegmentedButtonGroup>
 												<SegmentedButton>1</SegmentedButton>
@@ -415,7 +417,7 @@
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-block {
 												display: flex;
@@ -444,14 +446,14 @@
 								</a>을 참고해주세요.
 							</p>
 
-							<h2>Snippets</h2>
+							<h2>Slots</h2>
 							<article>
 								<Table>
 									<table>
 										<thead>
 											<tr>
 												<th>컴포넌트</th>
-												<th>Snippet 이름</th>
+
 												<th>Slot 이름</th>
 												<th>설명</th>
 											</tr>
@@ -459,17 +461,14 @@
 										<tbody>
 											<tr>
 												<td rowspan="3">SegmentedButton</td>
-												<td><code>_icon</code></td>
 												<td><code>icon</code></td>
 												<td>왼쪽에 배치할 아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_selectedIcon</code></td>
 												<td><code>selected-icon</code></td>
 												<td>선택받은 상태에서 사용할 아이콘</td>
 											</tr>
 											<tr>
-												<td><code>_endIcon</code></td>
 												<td><code>end-icon</code></td>
 												<td>오른쪽에 배치할 아이콘</td>
 											</tr>
@@ -480,6 +479,11 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelCommon()}
+				{@render panelFab()}
+				{@render panelIcon()}
+				{@render panelSegmented()}
 			</Tabs>
 		</section>
 

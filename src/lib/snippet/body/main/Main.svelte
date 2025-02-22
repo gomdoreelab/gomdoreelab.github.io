@@ -17,7 +17,7 @@
 			title: '디자인',
 			description: '머티리얼 디자인에서 배운 중요한 디자인 요소'
 		},
-		{ href: '/code', title: '코드', description: '코드 작성 시 지켜야하는 규칙' }
+		{ href: '/codes', title: '코드', description: '코드 작성 시 지켜야하는 규칙' }
 	];
 </script>
 

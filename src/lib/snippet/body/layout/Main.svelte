@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Prose, Card } from 'gomdoreelab-lib-material-web';
+	import { Prose } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
@@ -40,9 +39,9 @@
 						<code>large</code>, <code>extra-large</code> 5개로 구분해요.
 					</li>
 					<li>
-						<a target="_blank" href="https://m3.material.io/foundations/adaptive-design"
-							>적응형(Adaptive)</a
-						>
+						<a target="_blank" href="https://m3.material.io/foundations/adaptive-design">
+							적응형(Adaptive)
+						</a>
 						디자인을 적용하기 위해 노력하고 있어요.
 					</li>
 				</ul>
@@ -114,12 +113,12 @@
 			<p>
 				페이지를 구성하는 시작점으로만 사용하세요. 페이지 내 요소로 사용하는 것은 고려하지 않았어요.
 			</p>
-			<h3>좋은 사용법:</h3>
+			<h3>좋은 사용법</h3>
 			<article>
 				<Code {theme} lang="svelte" text={codes.good}></Code>
 			</article>
 
-			<h3>나쁜 사용법:</h3>
+			<h3>나쁜 사용법</h3>
 			<article>
 				<Code {theme} lang="svelte" text={codes.bad}></Code>
 			</article>

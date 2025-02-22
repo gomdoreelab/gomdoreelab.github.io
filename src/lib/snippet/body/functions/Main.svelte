@@ -1,6 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Prose, Card } from 'gomdoreelab-lib-material-web';
+	import { Prose } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 

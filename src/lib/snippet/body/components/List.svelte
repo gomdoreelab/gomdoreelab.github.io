@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		Collapse,
 		CollapseItem,
@@ -8,10 +7,7 @@
 		ListSubHeader,
 		Icon,
 		Prose,
-		Table,
-		TabPanel,
-		Tabs,
-		Tab
+		Table
 	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
@@ -28,37 +24,42 @@
 		icon: `<List>
 	<ListItem active={true} href="/">
 		홈
-		{#snippet _icon()}
-			<Icon slot="icon" name="home"></Icon>
+		{#snippet home()}
+			<Icon slot="icon" name="home" />
 		{/snippet}
+		{@render home()}
 	</ListItem>
 	
 	<ListItem href="/layout">
 		레이아웃
-		{#snippet _icon()}
-			<Icon slot="icon" name="view_sidebar"></Icon>
+		{#snippet layout()}
+			<Icon slot="icon" name="view_sidebar" />
 		{/snippet}
+		{@render layout()}
 	</ListItem>
 </List>`,
 		collapse: `<List>
 	<Collapse accordion value={open}>
 		<CollapseItem value="/layout">
 			// 상위 항목
-			{#snippet _header()}
+			{#snippet items()}
 				<ListItem slot="header">
 					레이아웃
-					{#snippet _icon()}
-						<Icon slot="icon" name="view_sidebar"></Icon>
+					{#snippet layout()}
+						<Icon slot="icon" name="view_sidebar" />
 					{/snippet}
+					{@render layout()}
 
-					{#snippet _endIcon()}
+					{#snippet end()}
 						<Icon
 							slot="end-icon"
 							name={open === '/layout' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-						></Icon>
+						/>
 					{/snippet}
+					{@render end()}
 				</ListItem>
 			{/snippet}
+			{@render items()}
 			
 			// 하위 항목
 			<div style="margin-left: 2.5rem">
@@ -108,7 +109,7 @@
 			<p>다음과 같이 사용하세요:</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<List>
 								<ListItem>아이템1</ListItem>
@@ -135,21 +136,23 @@
 			<p>아이템에 아이콘을 넣어서 사용할 수 있어요.</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<List>
 								<ListItem active={true} href="/">
 									홈
-									{#snippet _icon()}
-										<Icon slot="icon" name="home"></Icon>
+									{#snippet home()}
+										<Icon slot="icon" name="home" />
 									{/snippet}
+									{@render home()}
 								</ListItem>
 
 								<ListItem href="/layout">
 									레이아웃
-									{#snippet _icon()}
-										<Icon slot="icon" name="view_sidebar"></Icon>
+									{#snippet layout()}
+										<Icon slot="icon" name="view_sidebar" />
 									{/snippet}
+									{@render layout()}
 								</ListItem>
 							</List>
 						</div>
@@ -163,26 +166,29 @@
 			<p>리스트는 <code>Collapse</code>를 통해 더 많은 아이템을 보여줄 수 있어요.</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<List>
 								<Collapse accordion value={open}>
 									<CollapseItem value="/layout">
-										{#snippet _header()}
+										{#snippet items()}
 											<ListItem slot="header">
 												레이아웃
-												{#snippet _icon()}
-													<Icon slot="icon" name="view_sidebar"></Icon>
+												{#snippet layout()}
+													<Icon slot="icon" name="view_sidebar" />
 												{/snippet}
+												{@render layout()}
 
-												{#snippet _endIcon()}
+												{#snippet end()}
 													<Icon
 														slot="end-icon"
 														name={open === '/layout' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-													></Icon>
+													/>
 												{/snippet}
+												{@render end()}
 											</ListItem>
 										{/snippet}
+										{@render items()}
 
 										<div style="margin-left: 2.5rem">
 											{#each layouts as layout}
@@ -230,10 +236,10 @@
 			</article>
 
 			<h3>SubHeader</h3>
-			<p>사용하지마세요. 못생겼어요.</p>
+			<p>항목을 구분지을 수 있는 제목을 넣을 수 있어요.</p>
 			<article>
 				<Demo height="100%">
-					{#snippet _html()}
+					{#snippet html()}
 						<div class="demo-block" style="padding: 1rem;">
 							<List>
 								<ListSubHeader>헤더</ListSubHeader>
@@ -279,14 +285,13 @@
 				</Table>
 			</article>
 
-			<h2>Snippets</h2>
+			<h2>Slots</h2>
 			<article>
 				<Table>
 					<table>
 						<thead>
 							<tr>
 								<th>컴포넌트</th>
-								<th>Snippet 이름</th>
 								<th>Slot 이름</th>
 								<th>설명</th>
 							</tr>
@@ -294,22 +299,18 @@
 						<tbody>
 							<tr>
 								<td rowspan="4">ListItem</td>
-								<td><code>_description</code></td>
 								<td><code>description</code></td>
 								<td>보조 텍스트</td>
 							</tr>
 							<tr>
-								<td><code>_icon</code></td>
 								<td><code>icon</code></td>
 								<td>왼쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_endIcon</code></td>
 								<td><code>end-icon</code></td>
 								<td>오른쪽에 들어가는 아이콘</td>
 							</tr>
 							<tr>
-								<td><code>_custom</code></td>
 								<td><code>custom</code></td>
 								<td>사용자 정의 컨텐츠</td>
 							</tr>

@@ -1,10 +1,16 @@
 <script>
-	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
 	import { getResizeObserver, List, ListItem } from 'gomdoreelab-lib-material-web';
 
+	/**
+	 * @type {any[] | NodeListOf<Element>}
+	 */
 	let nodes = $state([]);
+
+	/**
+	 * @type {any[] | NodeListOf<Element>}
+	 */
 	let activeNodes = $state([]);
 	let tabs = $state();
 	let height = $state(0);
@@ -15,23 +21,32 @@
 		nodes = document.querySelectorAll('h1, h2, h3');
 		nodes.forEach((node, index) => {
 			if (!node.id) {
-				const nodeText = node.textContent.toLowerCase().replace(/\s+/g, '-');
-				node.id = `section-${nodeText}-${index}`;
+				const nodeContent = node.textContent;
+
+				if (nodeContent) {
+					node.id = `section-${index}`;
+				}
 			}
 		});
 
 		// 높이는 변화가 없다고 가정!
 		height = window.innerHeight;
 
-		const observer = getResizeObserver('main', function (entry, observer) {
-			if (document.querySelector('main').offsetHeight <= height) {
-				document.querySelectorAll('mdui-list-item[href^="#"]').forEach((link) => {
-					link.addEventListener('click', (event) => {
-						event.preventDefault();
+		const observer = getResizeObserver(
+			'main',
+			function (/** @type {any} */ _entry, /** @type {any} */ _observer) {
+				const main = document.querySelector('main');
+
+				if (!main) return;
+				if (main.offsetHeight <= height) {
+					document.querySelectorAll('mdui-list-item[href^="#"]').forEach((link) => {
+						link.addEventListener('click', (event) => {
+							event.preventDefault();
+						});
 					});
-				});
+				}
 			}
-		});
+		);
 
 		if (!tabs || page.url.pathname.includes('components/tabs')) {
 			activeNodes = nodes;
@@ -39,23 +54,26 @@
 			return;
 		}
 
-		tabs.addEventListener('change', (event) => getActiveNodes(event));
+		tabs.addEventListener('change', (/** @type {any} */ event) => getActiveNodes(event));
 		initActiveNodes(tabs.value);
 	});
 
-	const getActiveNodes = (event) => {
+	const getActiveNodes = (/** @type {{ target: { value: any; }; }} */ event) => {
 		const value = event.target.value;
 
 		initActiveNodes(value);
 	};
 
-	const initActiveNodes = (value) => {
+	const initActiveNodes = (/** @type {any} */ value) => {
 		const panel = Array.from(document.querySelectorAll('mdui-tab-panel'))
+			// @ts-ignore
 			.filter((panel) => panel.value === value)
 			.at(0);
 
 		activeNodes = [...nodes].filter((node) => {
-			return panel.contains(node) || node.tagName === 'H1';
+			if (panel) {
+				return panel.contains(node) || node.tagName === 'H1';
+			}
 		});
 	};
 </script>

@@ -1,12 +1,10 @@
 <script>
-	// @ts-nocheck
 	import {
 		Drawer,
 		Collapse,
 		CollapseItem,
 		List,
 		ListItem,
-		ButtonIcon,
 		Icon
 	} from 'gomdoreelab-lib-material-web';
 	import { page } from '$app/state';
@@ -23,6 +21,7 @@
 		{ href: '/layout/large', title: 'Large' },
 		{ href: '/layout/extra-large', title: 'Extra Large' }
 	];
+
 	const components = [
 		{ href: '/components', title: '개요' },
 		{ href: '/components/app-bar', title: 'App bars' },
@@ -49,13 +48,16 @@
 		{ href: '/components/text-fields', title: 'Text fields' },
 		{ href: '/components/tooltips', title: 'Tooltips' }
 	];
+
 	const functions = [
 		{ href: '/functions', title: '개요' },
 		{ href: '/functions/theme', title: '테마' },
 		{ href: '/functions/color', title: '색상' },
 		{ href: '/functions/size', title: '크기' }
 	];
+
 	const materials = [{ href: '/materials', title: '개요' }];
+
 	const codes = [
 		{ href: '/codes', title: '개요' },
 		{ href: '/codes/on-mount', title: 'onMount' },
@@ -83,32 +85,34 @@
 	<List>
 		<ListItem active={page.url.pathname === '/'} href="/">
 			홈
-			{#snippet _icon()}
-				<Icon slot="icon" name="home"></Icon>
+
+			{#snippet icon()}
+				<Icon slot="icon" name="home" />
 			{/snippet}
+
+			{@render icon()}
 		</ListItem>
 
 		<Collapse accordion value={open}>
-			<CollapseItem
-				value="/layout"
-				onopen={(event) => (open = '/layout')}
-				onclose={(event) => (open = '')}
-			>
-				{#snippet _header()}
+			<CollapseItem value="/layout" onopen={() => (open = '/layout')} onclose={() => (open = '')}>
+				{#snippet layout()}
 					<ListItem slot="header">
 						레이아웃
-						{#snippet _icon()}
-							<Icon slot="icon" name="view_sidebar"></Icon>
-						{/snippet}
 
-						{#snippet _endIcon()}
+						{#snippet icon()}
+							<Icon slot="icon" name="view_sidebar" />
 							<Icon
 								slot="end-icon"
 								name={open === '/layout' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-							></Icon>
+							/>
 						{/snippet}
+
+						{@render icon()}
 					</ListItem>
 				{/snippet}
+
+				{@render layout()}
+
 				<div style="margin-left: 2.5rem">
 					{#each layouts as layout}
 						<ListItem active={page.url.pathname === layout.href} href={layout.href}>
@@ -120,24 +124,27 @@
 
 			<CollapseItem
 				value="/components"
-				onopen={(event) => (open = '/components')}
-				onclose={(event) => (open = '')}
+				onopen={() => (open = '/components')}
+				onclose={() => (open = '')}
 			>
-				{#snippet _header()}
+				{#snippet component()}
 					<ListItem slot="header">
 						컴포넌트
-						{#snippet _icon()}
-							<Icon slot="icon" name="widgets"></Icon>
-						{/snippet}
 
-						{#snippet _endIcon()}
+						{#snippet icon()}
+							<Icon slot="icon" name="widgets" />
 							<Icon
 								slot="end-icon"
 								name={open === '/components' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-							></Icon>
+							/>
 						{/snippet}
+
+						{@render icon()}
 					</ListItem>
 				{/snippet}
+
+				{@render component()}
+
 				<div style="margin-left: 2.5rem">
 					{#each components as component}
 						<ListItem active={page.url.pathname === component.href} href={component.href}>
@@ -149,24 +156,27 @@
 
 			<CollapseItem
 				value="/functions"
-				onopen={(event) => (open = '/functions')}
-				onclose={(event) => (open = '')}
+				onopen={() => (open = '/functions')}
+				onclose={() => (open = '')}
 			>
-				{#snippet _header()}
+				{#snippet func()}
 					<ListItem slot="header">
 						함수
-						{#snippet _icon()}
-							<Icon slot="icon" name="functions"></Icon>
-						{/snippet}
 
-						{#snippet _endIcon()}
+						{#snippet icon()}
+							<Icon slot="icon" name="functions" />
 							<Icon
 								slot="end-icon"
 								name={open === '/functions' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-							></Icon>
+							/>
 						{/snippet}
+
+						{@render icon()}
 					</ListItem>
 				{/snippet}
+
+				{@render func()}
+
 				<div style="margin-left: 2.5rem">
 					{#each functions as func}
 						<ListItem active={page.url.pathname === func.href} href={func.href}>
@@ -178,24 +188,27 @@
 
 			<CollapseItem
 				value="/material"
-				onopen={(event) => (open = '/material')}
-				onclose={(event) => (open = '')}
+				onopen={() => (open = '/material')}
+				onclose={() => (open = '')}
 			>
-				{#snippet _header()}
+				{#snippet material()}
 					<ListItem slot="header">
 						디자인
-						{#snippet _icon()}
-							<Icon slot="icon" name="draw"></Icon>
-						{/snippet}
 
-						{#snippet _endIcon()}
+						{#snippet icon()}
+							<Icon slot="icon" name="draw" />
 							<Icon
 								slot="end-icon"
 								name={open === '/material' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-							></Icon>
+							/>
 						{/snippet}
+
+						{@render icon()}
 					</ListItem>
 				{/snippet}
+
+				{@render material()}
+
 				<div style="margin-left: 2.5rem">
 					{#each materials as material}
 						<ListItem active={page.url.pathname === material.href} href={material.href}>
@@ -205,26 +218,25 @@
 				</div>
 			</CollapseItem>
 
-			<CollapseItem
-				value="/codes"
-				onopen={(event) => (open = '/codes')}
-				onclose={(event) => (open = '')}
-			>
-				{#snippet _header()}
+			<CollapseItem value="/codes" onopen={() => (open = '/codes')} onclose={() => (open = '')}>
+				{#snippet code()}
 					<ListItem slot="header">
 						코드
-						{#snippet _icon()}
-							<Icon slot="icon" name="code"></Icon>
-						{/snippet}
 
-						{#snippet _endIcon()}
+						{#snippet icon()}
+							<Icon slot="icon" name="code" />
 							<Icon
 								slot="end-icon"
 								name={open === '/codes' ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
-							></Icon>
+							/>
 						{/snippet}
+
+						{@render icon()}
 					</ListItem>
 				{/snippet}
+
+				{@render code()}
+
 				<div style="margin-left: 2.5rem">
 					{#each codes as code}
 						<ListItem active={page.url.pathname === code.href} href={code.href}>

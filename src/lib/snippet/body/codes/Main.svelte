@@ -1,7 +1,5 @@
 <script>
-	// @ts-nocheck
-	import { Prose, Table, Card } from 'gomdoreelab-lib-material-web';
-	import Code from '$lib/snippet/code/Code.svelte';
+	import { Prose, Table } from 'gomdoreelab-lib-material-web';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
 
 	let { appState, ...props } = $props();

@@ -1,5 +1,4 @@
 <script>
-	// @ts-nocheck
 	import {
 		AppBarTop,
 		AppBarTopTitle,
@@ -19,37 +18,37 @@
 	const codes = {
 		import: `import { Expanded } from 'gomdoreelab-lib-grid-web';`,
 		example: `<Expanded>
-	{#snippet _header()}
+	{#snippet header()}
 		<AppBarTop class="demo-top-app-bar">
 			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 		</AppBarTop>
 	{/snippet}
 
-	{#snippet _body()}
+	{#snippet body()}
 		<div style="height: 100%; width: 100%;">Main</div>
 	{/snippet}
 
-	{#snippet _rail()}
+	{#snippet rail()}
 		<Rail class="demo-navigation-rail">Rail</Rail>
 	{/snippet}
 </Expanded>`,
 		importTP: `import { ExpandedTP } from 'gomdoreelab-lib-grid-web';`,
 		exampleTP: `<ExpandedTP placement="left">
-	{#snippet _header()}
+	{#snippet header()}
 		<AppBarTop class="demo-top-app-bar">
 			<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 		</AppBarTop>
 	{/snippet}
 
-	{#snippet _body()}
+	{#snippet body()}
 		<div style="height: 100%;">Main</div>
 	{/snippet}
 
-	{#snippet _complement()}
+	{#snippet complement()}
 		<div class="demo-complement">Complement</div>
 	{/snippet}
 
-	{#snippet _rail()}
+	{#snippet rail()}
 		<Rail class="demo-navigation-rail">Rail</Rail>
 	{/snippet}
 </ExpandedTP>`
@@ -70,7 +69,7 @@
 				<Tab value="Expanded">1개</Tab>
 				<Tab value="Expanded-Two-Pane">2개</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelExpanded()}
 					<TabPanel slot="panel" value="Expanded">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -83,21 +82,21 @@
 							<p>다음과 같이 사용하세요:</p>
 							<ul>
 								<li>
-									항상 <code>_header</code>, <code>_body</code>, <code>_rail</code> snippet을 전부 사용해주세요.
+									항상 <code>header</code>, <code>body</code>, <code>rail</code> snippet을 전부 사용해주세요.
 								</li>
 							</ul>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem;">
 											<Expanded style="height: 270px;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div
 														style="height: calc(100% - 0.375rem * 2); width: calc(100% - 0.375rem * 2); padding: 0.375rem;"
 													>
@@ -105,14 +104,14 @@
 													</div>
 												{/snippet}
 
-												{#snippet _rail()}
+												{#snippet rail()}
 													<Rail class="demo-navigation-rail">Rail</Rail>
 												{/snippet}
 											</Expanded>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -153,15 +152,15 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_header</code></td>
+												<td><code>header</code></td>
 												<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
 											</tr>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td>본문</td>
 											</tr>
 											<tr>
-												<td><code>_rail</code></td>
+												<td><code>rail</code></td>
 												<td>사이드 네비게이션 - Rail</td>
 											</tr>
 										</tbody>
@@ -172,6 +171,9 @@
 							</article>
 						</div>
 					</TabPanel>
+				{/snippet}
+
+				{#snippet panelExpandedTwoPane()}
 					<TabPanel slot="panel" value="Expanded-Two-Pane">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -184,37 +186,37 @@
 							<p>다음과 같이 사용하세요:</p>
 							<ul>
 								<li>
-									항상 <code>_header</code>, <code>_body</code>, <code>_complement</code>,
-									<code>_rail</code> snippet을 전부 사용해주세요.
+									항상 <code>header</code>, <code>body</code>, <code>complement</code>,
+									<code>rail</code> snippet을 전부 사용해주세요.
 								</li>
 							</ul>
 							<article>
 								<Demo height="300px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div style="padding: 1rem; min-width: 900px;">
 											<ExpandedTP placement="left" style="height: 270px; width: 100%;">
-												{#snippet _header()}
+												{#snippet header()}
 													<AppBarTop class="demo-top-app-bar">
 														<AppBarTopTitle>TopAppBar</AppBarTopTitle>
 													</AppBarTop>
 												{/snippet}
 
-												{#snippet _body()}
+												{#snippet body()}
 													<div style="height: 100%; padding: 0.375rem;">Main</div>
 												{/snippet}
 
-												{#snippet _complement()}
+												{#snippet complement()}
 													<div class="demo-complement">Complement</div>
 												{/snippet}
 
-												{#snippet _rail()}
+												{#snippet rail()}
 													<Rail class="demo-navigation-rail">Rail</Rail>
 												{/snippet}
 											</ExpandedTP>
 										</div>
 									{/snippet}
 
-									{#snippet _style()}
+									{#snippet style()}
 										<style>
 											.demo-top-app-bar {
 												background-color: rgb(var(--mdui-color-surface-container));
@@ -269,7 +271,7 @@
 										<tbody>
 											<tr>
 												<td>placement</td>
-												<td><code>_complement</code> Snippet 위치</td>
+												<td><code>complement</code> Snippet 위치</td>
 												<td><code>'left' | 'right'</code></td>
 												<td><code>'left'</code></td>
 											</tr>
@@ -290,19 +292,19 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_header</code></td>
+												<td><code>header</code></td>
 												<td>상단 네비게이션 - TopAppBar<sup>*</sup></td>
 											</tr>
 											<tr>
-												<td><code>_body</code></td>
+												<td><code>body</code></td>
 												<td>본문</td>
 											</tr>
 											<tr>
-												<td><code>_complement</code></td>
+												<td><code>complement</code></td>
 												<td>본문 보조</td>
 											</tr>
 											<tr>
-												<td><code>_rail</code></td>
+												<td><code>rail</code></td>
 												<td>사이드 네비게이션 - Rail</td>
 											</tr>
 										</tbody>
@@ -324,7 +326,7 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td><code>_complement</code></td>
+												<td><code>complement</code></td>
 												<td><code>360px</code></td>
 											</tr>
 										</tbody>
@@ -334,6 +336,9 @@
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelExpanded()}
+				{@render panelExpandedTwoPane()}
 			</Tabs>
 		</section>
 

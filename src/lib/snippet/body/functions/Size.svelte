@@ -1,7 +1,5 @@
 <script>
-	// @ts-nocheck
 	import {
-		Button,
 		getResizeObserver,
 		getBreakPoint,
 		Prose,
@@ -12,9 +10,7 @@
 	} from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
-	import Gomdoreelab from '$lib/assets/images/gomdoreelab.png';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
-	import { Medium } from 'gomdoreelab-lib-grid-web';
 	import { onMount } from 'svelte';
 
 	let { appState, ...props } = $props();
@@ -94,9 +90,15 @@ let breakpoint = getBreakpoint();`,
 
 	onMount(() => {
 		const demo = document.querySelector('.demo-flexible');
-		const observer = getResizeObserver(demo, function (entry, observer) {
-			width = entry.contentRect.width;
-		});
+		const observer = getResizeObserver(
+			demo,
+			function (
+				/** @type {{ contentRect: { width: number; }; }} */ entry,
+				/** @type {any} */ _observer
+			) {
+				width = entry.contentRect.width;
+			}
+		);
 	});
 </script>
 
@@ -112,7 +114,7 @@ let breakpoint = getBreakpoint();`,
 				<Tab value="AddBreakPoint">AddBreakPoint</Tab>
 				<Tab value="GetBreakPoint">GetBreakPoint</Tab>
 
-				{#snippet _panel()}
+				{#snippet panelResize()}
 					<TabPanel slot="panel" value="Resize">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -128,14 +130,15 @@ let breakpoint = getBreakpoint();`,
 							</ul>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											<div class="demo-flexible">
 												가로 길이: {width}px
 											</div>
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -278,7 +281,9 @@ let breakpoint = getBreakpoint();`,
 							</div>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelAddBreakPoint()}
 					<TabPanel slot="panel" value="AddBreakPoint">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -329,29 +334,29 @@ let breakpoint = getBreakpoint();`,
 								<p>가로 길이를 변경할 때 현재 레이아웃을 알 수 있어요.</p>
 								<article>
 									<Code {theme} lang="javascript" text={addBreakPoint.addBreakHandler}></Code>
-
-									<h4>Parameters</h4>
-									<Table>
-										<table>
-											<thead>
-												<tr>
-													<th>이름</th>
-													<th>설명</th>
-													<th>타입</th>
-													<th>기본값</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>event</td>
-													<td>가로 길이 변경 이벤트</td>
-													<td><code>MediaQueryListEvent</code></td>
-													<td>-</td>
-												</tr>
-											</tbody>
-										</table>
-									</Table>
 								</article>
+
+								<h4>Parameters</h4>
+								<Table>
+									<table>
+										<thead>
+											<tr>
+												<th>이름</th>
+												<th>설명</th>
+												<th>타입</th>
+												<th>기본값</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>event</td>
+												<td>가로 길이 변경 이벤트</td>
+												<td><code>MediaQueryListEvent</code></td>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</Table>
 
 								<h4>Response</h4>
 								<p>없음</p>
@@ -361,7 +366,9 @@ let breakpoint = getBreakpoint();`,
 							<p>없음</p>
 						</div>
 					</TabPanel>
+				{/snippet}
 
+				{#snippet panelGetBreakPoint()}
 					<TabPanel slot="panel" value="GetBreakPoint">
 						<div class="panel">
 							<h2>사용법</h2>
@@ -374,12 +381,13 @@ let breakpoint = getBreakpoint();`,
 							<p>다음과 같이 사용하세요:</p>
 							<article>
 								<Demo height="100px">
-									{#snippet _html()}
+									{#snippet html()}
 										<div class="demo" style="position: relative">
 											현재 화면 크기: {getBreakPoint()}
 										</div>
 									{/snippet}
-									{#snippet _style()}
+
+									{#snippet style()}
 										<style>
 											.demo {
 												display: flex;
@@ -432,6 +440,10 @@ let breakpoint = getBreakpoint();`,
 						</div>
 					</TabPanel>
 				{/snippet}
+
+				{@render panelResize()}
+				{@render panelAddBreakPoint()}
+				{@render panelGetBreakPoint()}
 			</Tabs>
 		</section>
 

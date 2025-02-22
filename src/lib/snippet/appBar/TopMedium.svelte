@@ -1,17 +1,12 @@
 <script>
-	// @ts-nocheck
 	import {
 		AppBarTop,
 		AppBarTopTitle,
 		ButtonIcon,
 		Icon,
-		Switch,
-		Avatar,
 		Card,
 		Dropdown,
 		Tooltip,
-		Menu,
-		MenuItem,
 		Slider
 	} from 'gomdoreelab-lib-material-web';
 	import Drawer from '$lib/snippet/drawer/Drawer.svelte';
@@ -19,16 +14,19 @@
 	import { onMount } from 'svelte';
 
 	let { appState, target, ...props } = $props();
-
-	let isThemeChecked = $state(appState.theme === 'light' ? false : true);
-	let theme = $state(appState.theme);
-	let isSnackbarOpen = $state(false);
 	let isDrawerOpen = $state(false);
+
+	/** @type {HTMLElement | null} */
+	const root = document.querySelector(':root');
 
 	onMount(() => {
 		const slider = document.querySelector('#contrast-slider');
-		slider.labelFormatter = (value) =>
-			Number(value) === 0 ? '기본' : Number(value) === 0.5 ? '중간' : '높음';
+
+		if (slider) {
+			// @ts-ignore
+			slider.labelFormatter = (value) =>
+				Number(value) === 0 ? '기본' : Number(value) === 0.5 ? '중간' : '높음';
+		}
 	});
 </script>
 
@@ -37,7 +35,7 @@
 	modal
 	close-on-esc
 	close-on-overlay-click
-	onclose={(event) => {
+	onclose={(/** @type {{ target: { tagName: string; }; }} */ event) => {
 		// 아이템에서 이벤트 전파되는건 빼고!
 		if (event.target.tagName === 'MDUI-NAVIGATION-DRAWER') {
 			isDrawerOpen = false;
@@ -52,18 +50,18 @@
 		</ButtonIcon>
 	{:else}
 		<ButtonIcon href="/">
-			{@const root = document.querySelector(':root')}
+			{#if root}
+				{#if appState.theme === 'light'}
+					{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-light')})`}
+					{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-light')})`}
 
-			{#if appState.theme === 'light'}
-				{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-light')})`}
-				{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-light')})`}
+					<Gomdoreelab {background} {color} width="24px" />
+				{:else}
+					{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-dark')})`}
+					{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-dark')})`}
 
-				<Gomdoreelab {background} {color} width="24px" />
-			{:else}
-				{@const background = `rgb(${root.style.getPropertyValue('--mdui-color-on-surface-dark')})`}
-				{@const color = `rgb(${root.style.getPropertyValue('--mdui-color-surface-dark')})`}
-
-				<Gomdoreelab {background} {color} width="24px" />
+					<Gomdoreelab {background} {color} width="24px" />
+				{/if}
 			{/if}
 		</ButtonIcon>
 	{/if}
@@ -72,7 +70,7 @@
 	<Dropdown>
 		{@const color = appState.color}
 
-		{#snippet _trigger()}
+		{#snippet button()}
 			<div slot="trigger">
 				<Tooltip content="대비">
 					<ButtonIcon>
@@ -81,6 +79,8 @@
 				</Tooltip>
 			</div>
 		{/snippet}
+		{@render button()}
+
 		<Card style="width: 200px; height: 100%;">
 			<div class="card">
 				<span>대비</span>
@@ -90,13 +90,14 @@
 					max="1"
 					step="0.5"
 					value={appState.contrast}
-					onchange={(event) => {
+					onchange={(/** @type {{ target: { value: any; }; }} */ event) => {
 						appState.setColor(color, event.target.value);
 					}}
 				/>
 			</div>
 		</Card>
 	</Dropdown>
+
 	<Tooltip content="테마">
 		<ButtonIcon
 			onclick={() => {
@@ -106,56 +107,6 @@
 			<Icon name={appState.theme === 'light' ? 'highlight' : 'nightlight'} />
 		</ButtonIcon>
 	</Tooltip>
-
-	<!-- <Switch
-			class="switch"
-			checked={isThemeChecked}
-			value={theme}
-			onchange={() => {
-				theme = theme === 'light' ? 'dark' : 'light';
-				appState.setTheme(theme);
-			}}
-		>
-			{#snippet _checkedIcon()}
-				<Icon slot="checked-icon" name="nightlight"></Icon>
-			{/snippet}
-			{#snippet _uncheckedIcon()}
-				<Icon slot="unchecked-icon" name="highlight"></Icon>
-			{/snippet}
-
-			{#if theme === 'light'}
-				<style>
-					.switch::part(track) {
-						/* background-color: yellow; */
-					}
-				</style>
-			{:else}
-				<style>
-					.switch::part(track) {
-					}
-				</style>
-			{/if}
-		</Switch>
-
-		<Dropdown>
-			{#snippet _trigger()}
-				<div slot="trigger">
-					<Tooltip content="설정">
-						<ButtonIcon>
-							<Icon name="settings"></Icon>
-						</ButtonIcon>
-					</Tooltip>
-				</div>
-			{/snippet}
-			<Menu
-				selects="single"
-				value={appState.theme}
-				onchange={(event) => appState.setTheme(event.target.value)}
-			>
-				<MenuItem value="light">Light</MenuItem>
-				<MenuItem value="dark">Dark</MenuItem>
-			</Menu>
-		</Dropdown> -->
 </AppBarTop>
 
 <style>
