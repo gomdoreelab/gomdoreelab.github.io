@@ -44,6 +44,11 @@
 								태그 또는 컴포넌트를 사용할 때 자식 요소를 갖지 않는 경우 스스로 닫을 수 있어요.
 							</td>
 						</tr>
+						<tr>
+							<td rowspan="1">Javascript</td>
+							<td><a href="/codes/ts-ignore">@ts-ignore</a></td>
+							<td>정말 타입을 지정하기 어려운 경우에 사용할 수 있어요.</td>
+						</tr>
 					</tbody>
 				</table>
 			</Table>

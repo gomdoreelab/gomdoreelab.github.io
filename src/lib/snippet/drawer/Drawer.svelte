@@ -5,6 +5,7 @@
 		CollapseItem,
 		List,
 		ListItem,
+		ListSubHeader,
 		Icon
 	} from 'gomdoreelab-lib-material-web';
 	import { page } from '$app/state';
@@ -60,8 +61,11 @@
 
 	const codes = [
 		{ href: '/codes', title: '개요' },
+		{ subtitle: 'Svelte' },
 		{ href: '/codes/on-mount', title: 'onMount' },
-		{ href: '/codes/self-closing', title: 'Self-Closing' }
+		{ href: '/codes/self-closing', title: 'Self-Closing' },
+		{ subtitle: 'Javascript' },
+		{ href: '/codes/ts-ignore', title: '@ts-ignore' }
 	];
 
 	onMount(() => {
@@ -239,9 +243,13 @@
 
 				<div style="margin-left: 2.5rem">
 					{#each codes as code}
-						<ListItem active={page.url.pathname === code.href} href={code.href}>
-							{code.title}
-						</ListItem>
+						{#if code.subtitle}
+							<ListSubHeader style="font-weight: 700;">{code.subtitle}</ListSubHeader>
+						{:else}
+							<ListItem active={page.url.pathname === code.href} href={code.href}>
+								{code.title}
+							</ListItem>
+						{/if}
 					{/each}
 				</div>
 			</CollapseItem>

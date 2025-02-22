@@ -12,7 +12,7 @@ onMount(() => {
 	appState = new State();
 });`,
 		example: `{#if appState}
-	{@render _breakpoint?.(appState)}
+	{@render breakpoint?.(appState)}
 {/if}`
 	};
 </script>
