@@ -33,7 +33,7 @@
 
 			<NavigationCard
 				previous={{ href: '/codes/on-mount', title: '코드: onMount' }}
-				next={{ href: '/functions/theme', title: '함수: 테마' }}
+				next={{ href: '/codes/snippet', title: '코드: Snippet' }}
 			/>
 		</section>
 	</div>

@@ -64,7 +64,9 @@
 		{ subtitle: 'Svelte' },
 		{ href: '/codes/on-mount', title: 'onMount' },
 		{ href: '/codes/self-closing', title: 'Self-Closing' },
+		{ href: '/codes/snippet', title: 'Snippet' },
 		{ subtitle: 'Javascript' },
+		{ href: '/codes/optional-chaining', title: 'Optional Chaining(?.)' },
 		{ href: '/codes/ts-ignore', title: '@ts-ignore' }
 	];
 

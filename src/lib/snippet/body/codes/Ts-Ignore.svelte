@@ -46,7 +46,7 @@
 			</article>
 
 			<NavigationCard
-				previous={{ href: '/codes/on-mount', title: '코드: onMount' }}
+				previous={{ href: '/codes/optional-chaining', title: '코드: Optional Chaining(?.)' }}
 				next={{ href: '/functions/theme', title: '함수: 테마' }}
 			/>
 		</section>

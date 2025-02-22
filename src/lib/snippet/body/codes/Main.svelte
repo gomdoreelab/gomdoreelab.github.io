@@ -34,7 +34,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td rowspan="2">Svelte</td>
+							<td rowspan="3">Svelte</td>
 							<td><a href="/codes/on-mount">onMount</a></td>
 							<td>onMount를 사용하는 특별한 상황이 있어요.</td>
 						</tr>
@@ -45,7 +45,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td rowspan="1">Javascript</td>
+							<td><a href="/codes/snippet">Snippet</a></td>
+							<td>Snippet 위치, 작성 방법과 관련한 규칙이 있어요.</td>
+						</tr>
+						<tr>
+							<td rowspan="2">Javascript</td>
+							<td><a href="/codes/optional-chaining">Optional Chaining(?.)</a></td>
+							<td>변수가 <code>nullish</code>인 경우 바로 <code>undefined</code>를 반환해요.</td>
+						</tr>
+						<tr>
 							<td><a href="/codes/ts-ignore">@ts-ignore</a></td>
 							<td>정말 타입을 지정하기 어려운 경우에 사용할 수 있어요.</td>
 						</tr>
