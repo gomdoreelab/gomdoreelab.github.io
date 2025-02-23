@@ -27,31 +27,55 @@
 
 	<RailItem value="/" href="/">
 		홈
-		<Icon slot="icon" name="home" />
+
+		{#snippet image()}
+			<Icon slot="icon" name="home" />
+		{/snippet}
+		{@render image()}
 	</RailItem>
 
 	<RailItem value="/layout" href="/layout">
 		레이아웃
-		<Icon slot="icon" name="view_sidebar" />
+
+		{#snippet image()}
+			<Icon slot="icon" name="view_sidebar" />
+		{/snippet}
+		{@render image()}
 	</RailItem>
 
 	<RailItem value="/components" href="/components">
 		컴포넌트
-		<Icon slot="icon" name="widgets" />
+
+		{#snippet image()}
+			<Icon slot="icon" name="widgets" />
+		{/snippet}
+		{@render image()}
 	</RailItem>
 
 	<RailItem value="/functions" href="/functions">
 		함수
-		<Icon slot="icon" name="functions" />
+
+		{#snippet image()}
+			<Icon slot="icon" name="functions" />
+		{/snippet}
+		{@render image()}
 	</RailItem>
 
 	<RailItem value="/material" href="/material">
 		디자인
-		<Icon slot="icon" name="draw" />
+
+		{#snippet image()}
+			<Icon slot="icon" name="draw" />
+		{/snippet}
+		{@render image()}
 	</RailItem>
 
 	<RailItem value="/code" href="/code">
 		코드
-		<Icon slot="icon" name="code" />
+
+		{#snippet image()}
+			<Icon slot="icon" name="code" />
+		{/snippet}
+		{@render image()}
 	</RailItem>
 </Rail>

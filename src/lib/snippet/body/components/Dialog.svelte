@@ -136,9 +136,15 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td rowspan="2">Dialog</td>
+								<td rowspan="3">Dialog</td>
 								<td>open</td>
 								<td><code>Dialog</code>를 열어요.</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+							<tr>
+								<td>fullscreen</td>
+								<td>전체 화면으로 나타낼 수 있어요.</td>
 								<td><code>boolean</code></td>
 								<td><code>false</code></td>
 							</tr>

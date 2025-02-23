@@ -139,11 +139,17 @@
 								<td><code>'top-start'</code></td>
 							</tr>
 							<tr>
-								<td>Tab</td>
+								<td rowspan="2">Tab</td>
 								<td>value</td>
 								<td><code>Tab</code>의 값이에요.</td>
 								<td><code>string</code></td>
 								<td>-</td>
+							</tr>
+							<tr>
+								<td>inline</td>
+								<td>아이콘과 텍스트를 가로로 배치해요.</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
 							</tr>
 							<tr>
 								<td>TabPanel</td>
