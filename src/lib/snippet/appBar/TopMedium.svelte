@@ -46,7 +46,7 @@
 <AppBarTop variant="medium" scroll-behavior="shrink elevate" scroll-target={target} {...props}>
 	{#if appState.breakpoint === 'compact'}
 		<ButtonIcon onclick={() => (isDrawerOpen = true)}>
-			<Icon name="menu"></Icon>
+			<Icon name="menu" />
 		</ButtonIcon>
 	{:else}
 		<ButtonIcon href="/">

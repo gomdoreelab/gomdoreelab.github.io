@@ -1,5 +1,5 @@
 <script>
-	import { Divider, Prose } from 'gomdoreelab-lib-material-web';
+	import { Divider, Prose, Table } from 'gomdoreelab-lib-material-web';
 	import Code from '$lib/snippet/code/Code.svelte';
 	import Demo from '$lib/snippet/code/Demo.svelte';
 	import NavigationCard from '$lib/snippet/navigationBar/NavigationCard.svelte';
@@ -48,6 +48,38 @@
 					MDUI - Divider
 				</a>를 참고해주세요.
 			</p>
+
+			<h2>Properties</h2>
+			<article>
+				<Table>
+					<table>
+						<thead>
+							<tr>
+								<th>컴포넌트</th>
+								<th>이름</th>
+								<th>설명</th>
+								<th>타입</th>
+								<th>기본값</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="2">Divider</td>
+								<td>inset</td>
+								<td>왼쪽에<code>inset</code>을 추가할 수 있어요</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+							<tr>
+								<td>middel</td>
+								<td>양 끝에<code>inset</code>을 추가할 수 있어요</td>
+								<td><code>boolean</code></td>
+								<td><code>false</code></td>
+							</tr>
+						</tbody>
+					</table>
+				</Table>
+			</article>
 		</section>
 
 		<NavigationCard

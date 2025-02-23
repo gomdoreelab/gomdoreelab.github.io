@@ -104,11 +104,39 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>Tabs</td>
+								<td rowspan="3">Tabs</td>
 								<td>value</td>
 								<td><code>Tab</code>을 선택할 수 있어요.</td>
 								<td><code>string</code></td>
 								<td>-</td>
+							</tr>
+							<tr>
+								<td>variant</td>
+								<td>
+									<p>탭의 형태를 변경할 수 있어요.</p>
+									<ul>
+										<li>
+											<code>primary</code>: 보통 <code>TopAppBar</code> 아래에 위치해, 전체 페이지를
+											변경할 때 사용
+										</li>
+									</ul>
+									<ul>
+										<li><code>secondary</code>: 페이지 내 컨텐츠를 변경할 때 사용</li>
+									</ul>
+								</td>
+								<td><code>'primary' | 'secondary'</code></td>
+								<td><code>'primary'</code></td>
+							</tr>
+							<tr>
+								<td>placement</td>
+								<td>탭이 위치할 곳을 선택할 수 있어요.</td>
+								<td
+									><code
+										>'top-start' | 'top' | 'top-end' | 'bottom-start' | 'bottom' | 'bottom-end' |
+										'left-start' | 'left' | 'left-end' | 'right-start' | 'right' | 'right-end'</code
+									></td
+								>
+								<td><code>'top-start'</code></td>
 							</tr>
 							<tr>
 								<td>Tab</td>
