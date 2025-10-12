@@ -4,5 +4,10 @@ import { defineConfig } from 'vite';
 import { sveltePhosphorOptimize } from 'phosphor-svelte/vite';
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltePhosphorOptimize(), sveltekit()]
+	plugins: [tailwindcss(), sveltePhosphorOptimize(), sveltekit()],
+	server: {
+		fs: {
+			allow: ['.well-known/appspecific/com.chrome.devtools.json']
+		}
+	}
 });

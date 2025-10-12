@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	const test = 'test';
 </script>
 
-g
+<h1>테스트 {test}</h1>
