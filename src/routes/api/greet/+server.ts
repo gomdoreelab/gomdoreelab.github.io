@@ -1,7 +1,7 @@
-import { json } from '@sveltejs/kit';
+// import { json } from '@sveltejs/kit';
 
-export async function GET() {
-	const data = { response: 'Hello World!' };
+// export async function GET() {
+// 	const data = { response: 'Hello World!' };
 
-	return json(data);
-}
+// 	return json(data);
+// }
