@@ -2,4 +2,4 @@
 	const test = 'test';
 </script>
 
-<h1>테스트 {test}</h1>
+<h1 class="text-2xl">테스트 {test}</h1>
