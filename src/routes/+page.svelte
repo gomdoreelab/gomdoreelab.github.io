@@ -1,4 +1,13 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import init, { greet } from 'wasm-jigsaw';
+
+	onMount(() => {
+		init().then(() => {
+			greet('WebAssembly');
+		});
+	});
+
 	const test = 'test';
 </script>
 

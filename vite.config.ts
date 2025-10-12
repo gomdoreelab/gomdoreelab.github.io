@@ -7,7 +7,7 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltePhosphorOptimize(), sveltekit()],
 	server: {
 		fs: {
-			allow: ['.well-known/appspecific/com.chrome.devtools.json']
+			allow: ['.well-known/appspecific/com.chrome.devtools.json', 'wasm']
 		}
 	}
 });
